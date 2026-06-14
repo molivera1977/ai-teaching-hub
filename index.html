@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Educators — Teaching Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .home-step { display: none; }
+    .home-step.active { display: block; }
+    .step-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1rem 0 .5rem;
+    }
+    .step-pip {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--border); transition: background .2s;
+    }
+    .step-pip.done   { background: var(--green); }
+    .step-pip.active { background: var(--brand); }
+    .step-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: .75rem;
+    }
+    .step-nav-solo { justify-content: flex-end; }
+    .btn-next {
+      background: var(--brand); color: #fff; font-weight: 700;
+      font-size: .95rem; padding: .7rem 1.8rem; border-radius: 30px;
+      border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(79,110,247,.3);
+      transition: transform .15s;
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+    .btn-back {
+      background: none; color: var(--muted); font-weight: 600;
+      font-size: .9rem; padding: .6rem 1rem; border-radius: 30px;
+      border: 1px solid var(--border); cursor: pointer; transition: color .15s;
+    }
+    .btn-back:hover { color: var(--brand); border-color: var(--brand); }
+    .step-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); text-align: center;
+      margin-bottom: .25rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="tag">✨ Free · Self-Paced · No Tech Skills Required</div>
+  <h1>Using AI in Your Classroom<br>Starts Here</h1>
+  <p>A step-by-step guide for teachers who are curious about AI but don't know where to begin. No jargon, no overwhelm — just clear, practical lessons.</p>
+  <a href="#home-steps" class="hero-btn" onclick="goToStep(1)">What is AI? →</a>
+</section>
+
+<div class="container" id="home-steps">
+
+  <div class="step-bar" id="step-bar">
+    <div class="step-pip active" id="pip-1"></div>
+    <div class="step-pip" id="pip-2"></div>
+    <div class="step-pip" id="pip-3"></div>
+    <div class="step-pip" id="pip-4"></div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="home-step active" id="step-1">
+  <div class="step-label">Step 1 of 4 — What is AI?</div>
+
+  <!-- 1. What is AI -->
+  <div class="lesson-section" id="what-is-ai" style="margin-top:0;">
+    <h2>👋 Welcome! What even IS AI?</h2>
+    <p>You've probably seen the word <strong>AI</strong> everywhere lately — on the news, in your email, maybe even in the teachers' lounge. But what is it, really?</p>
+    <p>Here's the best way we've heard it described: <strong>AI is like having the smartest teaching assistant in the world — one who is willing to help you with every single aspect of your job, any time of day, without ever complaining or running out of energy.</strong></p>
+    <p>Need a lesson plan? Ask. Need a quiz? Ask. Need 10 different ideas for introducing fractions, a rubric for a writing assignment, or a two-week unit on habitats? Just ask — and you'll have it in seconds.</p>
+    <p>You talk to it in plain English, just like sending a text. There's no special language to learn, no buttons to figure out. If you can type, you can use AI.</p>
+    <div class="callout info">
+      <strong>🙋 Feeling a little nervous? That's totally normal.</strong>
+      Almost every teacher feels that way at first. But here's the truth: you don't need to know anything about technology, computers, or coding. This course will walk you through everything step by step — and you'll be amazed how quickly it clicks.
+    </div>
+    <div class="callout tip">
+      <strong>💬 Remember what we tell the kids — there are no stupid questions.</strong>
+      If you don't know something, just ask AI. It doesn't judge, it doesn't get impatient, and it will give you the best answer it possibly can. Not sure what a word means? Ask. Don't know how to start a lesson on a topic you've never taught? Ask. Wondering if something you wrote sounds good? Ask. That's exactly what it's there for.
+      <br><br>And here's the best part — <strong>even if you don't know what to ask, AI can help you figure that out too.</strong> Just say something like <em>"I need to teach a unit on weather but I'm not sure where to start — what questions should I be thinking about?"</em> and it will brainstorm the right questions with you. You're never on your own.
+    </div>
+  </div>
+
+    <div class="step-nav">
+      <a href="#home-steps" onclick="goToStep(4)" style="font-size:.82rem;color:var(--muted);text-decoration:none;padding:.5rem 0;" title="Jump straight to the lesson list">Skip to lessons ↓</a>
+      <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+    </div>
+  </div><!-- /step-1 -->
+
+  <!-- STEP 2 -->
+  <div class="home-step" id="step-2">
+  <div class="step-label">Step 2 of 4 — Why Teachers Love AI</div>
+
+  <!-- 2. Why teachers want to use AI -->
+  <div class="lesson-section">
+    <h2>🌟 Why do teachers love using AI?</h2>
+    <p>Here's the honest truth: <strong>teachers don't need AI to be great at their job. But once they try it, most never want to go back.</strong> Here's why.</p>
+
+    <div class="intro-grid">
+      <div class="intro-item">
+        <div class="icon">📅</div>
+        <div>
+          <h3>Full lesson plans in minutes</h3>
+          <p>Tell AI your topic, your grade level, and how long the lesson should be — and it writes you a complete lesson plan with an objective, activities, and a closing. What used to take an hour takes 5 minutes.</p>
+        </div>
+      </div>
+      <div class="intro-item">
+        <div class="icon">📚</div>
+        <div>
+          <h3>Entire units of study, built to order</h3>
+          <p>This is the one that blows teachers' minds. Tell AI: <em>"Build me a 2-week unit on the American Revolution for 4th grade"</em> — and it maps out every day, every activity, every objective. You can even say how many days per week, what subjects to cover, and what standards to hit.</p>
+        </div>
+      </div>
+      <div class="intro-item">
+        <div class="icon">🎯</div>
+        <div>
+          <h3>Different versions for different students</h3>
+          <p>Need the same reading passage at three different reading levels? AI does all three at once. Every student gets something that fits them — without you rewriting everything by hand.</p>
+        </div>
+      </div>
+      <div class="intro-item">
+        <div class="icon">📝</div>
+        <div>
+          <h3>Quizzes, rubrics, and worksheets on demand</h3>
+          <p>Type what you need and AI builds it. A 10-question quiz on fractions, a rubric for a science project, a writing prompt for Monday morning — ready in seconds.</p>
+        </div>
+      </div>
+      <div class="intro-item">
+        <div class="icon">💡</div>
+        <div>
+          <h3>A brainstorming partner that never gets tired</h3>
+          <p>Stuck on how to introduce a tricky concept? Ask AI for 10 ideas. Hate them all? Ask for 10 more. It never runs out of suggestions and never minds being told to try again.</p>
+        </div>
+      </div>
+      <div class="intro-item">
+        <div class="icon">🔧</div>
+        <div>
+          <h3>You're always the one in charge</h3>
+          <p>AI gives you a starting point — you decide what stays, what changes, and what gets tossed. Nothing goes to students without your eyes on it first.</p>
+        </div>
+      </div>
+      <div class="intro-item" style="grid-column: 1 / -1;">
+        <div class="icon">🧠</div>
+        <div>
+          <h3>It learns you — and remembers what you like</h3>
+          <p>As you work with AI, you can tell it exactly how you like things done. Prefer your quizzes in a certain format? Want your reading passages to always have a vocabulary section at the bottom? Just tell it — and it will remember. The more you share your preferences, the more it feels like working with someone who already knows your style.</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted);text-align:center;margin:.5rem 0 1rem;font-style:italic;">…and these are just a handful of the hundreds of reasons teachers fall in love with AI once they give it a try.</p>
+    <div class="callout warn">
+      <strong>⚠️ One important thing to know right away</strong>
+      AI can get things wrong. It can make up facts, misspell names, or give you something that just doesn't quite fit. Always read what it gives you before sharing it with students — think of it like proofreading a lesson plan from a substitute.
+    </div>
+  </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+    </div>
+  </div><!-- /step-2 -->
+
+  <!-- STEP 3 -->
+  <div class="home-step" id="step-3">
+  <div class="step-label">Step 3 of 4 — Meet the Tools</div>
+
+  <!-- 3. Meet the AI players -->
+  <div class="lesson-section">
+    <h2>🤝 Meet the 4 AI Tools We Use in This Course</h2>
+    <p>Below are four of the more popular AI services available today. Any of them will work great for the lessons in this course.</p>
+
+    <div class="intro-grid" style="grid-template-columns:1fr;gap:.75rem;margin:1rem 0;">
+
+      <div class="intro-item" style="align-items:flex-start;flex-direction:column;gap:.4rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" alt="Claude logo" style="width:28px;height:28px;border-radius:6px;">
+          <h3 style="margin:0;">Claude — claude.ai</h3><span class="badge">Free to start</span>
+        </div>
+        <ul style="margin:.25rem 0 0;padding-left:1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;">
+          <li>Easiest to have a natural back-and-forth conversation with</li>
+          <li>Best for building websites, quizzes, and interactive activities</li>
+          <li>Creates Word docs and PDFs directly in the chat</li>
+        </ul>
+      </div>
+
+      <div class="intro-item" style="align-items:flex-start;flex-direction:column;gap:.4rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" alt="ChatGPT logo" style="width:28px;height:28px;border-radius:6px;">
+          <h3 style="margin:0;">ChatGPT — chatgpt.com</h3><span class="badge" style="background:#eefbf4;color:#1a7a47;">🎉 FREE for K-12 Teachers (through 2027!)</span>
+        </div>
+        <ul style="margin:.25rem 0 0;padding-left:1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;">
+          <li>The most widely known AI — great all-around starting point</li>
+          <li>Generates images and downloadable Word/PDF files</li>
+          <li>Full paid version free for U.S. K-12 teachers through June 2027</li>
+        </ul>
+      </div>
+
+      <div class="intro-item" style="align-items:flex-start;flex-direction:column;gap:.4rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" alt="Gemini logo" style="width:28px;height:28px;border-radius:6px;">
+          <h3 style="margin:0;">Google Gemini — gemini.google.com</h3><span class="badge" style="background:#e8f4ff;color:#1a5fa0;">Free · May Already Be at Your School</span>
+        </div>
+        <ul style="margin:.25rem 0 0;padding-left:1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;">
+          <li>Works directly inside Google Docs, Slides, Gmail, and Classroom</li>
+          <li>May already be enabled through your school's Google account</li>
+          <li>Best choice if your school runs on Google Workspace</li>
+        </ul>
+      </div>
+
+      <div class="intro-item" style="align-items:flex-start;flex-direction:column;gap:.4rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;">
+          <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32" alt="Perplexity logo" style="width:28px;height:28px;border-radius:6px;">
+          <h3 style="margin:0;">Perplexity — perplexity.ai</h3><span class="badge" style="background:#fff7ed;color:#7a3d00;">$10/month — Teacher Discount!</span>
+        </div>
+        <ul style="margin:.25rem 0 0;padding-left:1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;">
+          <li>Answers questions with live web results and cited sources</li>
+          <li>Access Claude, ChatGPT, and Gemini from one single app</li>
+          <li>50% teacher discount — $10/month with a school email</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <details style="margin:1rem 0;">
+      <summary style="cursor:pointer;font-weight:700;font-size:.95rem;color:var(--brand);background:#eef1ff;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;list-style:none;display:flex;align-items:center;gap:.5rem;">
+        📊 More Detailed Comparison — Plans &amp; Pricing for Each Tool
+      </summary>
+      <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.75rem;">
+
+        <!-- Claude -->
+        <div style="background:#f0f0ff;border:2px solid #4f6ef7;border-radius:12px;padding:1.2rem 1.4rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
+            <div style="display:flex;align-items:center;gap:.6rem;">
+              <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" alt="Claude logo" style="width:28px;height:28px;border-radius:6px;">
+              <h3 style="margin:0;font-size:1rem;"><a href="https://claude.ai" target="_blank" style="color:var(--brand);text-decoration:none;">Claude — claude.ai</a></h3>
+            </div>
+            <span class="badge">Free to start · No teacher discount</span>
+          </div>
+          <ul style="font-size:.87rem;color:#3b4160;line-height:1.75;padding-left:1.2rem;margin:0 0 .9rem;">
+            <li>Write quizzes, rubrics, lesson plans, and reading passages — just describe what you need in plain English</li>
+            <li><strong>Build complete classroom websites and interactive activities by describing what you want</strong> — Claude writes all the code for you, no prior coding experience required</li>
+            <li>Ask for a quiz or worksheet and download it as a <strong>Word document or PDF directly in the chat</strong> — no copy-pasting, no extra steps</li>
+            <li>Upload images, screenshots, or files and ask Claude to work with them</li>
+            <li>Remembers your preferences within a conversation — tell it your grade level once and it adjusts everything</li>
+          </ul>
+          <table style="width:100%;border-collapse:collapse;font-size:.83rem;">
+            <tr style="background:#eef1ff;"><th style="padding:.4rem .7rem;text-align:left;color:var(--brand);">Plan</th><th style="padding:.4rem .7rem;text-align:left;color:var(--brand);">What you get</th><th style="padding:.4rem .7rem;text-align:left;color:var(--brand);">Price</th></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:.4rem .7rem;"><strong>Free</strong></td><td style="padding:.4rem .7rem;">~30 messages/day, image uploads, web search. May slow down during peak hours.</td><td style="padding:.4rem .7rem;">$0</td></tr>
+            <tr><td style="padding:.4rem .7rem;"><strong>Pro</strong> ⭐</td><td style="padding:.4rem .7rem;">5× more messages, more powerful model, priority access, unlimited projects, Word/PDF file creation</td><td style="padding:.4rem .7rem;">$20/mo</td></tr>
+          </table>
+          <div style="margin-top:.75rem;">
+            <a href="https://claude.ai" target="_blank" style="background:#4f6ef7;color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">Sign Up Free →</a>
+          </div>
+        </div>
+
+        <!-- ChatGPT -->
+        <div style="background:#f0fff6;border:1px solid #2ecc71;border-radius:12px;padding:1.2rem 1.4rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
+            <div style="display:flex;align-items:center;gap:.6rem;">
+              <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" alt="ChatGPT logo" style="width:28px;height:28px;border-radius:6px;">
+              <h3 style="margin:0;font-size:1rem;"><a href="https://chatgpt.com" target="_blank" style="color:var(--brand);text-decoration:none;">ChatGPT — chatgpt.com</a></h3>
+            </div>
+            <span class="badge" style="background:#eefbf4;color:#1a7a47;">🎉 FREE for U.S. K-12 Teachers</span>
+          </div>
+          <ul style="font-size:.87rem;color:#3b4160;line-height:1.75;padding-left:1.2rem;margin:0 0 .9rem;">
+            <li>The most widely used AI tool — excellent for writing, brainstorming, and answering questions</li>
+            <li>Generates images directly in the chat using DALL·E (paid plans)</li>
+            <li>Creates downloadable <strong>Word documents and PDF files</strong> right in the conversation</li>
+            <li><strong>U.S. K-12 teachers get the full paid plan completely free through June 2027</strong> — just verify with your school email at chatgpt.com/plans/k12-teachers</li>
+            <li>Supports sign-in with Google or Apple</li>
+          </ul>
+          <table style="width:100%;border-collapse:collapse;font-size:.83rem;">
+            <tr style="background:#eefbf4;"><th style="padding:.4rem .7rem;text-align:left;color:#1a7a47;">Plan</th><th style="padding:.4rem .7rem;text-align:left;color:#1a7a47;">What you get</th><th style="padding:.4rem .7rem;text-align:left;color:#1a7a47;">Price</th></tr>
+            <tr style="border-bottom:1px solid #c8f0db;"><td style="padding:.4rem .7rem;"><strong>Free</strong></td><td style="padding:.4rem .7rem;">Limited messages per day, basic features, limited image generation</td><td style="padding:.4rem .7rem;">$0</td></tr>
+            <tr style="border-bottom:1px solid #c8f0db;background:#f8fffe;"><td style="padding:.4rem .7rem;"><strong>K-12 Teacher</strong> ⭐</td><td style="padding:.4rem .7rem;">Unlimited messages, image generation, file uploads, downloadable Word/PDF files, ad-free</td><td style="padding:.4rem .7rem;color:#1a7a47;font-weight:700;">FREE through 2027</td></tr>
+            <tr><td style="padding:.4rem .7rem;"><strong>Plus</strong></td><td style="padding:.4rem .7rem;">Same features as Teacher plan</td><td style="padding:.4rem .7rem;">$20/mo</td></tr>
+          </table>
+          <div style="margin-top:.75rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+            <a href="https://chatgpt.com/plans/k12-teachers" target="_blank" style="background:#2ecc71;color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">🎉 Claim Free Teacher Plan →</a>
+            <a href="https://chatgpt.com/pricing" target="_blank" style="background:#eefbf4;color:#1a7a47;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">View All Plans</a>
+          </div>
+        </div>
+
+        <!-- Gemini -->
+        <div style="background:#f0f7ff;border:1px solid #b8d8f8;border-radius:12px;padding:1.2rem 1.4rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
+            <div style="display:flex;align-items:center;gap:.6rem;">
+              <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" alt="Gemini logo" style="width:28px;height:28px;border-radius:6px;">
+              <h3 style="margin:0;font-size:1rem;"><a href="https://gemini.google.com" target="_blank" style="color:var(--brand);text-decoration:none;">Google Gemini — gemini.google.com</a></h3>
+            </div>
+            <span class="badge" style="background:#e8f4ff;color:#1a5fa0;">May already be free at your school</span>
+          </div>
+          <ul style="font-size:.87rem;color:#3b4160;line-height:1.75;padding-left:1.2rem;margin:0 0 .9rem;">
+            <li>Works directly inside <strong>Google Docs, Slides, Sheets, Gmail, and Google Classroom</strong> — AI-generated content appears right where you need it, no copy-pasting</li>
+            <li>Sign in with the same Google account you already use at school</li>
+            <li>Many schools already have Gemini enabled through Google Workspace for Education — check with your IT department before signing up for a paid plan</li>
+            <li>Best choice if your school is a Google school and you spend most of your day in Google tools</li>
+          </ul>
+          <table style="width:100%;border-collapse:collapse;font-size:.83rem;">
+            <tr style="background:#e8f4ff;"><th style="padding:.4rem .7rem;text-align:left;color:#1a5fa0;">Plan</th><th style="padding:.4rem .7rem;text-align:left;color:#1a5fa0;">What you get</th><th style="padding:.4rem .7rem;text-align:left;color:#1a5fa0;">Price</th></tr>
+            <tr style="border-bottom:1px solid #c5dff5;"><td style="padding:.4rem .7rem;"><strong>Free</strong></td><td style="padding:.4rem .7rem;">Basic chat at gemini.google.com, limited Docs integration</td><td style="padding:.4rem .7rem;">$0</td></tr>
+            <tr style="border-bottom:1px solid #c5dff5;background:#f5f9ff;"><td style="padding:.4rem .7rem;"><strong>Google Workspace for Education</strong> ⭐</td><td style="padding:.4rem .7rem;">Full Gemini inside Docs, Slides, Sheets, Gmail, and Classroom — ask your IT department if your school already has this</td><td style="padding:.4rem .7rem;color:#1a5fa0;font-weight:700;">Free at many schools</td></tr>
+            <tr><td style="padding:.4rem .7rem;"><strong>Google AI Pro</strong></td><td style="padding:.4rem .7rem;">Most powerful Gemini model, 2TB storage, Deep Research feature</td><td style="padding:.4rem .7rem;">$20/mo</td></tr>
+          </table>
+          <div style="margin-top:.75rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+            <a href="https://gemini.google.com" target="_blank" style="background:#1a5fa0;color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">Try Gemini Free →</a>
+            <a href="https://edu.google.com/intl/ALL_us/workspace-for-education/" target="_blank" style="background:#e8f4ff;color:#1a5fa0;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">Google for Education →</a>
+          </div>
+        </div>
+
+        <!-- Perplexity -->
+        <div style="background:#fff8f0;border:1px solid #f5d5a8;border-radius:12px;padding:1.2rem 1.4rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
+            <div style="display:flex;align-items:center;gap:.6rem;">
+              <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32" alt="Perplexity logo" style="width:28px;height:28px;border-radius:6px;">
+              <h3 style="margin:0;font-size:1rem;"><a href="https://perplexity.ai" target="_blank" style="color:var(--brand);text-decoration:none;">Perplexity — perplexity.ai</a></h3>
+            </div>
+            <span class="badge" style="background:#fff7ed;color:#7a3d00;">$10/mo — Educator Discount (50% off)</span>
+          </div>
+          <ul style="font-size:.87rem;color:#3b4160;line-height:1.75;padding-left:1.2rem;margin:0 0 .9rem;">
+            <li>Like a smarter Google — <strong>answers your questions directly with cited sources</strong> and live web results, no clicking through links</li>
+            <li>Great for finding current facts, recent research, or sources to build a lesson around</li>
+            <li><strong>Access Claude, ChatGPT, and Gemini all from one place</strong> — no need to juggle separate accounts (paid plan)</li>
+            <li>Deep Research mode compiles detailed, sourced reports on any topic</li>
+            <li>Supports sign-in with Google or Apple</li>
+            <li><strong>50% educator discount</strong> — $10/month with a school email (normally $20/month). Sign up → Upgrade → Education → Verify</li>
+          </ul>
+          <table style="width:100%;border-collapse:collapse;font-size:.83rem;">
+            <tr style="background:#fff0de;"><th style="padding:.4rem .7rem;text-align:left;color:#7a3d00;">Plan</th><th style="padding:.4rem .7rem;text-align:left;color:#7a3d00;">What you get</th><th style="padding:.4rem .7rem;text-align:left;color:#7a3d00;">Price</th></tr>
+            <tr style="border-bottom:1px solid #f5d5a8;"><td style="padding:.4rem .7rem;"><strong>Free</strong></td><td style="padding:.4rem .7rem;">Basic web search with sources, limited daily searches</td><td style="padding:.4rem .7rem;">$0</td></tr>
+            <tr><td style="padding:.4rem .7rem;"><strong>Pro (Educator)</strong> ⭐</td><td style="padding:.4rem .7rem;">Unlimited searches, Deep Research mode, image generation, access to Claude/ChatGPT/Gemini models</td><td style="padding:.4rem .7rem;color:#1a7a47;font-weight:700;">$10/mo<br><span style="font-weight:400;color:var(--muted);">(normally $20)</span></td></tr>
+          </table>
+          <div style="margin-top:.75rem;">
+            <a href="https://perplexity.ai" target="_blank" style="background:#e07a00;color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:8px;text-decoration:none;">Claim Educator Discount →</a>
+          </div>
+        </div>
+
+        <div class="callout warn" style="font-size:.83rem;padding:.6rem 1rem;">
+          <strong>⚠️ Prices last verified June 2026.</strong> AI pricing changes frequently — always check the tool's website before signing up.
+        </div>
+
+      </div>
+    </details>
+
+    <div style="background:#fff;border:2px solid var(--brand);border-radius:var(--radius);padding:2rem 2rem 1.75rem;margin-top:1.25rem;">
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:.5rem;">Your First Step</div>
+      <h3 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;margin:0 0 .5rem;color:var(--text);">🚀 Ready to get started? It takes 2 minutes.</h3>
+      <p style="color:#3b4160;font-size:.95rem;margin-bottom:1.25rem;">You don't need to download anything. You don't need a credit card. Just open your browser and follow these steps:</p>
+      <ol style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:.75rem;">
+        <li style="display:flex;gap:.9rem;align-items:flex-start;">
+          <span style="background:var(--brand);color:#fff;font-weight:800;font-size:.8rem;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;">1</span>
+          <span style="font-size:.94rem;color:#3b4160;">Open any web browser — Chrome, Safari, Edge, whatever you normally use.</span>
+        </li>
+        <li style="display:flex;gap:.9rem;align-items:flex-start;">
+          <span style="background:var(--brand);color:#fff;font-weight:800;font-size:.8rem;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;">2</span>
+          <span style="font-size:.94rem;color:#3b4160;">Go to <a href="https://claude.ai" target="_blank" style="color:var(--brand);font-weight:700;">claude.ai</a>, <a href="https://chatgpt.com" target="_blank" style="color:var(--brand);font-weight:700;">chatgpt.com</a>, <a href="https://gemini.google.com" target="_blank" style="color:var(--brand);font-weight:700;">gemini.google.com</a>, or <a href="https://perplexity.ai" target="_blank" style="color:var(--brand);font-weight:700;">perplexity.ai</a> and click the Sign Up button.</span>
+        </li>
+        <li style="display:flex;gap:.9rem;align-items:flex-start;">
+          <span style="background:var(--brand);color:#fff;font-weight:800;font-size:.8rem;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;">3</span>
+          <span style="font-size:.94rem;color:#3b4160;">Enter your email and create a password — or click "Sign in with Google," which works for all four services.</span>
+        </li>
+        <li style="display:flex;gap:.9rem;align-items:flex-start;">
+          <span style="background:var(--brand);color:#fff;font-weight:800;font-size:.8rem;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;">4</span>
+          <span style="font-size:.94rem;color:#3b4160;">A chat box appears. Type anything and press Enter. <strong style="color:#1a7a47;">You're using AI.</strong></span>
+        </li>
+      </ol>
+      <div style="background:#eef1ff;border-left:4px solid var(--brand);border-radius:10px;padding:1rem 1.2rem;font-size:.9rem;color:#2c3780;">
+        <strong style="display:block;margin-bottom:.3rem;font-size:.95rem;">💡 Our recommendation: start with Claude.</strong>
+        It's the most beginner-friendly tool, it works great for every lesson in this course, and the free version gives you plenty to get started — no credit card needed.
+      </div>
+    </div>
+  </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-next" onclick="goToStep(4)">Show Me the Lessons →</button>
+    </div>
+  </div><!-- /step-3 -->
+
+  <!-- STEP 4 -->
+  <div class="home-step" id="step-4">
+  <div class="step-label">Step 4 of 4 — The Lessons</div>
+  <h2 style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:1rem;margin-top:.75rem;">What You'll Learn in 6 Lessons</h2>
+
+  <div class="cards-grid">
+    <a class="card" href="lesson-1-prompting.html">
+      <div class="card-icon">💬</div>
+      <div class="card-num">Lesson 1</div>
+      <h2>Talking to AI — How to Write Good Prompts</h2>
+      <p>Learn how to ask AI questions the right way so you get useful, accurate answers every time.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+
+    <a class="card" href="lesson-2-assignments.html">
+      <div class="card-icon">📝</div>
+      <div class="card-num">Lesson 2</div>
+      <h2>Creating Classroom Assignments with AI</h2>
+      <p>Use AI to draft quizzes, reading passages, rubrics, and differentiated assignments in minutes.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+
+    <a class="card" href="lesson-3-screenshots.html">
+      <div class="card-icon">📸</div>
+      <div class="card-num">Lesson 3</div>
+      <h2>Show AI Exactly What You Want Using Screenshots</h2>
+      <p>Snip a question format, a reading passage, or a worksheet and let AI copy it perfectly — no long descriptions needed.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+
+    <a class="card" href="lesson-4-images.html">
+      <div class="card-icon">🎨</div>
+      <div class="card-num">Lesson 4</div>
+      <h2>Making Images & Visuals with AI</h2>
+      <p>Generate custom illustrations, diagrams, and classroom visuals from a simple text description.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+
+    <a class="card" href="lesson-5-print-save.html">
+      <div class="card-icon">🖨️</div>
+      <div class="card-num">Lesson 5</div>
+      <h2>Save and Print Everything AI Creates</h2>
+      <p>Get your AI quizzes, images, and websites off the screen and onto paper or into shareable files — every method explained.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+
+    <a class="card" href="lesson-6-websites.html">
+      <div class="card-icon">🌐</div>
+      <div class="card-num">Lesson 6</div>
+      <h2>Building Websites with AI Help</h2>
+      <p>See how AI can write the code for simple classroom websites — even if you've never coded before.</p>
+      <div class="card-arrow">Start lesson →</div>
+    </a>
+  </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+    </div>
+  </div><!-- /step-4 -->
+
+</div>
+
+<script>
+function goToStep(n) {
+  document.querySelectorAll('.home-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll('.step-pip').forEach((p, i) => {
+    p.classList.remove('active','done');
+    if (i + 1 < n) p.classList.add('done');
+    else if (i + 1 === n) p.classList.add('active');
+  });
+  const top = document.getElementById('home-steps').getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+</script>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+</body>
+</html>

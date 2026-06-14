@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 6 — Building Websites | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #f7924f; --grad-b: #e05a1a; }
+    .file-tree {
+      background: #1e2235;
+      color: #a8d8a8;
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+      font-family: 'Courier New', monospace;
+      font-size: .87rem;
+      line-height: 2;
+      margin: .75rem 0;
+    }
+    .file-tree .folder { color: #87ceeb; }
+    .file-tree .file   { color: #f0e68c; margin-left: 1.2rem; }
+    .video-placeholder {
+      background: #1e2235;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+      color: #a8d8a8;
+      text-align: center;
+      gap: .5rem;
+      margin: 1rem 0;
+    }
+    .video-placeholder .play { font-size: 2.5rem; }
+    .video-placeholder p { font-size: .85rem; color: #87ceeb; margin: 0; }
+    .timeline {
+      border-left: 3px solid var(--border);
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    .timeline-item { position: relative; margin-bottom: 1.25rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.85rem;
+      top: .3rem;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--brand);
+      border: 2px solid var(--bg);
+    }
+    .timeline-item h3 { font-size: .95rem; font-weight: 700; margin-bottom: .2rem; }
+    .timeline-item p  { font-size: .87rem; color: var(--muted); margin: 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html" class="active">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 6 of 6</div>
+  <h1>🌐 Building Websites with AI Help</h1>
+  <p>No coding experience needed. See how AI can write the code for you — and how you can direct it like a project manager.</p>
+</section>
+
+<div class="container">
+
+  <div class="lesson-nav">
+    <a href="lesson-5-print-save.html">← Lesson 5</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+    </div>
+    <a href="index.html">🏠 Back to Home</a>
+  </div>
+
+  <!-- Intro -->
+  <div class="lesson-section">
+    <h2>🤯 Wait — I Can Build a Website?</h2>
+    <p>Yes! And you don't need to learn any code to do it. Here's the key idea:</p>
+    <p>A website is built from files written in a language called <strong>HTML, CSS, and JavaScript</strong>. You don't need to understand these — AI understands them perfectly. Your job is to describe what you want in plain English, and AI writes the code for you.</p>
+    <p>Think of it like being an architect. The architect doesn't swing a hammer — they describe what the building should look like and a builder brings it to life. <strong>You are the architect. AI is the builder.</strong></p>
+    <div class="callout info">
+      <strong>📌 What kinds of sites can you make?</strong>
+      Review sites with multiple choice questions, flashcard games, class portals, vocabulary quizzes, study guides, interactive stories — the same types of sites real teachers are building for their classes right now!
+    </div>
+  </div>
+
+  <!-- How a website works -->
+  <div class="lesson-section">
+    <h2>🏗️ How a Website Actually Works (Simplified)</h2>
+    <p>A website is really just a folder of files on a computer. The three types of files you'll hear about:</p>
+
+    <div class="file-tree">
+      <span class="folder">📁 my-website/</span><br>
+      <span class="file">📄 index.html &nbsp;← The structure (the walls and rooms)</span><br>
+      <span class="file">🎨 style.css &nbsp;&nbsp;← The design (paint, furniture, colors)</span><br>
+      <span class="file">⚙️ script.js &nbsp;&nbsp;← The behavior (lights, doors, buttons)</span>
+    </div>
+
+    <p>When you open a website in your browser (Chrome, Safari, etc.), the browser reads these files and displays them as a beautiful page. That's it — no mystery!</p>
+    <div class="callout tip">
+      <strong>✅ The good news:</strong> You never have to write or read any of these files yourself. You describe what you want to AI, it writes the files, and you open them in your browser to see the result.
+    </div>
+  </div>
+
+  <!-- The process -->
+  <div class="lesson-section">
+    <h2>🔄 The Website-Building Process with AI</h2>
+    <p>Here is the exact step-by-step process used to create sites like the ones in this hub:</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>1. Decide what your site needs to do</h3>
+        <p>Is it a quiz? A review game? A class portal? A vocabulary activity? Be specific about the purpose before you start.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>2. Describe it to AI in detail</h3>
+        <p>Open Claude or ChatGPT and describe your site like you're explaining it to a web developer. Include what it should look like, what students should do on it, and what content it should include.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>3. AI writes the code</h3>
+        <p>AI will produce blocks of HTML, CSS, and JavaScript code. It usually explains what each part does too.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>4. Save the code as a file</h3>
+        <p>Copy the HTML code, open Notepad (Windows) or TextEdit (Mac), paste it, and save the file as <strong>index.html</strong>.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>5. Open it in your browser</h3>
+        <p>Double-click the saved file. It opens in your browser and works like a real website — right on your computer!</p>
+      </div>
+      <div class="timeline-item">
+        <h3>6. Ask AI to make changes</h3>
+        <p>Don't like the color? Want to add a question? Just tell AI what to change. Keep going until it's exactly what you want.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prompt examples -->
+  <div class="lesson-section">
+    <h2>💬 Real Prompts That Build Real Sites</h2>
+    <p>These are the kinds of detailed prompts that produce complete, working websites. The more detail you provide, the better the result.</p>
+
+    <h3>Example 1 — Multiple Choice Review Site</h3>
+    <div class="example-box">
+      <div class="ex-label">Prompt to use</div>
+      <pre>Build a single-page HTML/CSS/JavaScript quiz website for 4th grade students reviewing the water cycle.
+
+Include:
+- A title at the top: "Water Cycle Review"
+- 8 multiple choice questions about evaporation, condensation, precipitation, and collection
+- 4 answer choices per question
+- Immediate feedback when a student clicks an answer (green = correct, red = wrong)
+- A score tracker at the bottom
+- A "Try Again" button at the end
+- Colorful, fun design appropriate for 4th graders
+
+Put all the code in a single HTML file.</pre>
+    </div>
+
+    <h3>Example 2 — Vocabulary Flashcard Game</h3>
+    <div class="example-box">
+      <div class="ex-label">Prompt to use</div>
+      <pre>Create a flashcard website for 5th grade students studying math vocabulary.
+
+Include these 10 words and definitions:
+- Numerator: the top number in a fraction
+- Denominator: the bottom number in a fraction
+- Equivalent: equal in value
+[...add your own words]
+
+The site should:
+- Show one card at a time with the word on the front
+- Let students click to flip the card and see the definition
+- Have Next and Previous buttons to navigate cards
+- Show a progress tracker (e.g., "Card 3 of 10")
+- Use a clean, modern design with the school colors blue and gold
+
+Put everything in one HTML file.</pre>
+    </div>
+
+    <h3>Example 3 — Class Portal / Homepage</h3>
+    <div class="example-box">
+      <div class="ex-label">Prompt to use</div>
+      <pre>Build a class portal homepage for Mr. Smith's 3rd Grade class.
+
+The page should include:
+- A header with "Mr. Smith's 3rd Grade Class" and a welcome message
+- A weekly schedule section showing Monday–Friday subjects
+- A "This Week's Assignments" section with 3 placeholder assignments
+- Links to 4 educational websites (Khan Academy, etc.)
+- A fun quote of the week section
+- Bright, friendly colors — use yellow, green, and white
+
+Make it look professional and fun for 8-year-olds. Single HTML file.</pre>
+    </div>
+
+    <div class="callout warn">
+      <strong>⚠️ Important:</strong> Always ask for "a single HTML file" at the end of your prompt. This keeps everything in one place and makes it much easier to save and open.
+    </div>
+  </div>
+
+  <!-- Saving and sharing -->
+  <div class="lesson-section">
+    <h2>💾 How to Save and Share Your Website</h2>
+
+    <h3>Saving the file (Windows)</h3>
+    <ol class="steps">
+      <li>Open Notepad (search for it in the Start menu).</li>
+      <li>Copy all the code from AI and paste it into Notepad.</li>
+      <li>Click File → Save As. Name the file <strong>index.html</strong> (include the .html part).</li>
+      <li>Change "Save as type" to <strong>All Files</strong>, then click Save.</li>
+      <li>Find the saved file and double-click it — it opens in your browser!</li>
+    </ol>
+
+    <h3>Saving the file (Mac)</h3>
+    <ol class="steps">
+      <li>Open TextEdit. Go to Format → Make Plain Text.</li>
+      <li>Copy all the code from AI and paste it in.</li>
+      <li>Click File → Save. Name it <strong>index.html</strong> and save to your Desktop.</li>
+      <li>Double-click the file to open it in your browser.</li>
+    </ol>
+
+    <h3>Sharing with students</h3>
+    <p>Once you have a working file, you can share it several ways:</p>
+    <ul>
+      <li><strong>Google Drive:</strong> Upload the HTML file to Drive, set sharing to "Anyone with link," and share the link with students.</li>
+      <li><strong>GitHub Pages:</strong> Free website hosting — ask AI to walk you through the steps!</li>
+      <li><strong>Display on projector:</strong> For whole-class use, just open it on your computer and project it.</li>
+    </ul>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="lesson-section">
+    <h2>🔧 What to Do When Something Looks Wrong</h2>
+    <p>Sometimes the AI's first attempt won't look quite right. Here's how to fix it without frustration:</p>
+
+    <ul>
+      <li><strong>"The colors don't look right"</strong> → Tell AI: "Change the background color to light blue and the button color to dark green."</li>
+      <li><strong>"The quiz doesn't track the score"</strong> → Tell AI: "Add a score counter that increases by 1 for each correct answer and shows the total at the end."</li>
+      <li><strong>"It looks broken on my phone"</strong> → Tell AI: "Make this website responsive so it looks good on phones and tablets too."</li>
+      <li><strong>"I want to add more questions"</strong> → Tell AI: "Add these 3 questions to the quiz: [paste your questions]."</li>
+      <li><strong>"Something is missing"</strong> → Describe exactly what you expected to see. AI will fix it.</li>
+    </ul>
+
+    <div class="callout tip">
+      <strong>✅ The golden rule of AI website building:</strong> If it's not right, just say so in plain English. You can have 20 back-and-forth messages with AI and it will keep improving the site. There's no limit!
+    </div>
+  </div>
+
+  <!-- Try it -->
+  <div class="lesson-section">
+    <h2>✏️ Your First Website — Try It Now</h2>
+    <p>Use this starter prompt to build your very first quiz website. Customize it with your own topic and questions:</p>
+    <div class="try-it">
+      <div class="try-label">🧪 Starter Prompt — Copy &amp; Customize</div>
+      <p>Replace the parts in [brackets] with your own content, then paste into Claude or ChatGPT.</p>
+      <textarea id="website-prompt" rows="10">Build a single-page HTML quiz website for [GRADE] students about [TOPIC].
+
+Include:
+- Title: "[YOUR TITLE]"
+- 5 multiple choice questions about [TOPIC]
+- 4 answer choices each
+- Green highlight for correct answers, red for wrong
+- Score tracker
+- Retry button at the end
+- Colorful, student-friendly design
+
+Put everything in one HTML file.</textarea>
+      <button class="copy-btn" onclick="copyTextarea('website-prompt')">📋 Copy This Prompt</button>
+    </div>
+  </div>
+
+  <div class="lesson-section" style="background:linear-gradient(135deg,#eefbf4 0%,#e8f8ef 100%);border-color:#2ecc71;">
+    <h2 style="color:#1a7a47;">🎉 You Did It — Course Complete!</h2>
+    <p>You've worked through all 6 lessons. Here's what you can now do with AI:</p>
+    <ul>
+      <li><strong>Write great prompts</strong> that get you useful results every time.</li>
+      <li><strong>Create quizzes, rubrics, and reading passages</strong> in minutes, not hours.</li>
+      <li><strong>Use screenshots</strong> to show AI exactly what format you want.</li>
+      <li><strong>Generate custom images and visuals</strong> for any topic or grade level.</li>
+      <li><strong>Save and print</strong> everything AI creates as Word docs, PDFs, or HTML files.</li>
+      <li><strong>Build interactive websites</strong> for your students — no coding required.</li>
+    </ul>
+    <div class="callout tip">
+      <strong>✅ What's next?</strong> The best way to keep improving is to use AI every single week. The more you use it, the faster and more confident you'll get. Start with one thing you need for next week — a quiz, a reading passage, a lesson plan — and let AI help you build it.
+    </div>
+    <p style="text-align:center;margin-top:1.25rem;">
+      <a href="index.html" style="display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:.95rem;padding:.75rem 2rem;border-radius:30px;text-decoration:none;box-shadow:0 4px 16px rgba(46,204,113,.3);">🏠 Back to the Hub →</a>
+    </p>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="lesson-5-print-save.html">← Lesson 5</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+    </div>
+    <a href="index.html">🏠 Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function copyTextarea(id) {
+  const text = document.getElementById(id).value;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy This Prompt', 2000);
+  });
+}
+</script>
+
+</body>
+</html>

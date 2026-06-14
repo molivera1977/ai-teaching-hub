@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 3 — Screenshots | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #e056a0; --grad-b: #c0392b; }
+    .prompt-card {
+      background: #f8f9ff;
+      border: 1px solid #dde2ff;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: .75rem 0;
+    }
+    .prompt-card .pc-label {
+      font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+      color:var(--brand); margin-bottom:.3rem; display:flex; justify-content:space-between; align-items:center;
+    }
+    .prompt-card code {
+      font-size:.86rem; color:#1a2060; font-family:'Courier New',monospace;
+      line-height:1.6; display:block; white-space:pre-wrap;
+    }
+    .copy-small { font-size:.72rem; font-weight:700; color:var(--brand); background:#eef1ff; border:none; border-radius:6px; padding:.2rem .55rem; cursor:pointer; }
+    .mock-screenshot {
+      border: 2px dashed #c5c9ff;
+      border-radius: 12px;
+      background: #f8f9ff;
+      padding: 1.25rem 1.5rem;
+      margin: .75rem 0;
+      font-size: .88rem;
+      color: #3b4160;
+      position: relative;
+    }
+    .mock-screenshot .snap-label {
+      position: absolute;
+      top: -12px; left: 12px;
+      background: var(--brand);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .15rem .65rem;
+      border-radius: 20px;
+      letter-spacing: .05em;
+    }
+    .mock-screenshot p { margin-bottom: .5rem; font-weight: 600; }
+    .mock-screenshot ul { padding-left:1.2rem; }
+    .mock-screenshot li { margin-bottom:.2rem; }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .platform-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+    }
+    .platform-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; display:flex; align-items:center; gap:.4rem; }
+    .platform-card ul { padding-left: 1.2rem; font-size: .85rem; color: var(--muted); }
+    .platform-card li { margin-bottom: .3rem; }
+    .platform-card kbd {
+      background: #eef1ff; color: var(--brand); border: 1px solid #c5c9ff;
+      border-radius: 5px; padding: .1rem .4rem; font-size: .8rem; font-family: monospace;
+    }
+    @media(max-width:540px) { .platform-grid { grid-template-columns: 1fr; } }
+
+    /* ---- OS TAB SWITCHER ---- */
+    .os-tabs { display:flex; gap:.5rem; margin:1rem 0 .75rem; flex-wrap:wrap; }
+    .os-tab {
+      background:#eef1ff; border:2px solid transparent; border-radius:30px;
+      padding:.5rem 1.3rem; font-size:.92rem; font-weight:700; color:var(--muted);
+      cursor:pointer; transition:all .15s; font-family:inherit;
+    }
+    .os-tab.active { background:var(--brand); color:#fff; border-color:var(--brand); }
+    .os-tab:hover:not(.active) { border-color:var(--brand); color:var(--brand); }
+
+    /* ---- STEP VISUAL ---- */
+    .step-visual {
+      display:flex; gap:1rem; align-items:flex-start;
+      margin:.85rem 0; padding:1.1rem 1.2rem;
+      background:#f8f9ff; border-radius:12px; border:1px solid #e0e4ff;
+    }
+    .sv-num {
+      background:var(--brand); color:#fff; font-weight:800; font-size:1rem;
+      min-width:32px; height:32px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .sv-body { flex:1; }
+    .sv-body strong { font-size:.95rem; display:block; margin-bottom:.4rem; color:var(--text); }
+    .sv-note { font-size:.83rem; color:var(--muted); margin-top:.4rem; line-height:1.6; }
+
+    /* ---- KEYBOARD KEY GRAPHICS ---- */
+    .kbd-combo { display:flex; align-items:center; gap:.45rem; margin:.65rem 0; flex-wrap:wrap; }
+    .kbd-key {
+      background:linear-gradient(to bottom,#f8f9ff,#eef1ff);
+      border:2px solid #c5c9ff; border-bottom:4px solid #a0a8e8;
+      border-radius:8px; padding:.45rem .85rem;
+      font-size:.95rem; font-weight:800; color:var(--brand);
+      font-family:monospace; box-shadow:0 2px 6px rgba(79,110,247,.12);
+      min-width:48px; text-align:center; white-space:nowrap;
+    }
+    .kbd-plus { font-size:1.1rem; font-weight:700; color:var(--muted); }
+
+    /* ---- SCREEN DEMO ---- */
+    .screen-demo {
+      margin:.65rem 0; border-radius:10px; overflow:hidden;
+      border:2px solid #c5c9ff; box-shadow:0 4px 14px rgba(79,110,247,.1);
+    }
+
+    .use-case {
+      display: flex; gap: .9rem; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.2rem; margin: .6rem 0;
+    }
+    .use-case .uc-icon { font-size: 1.6rem; flex-shrink:0; }
+    .use-case h3 { font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
+    .use-case p  { font-size: .83rem; color: var(--muted); margin: 0; }
+
+    /* ---- WIZARD STEP SYSTEM ---- */
+    .lesson-step { display: none; }
+    .lesson-step.active { display: block; }
+    .step-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1rem 0 .5rem;
+    }
+    .step-pip {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--border); transition: background .2s;
+    }
+    .step-pip.done { background: var(--green); }
+    .step-pip.active { background: var(--brand); }
+    .step-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: .75rem;
+    }
+    .step-nav-solo { justify-content: flex-end; }
+    .btn-next {
+      background: var(--brand); color: #fff; font-weight: 700;
+      font-size: .95rem; padding: .7rem 1.8rem; border-radius: 30px;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(79,110,247,.3); transition: transform .15s;
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+    .btn-back {
+      background: none; color: var(--muted); font-weight: 600;
+      font-size: .9rem; padding: .6rem 1rem; border-radius: 30px;
+      border: 1px solid var(--border); cursor: pointer; transition: color .15s;
+    }
+    .btn-back:hover { color: var(--brand); }
+    .step-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted);
+      text-align: center; margin-bottom: .25rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html" class="active">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 3 of 6</div>
+  <h1>📸 Show AI Exactly What You Want</h1>
+  <p>Use screenshots, snips, and photos to show AI a specific format, question style, or reading passage — so it copies your exact vision.</p>
+</section>
+
+<div class="container">
+
+  <div class="lesson-nav">
+    <a href="lesson-2-assignments.html">← Lesson 2</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-4-images.html">Lesson 4 →</a>
+  </div>
+
+  <div id="lesson-steps">
+
+    <!-- Step bar -->
+    <div class="step-bar">
+      <div class="step-pip active"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STEP 1: Intro + What AI Can See                              -->
+    <!-- ============================================================ -->
+    <div class="lesson-step active" id="step-1">
+      <p class="step-label">Step 1 of 5 — The Secret Superpower</p>
+
+      <div class="lesson-section">
+        <h2>🤯 The Secret Superpower: Showing Instead of Telling</h2>
+        <p>You already know how to <em>describe</em> what you want in a prompt. But there's an even faster, more accurate method: <strong>show the AI a picture of it.</strong></p>
+        <p>Both Claude and ChatGPT can read and understand images — including screenshots, photos of worksheets, snips of question formats, and even pictures of handwritten notes. This is called <strong>multimodal AI</strong> (it works with more than just text).</p>
+        <div class="callout info">
+          <strong>📌 Real example from your classroom:</strong> Instead of spending three sentences trying to describe a specific question format, you snap a quick screenshot of one example question and say <em>"Make me 10 more questions exactly like this one."</em> Done in 10 seconds.
+        </div>
+      </div>
+
+      <div class="lesson-section">
+        <h2>👁️ What Can AI Actually See in a Screenshot?</h2>
+        <p>When you upload or paste an image into Claude or ChatGPT, the AI reads every detail — layout, text, formatting, structure, and style. Here's what it can pick up on:</p>
+        <ul>
+          <li>The exact <strong>format</strong> of questions (multiple choice, fill-in-the-blank, matching, short answer, etc.)</li>
+          <li>The <strong>reading level and vocabulary</strong> of a passage</li>
+          <li>The <strong>design and layout</strong> of a worksheet (column structure, font size, spacing)</li>
+          <li>The <strong>number of answer choices</strong> and how they're labeled (A, B, C, D vs. 1, 2, 3, 4)</li>
+          <li>Whether questions use <strong>bold keywords</strong>, <strong>underlining</strong>, or specific <strong>phrasing styles</strong></li>
+          <li>Rubric structures, table formats, graphic organizer layouts</li>
+        </ul>
+        <div class="callout tip">
+          <strong>✅ Think of it this way:</strong> A screenshot is worth a thousand words of prompting. If you have an example of what you want, showing it is always faster and more accurate than describing it.
+        </div>
+      </div>
+
+      <div class="step-nav step-nav-solo">
+        <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div><!-- /step-1 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 2: How to Take a Screenshot                            -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-2">
+      <p class="step-label">Step 2 of 5 — Taking a Screenshot</p>
+
+      <div class="lesson-section">
+        <h2>📷 How to Take a Screenshot or Snip</h2>
+        <p>A "screenshot" or "snip" is just a picture of whatever is on your screen right now. You don't need to install anything — every computer already has this built in. Select your computer type below and follow the steps one at a time:</p>
+
+        <div class="os-tabs">
+          <button class="os-tab active" onclick="showOS('windows', this)">🪟 I have a Windows computer</button>
+          <button class="os-tab" onclick="showOS('mac', this)">🍎 I have a Mac</button>
+        </div>
+
+        <!-- ===== WINDOWS ===== -->
+        <div id="os-windows" class="os-content">
+          <p style="font-size:.88rem;color:var(--muted);margin:.25rem 0 .75rem;">The fastest method: press three keys at the same time, then drag to select what you want.</p>
+
+          <div class="step-visual">
+            <div class="sv-num">1</div>
+            <div class="sv-body">
+              <strong>Press these three keys at the same time:</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key">⊞ Win</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">Shift</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">S</div>
+              </div>
+              <p class="sv-note">The <strong>Windows key (⊞)</strong> is in the bottom-left corner of your keyboard — it has the Windows logo on it. Hold all three keys down at the same time (like pressing piano keys together), then release them.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">2</div>
+            <div class="sv-body">
+              <strong>Your screen goes slightly dim — that means it's ready!</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="200" fill="#d0d4ee"/>
+                  <rect x="30" y="25" width="220" height="14" rx="4" fill="#b8bce0"/>
+                  <rect x="30" y="47" width="340" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="63" width="300" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="79" width="320" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="110" width="160" height="60" rx="6" fill="#b8bce0"/>
+                  <rect x="210" y="110" width="160" height="60" rx="6" fill="#b8bce0"/>
+                  <!-- dim overlay -->
+                  <rect width="400" height="200" fill="rgba(0,0,0,0.35)" rx="0"/>
+                  <!-- crosshair cursor -->
+                  <line x1="195" y1="90" x2="205" y2="90" stroke="white" stroke-width="2.5"/>
+                  <line x1="200" y1="85" x2="200" y2="95" stroke="white" stroke-width="2.5"/>
+                  <!-- label -->
+                  <rect x="110" y="155" width="180" height="28" rx="6" fill="rgba(255,255,255,0.9)"/>
+                  <text x="200" y="174" font-size="11" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">Screen dims + cursor becomes a + crosshair</text>
+                </svg>
+              </div>
+              <p class="sv-note">Everything on your screen will get darker for a moment. Your mouse cursor will turn into a small crosshair (+). This is completely normal — it means the screenshot tool is active and waiting for you.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">3</div>
+            <div class="sv-body">
+              <strong>Click and drag to draw a box around exactly what you want to capture.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="200" fill="#d0d4ee"/>
+                  <rect x="30" y="25" width="220" height="14" rx="4" fill="#b8bce0"/>
+                  <rect x="30" y="47" width="340" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="63" width="300" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="79" width="320" height="9" rx="3" fill="#c0c4dc"/>
+                  <rect x="30" y="110" width="160" height="60" rx="6" fill="#b8bce0"/>
+                  <rect x="210" y="110" width="160" height="60" rx="6" fill="#b8bce0"/>
+                  <!-- dim overlay -->
+                  <rect width="400" height="200" fill="rgba(0,0,0,0.35)"/>
+                  <!-- selection box -->
+                  <rect x="22" y="18" width="240" height="84" rx="3" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2.5"/>
+                  <!-- bright corners -->
+                  <rect x="18" y="14" width="10" height="10" rx="2" fill="white"/>
+                  <rect x="254" y="14" width="10" height="10" rx="2" fill="white"/>
+                  <rect x="18" y="88" width="10" height="10" rx="2" fill="white"/>
+                  <rect x="254" y="88" width="10" height="10" rx="2" fill="white"/>
+                  <!-- size label -->
+                  <rect x="270" y="40" width="115" height="22" rx="5" fill="rgba(79,110,247,0.9)"/>
+                  <text x="327" y="55" font-size="11" fill="white" font-family="sans-serif" text-anchor="middle" font-weight="700">240 × 84 px</text>
+                  <!-- instructions -->
+                  <rect x="80" y="155" width="240" height="28" rx="6" fill="rgba(255,255,255,0.9)"/>
+                  <text x="200" y="174" font-size="11" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">Drag from top-left corner to bottom-right corner</text>
+                </svg>
+              </div>
+              <p class="sv-note">Click where you want your selection to start (top-left corner of what you want), hold the mouse button down, drag to the opposite corner (bottom-right), then release — a white box shows exactly what will be captured.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">4</div>
+            <div class="sv-body">
+              <strong>Let go of the mouse — it's automatically copied!</strong>
+              <p class="sv-note">The moment you release the mouse button, the selected area is automatically copied to your clipboard. You'll see a small notification pop up in the bottom-right corner of your screen. <strong>You don't need to save anything</strong> — it's ready to paste.</p>
+              <div class="callout tip" style="margin-top:.6rem;margin-bottom:0;">
+                <strong>✅ No file, no saving, no folder needed.</strong> Just go straight to Claude or ChatGPT and paste it in.
+              </div>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">5</div>
+            <div class="sv-body">
+              <strong>Open Claude or ChatGPT, click in the chat box, then press:</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key">Ctrl</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">V</div>
+              </div>
+              <p class="sv-note">Your screenshot will appear right in the chat window. Then type your prompt — what you want AI to do with it — and press Enter. That's it!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== MAC ===== -->
+        <div id="os-mac" class="os-content" style="display:none;">
+          <p style="font-size:.88rem;color:var(--muted);margin:.25rem 0 .75rem;">The fastest method: press three keys at the same time, then drag to select what you want.</p>
+
+          <div class="step-visual">
+            <div class="sv-num">1</div>
+            <div class="sv-body">
+              <strong>Press these three keys at the same time:</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key">⌘ Cmd</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">Shift</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">4</div>
+              </div>
+              <p class="sv-note">The <strong>Command key (⌘)</strong> is the key right next to your spacebar — it has a ⌘ symbol on it. Hold all three keys down at the same time (like pressing piano keys together), then release them.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">2</div>
+            <div class="sv-body">
+              <strong>Your cursor changes to a crosshair (+) — it's ready!</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="200" fill="#e8eeff" rx="0"/>
+                  <rect x="30" y="25" width="220" height="14" rx="4" fill="#c5c9e8"/>
+                  <rect x="30" y="47" width="340" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="63" width="300" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="79" width="320" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="110" width="160" height="60" rx="6" fill="#c5c9e8"/>
+                  <rect x="210" y="110" width="160" height="60" rx="6" fill="#c5c9e8"/>
+                  <!-- crosshair cursor in center -->
+                  <line x1="195" y1="88" x2="205" y2="88" stroke="#4f6ef7" stroke-width="3"/>
+                  <line x1="200" y1="83" x2="200" y2="93" stroke="#4f6ef7" stroke-width="3"/>
+                  <circle cx="200" cy="88" r="12" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-dasharray="3,2"/>
+                  <!-- label -->
+                  <rect x="105" y="150" width="190" height="28" rx="6" fill="rgba(79,110,247,0.12)" stroke="#c5c9ff" stroke-width="1"/>
+                  <text x="200" y="169" font-size="11" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">Cursor becomes a + crosshair</text>
+                </svg>
+              </div>
+              <p class="sv-note">You'll see your regular mouse pointer change into a small crosshair (+) symbol. The screen stays normal — nothing dims on a Mac. The crosshair means the screenshot tool is active and waiting for you to draw a selection.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">3</div>
+            <div class="sv-body">
+              <strong>Click and drag to draw a box around exactly what you want to capture.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="200" fill="#e8eeff"/>
+                  <rect x="30" y="25" width="220" height="14" rx="4" fill="#c5c9e8"/>
+                  <rect x="30" y="47" width="340" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="63" width="300" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="79" width="320" height="9" rx="3" fill="#d0d4ee"/>
+                  <rect x="30" y="110" width="160" height="60" rx="6" fill="#c5c9e8"/>
+                  <rect x="210" y="110" width="160" height="60" rx="6" fill="#c5c9e8"/>
+                  <!-- selection box with highlight -->
+                  <rect x="22" y="18" width="240" height="84" rx="3" fill="rgba(79,110,247,0.12)" stroke="#4f6ef7" stroke-width="2.5"/>
+                  <rect x="18" y="14" width="10" height="10" rx="2" fill="#4f6ef7"/>
+                  <rect x="254" y="14" width="10" height="10" rx="2" fill="#4f6ef7"/>
+                  <rect x="18" y="88" width="10" height="10" rx="2" fill="#4f6ef7"/>
+                  <rect x="254" y="88" width="10" height="10" rx="2" fill="#4f6ef7"/>
+                  <!-- size tooltip -->
+                  <rect x="270" y="40" width="115" height="22" rx="5" fill="rgba(0,0,0,0.7)"/>
+                  <text x="327" y="55" font-size="11" fill="white" font-family="sans-serif" text-anchor="middle" font-weight="700">240 × 84</text>
+                  <!-- instructions -->
+                  <rect x="75" y="155" width="250" height="28" rx="6" fill="rgba(79,110,247,0.1)" stroke="#c5c9ff" stroke-width="1"/>
+                  <text x="200" y="174" font-size="11" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">Drag from top-left corner to bottom-right corner</text>
+                </svg>
+              </div>
+              <p class="sv-note">Click where you want your selection to start (top-left corner of what you want), hold the mouse button down, drag to the opposite corner (bottom-right), then release — a blue box shows exactly what will be captured. Mac even shows you the pixel size as you drag!</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">4</div>
+            <div class="sv-body">
+              <strong>Let go — you'll hear a camera click and it's saved automatically!</strong>
+              <p class="sv-note">The moment you release the mouse button, you'll hear a camera shutter sound (if your volume is on) and a thumbnail preview will appear in the bottom-right corner of your screen for a few seconds. The image is saved to your Desktop as a file, AND it's also already copied to your clipboard.</p>
+              <div class="callout tip" style="margin-top:.6rem;margin-bottom:0;">
+                <strong>✅ You can paste it immediately</strong> — no need to find the Desktop file. Just go straight to Claude or ChatGPT and paste.
+              </div>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">5</div>
+            <div class="sv-body">
+              <strong>Open Claude or ChatGPT, click in the chat box, then press:</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key">⌘ Cmd</div>
+                <div class="kbd-plus">+</div>
+                <div class="kbd-key">V</div>
+              </div>
+              <p class="sv-note">Your screenshot will appear right in the chat window. Then type your prompt — what you want AI to do with it — and press Enter. That's it!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <strong>✅ Pro tip — snip just what you need:</strong> You don't need to capture the whole screen. Draw your box tightly around just the one question, section, or format you want AI to copy. A small, focused snip gives AI cleaner information and better results.
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+        <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+      </div>
+    </div><!-- /step-2 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 3: How to Give a Screenshot to AI                      -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-3">
+      <p class="step-label">Step 3 of 5 — Sharing With AI</p>
+
+      <div class="lesson-section">
+        <h2>📤 How to Give a Screenshot to AI</h2>
+        <p>Once you have your screenshot, there are three ways to get it into Claude or ChatGPT. Pick the one that makes the most sense to you — they all work!</p>
+
+        <div class="os-tabs" style="flex-wrap:wrap;">
+          <button class="os-tab active" onclick="showMethod('paste', this)">⚡ Paste — Fastest</button>
+          <button class="os-tab" onclick="showMethod('drag', this)">🖱️ Drag &amp; Drop</button>
+          <button class="os-tab" onclick="showMethod('clip', this)">📎 Paperclip Button</button>
+        </div>
+
+        <!-- ===== PASTE ===== -->
+        <div id="method-paste" class="method-content">
+          <div class="callout tip" style="margin-top:.25rem;margin-bottom:.85rem;">
+            <strong>⚡ This is the fastest method.</strong> Your snip is already copied to your clipboard the moment you take it — you just switch to the browser and paste. No saving files, no hunting through folders.
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">1</div>
+            <div class="sv-body">
+              <strong>Take your snip — it auto-copies the moment you let go.</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key" style="font-size:.8rem;">⊞ Win</div><div class="kbd-plus">+</div><div class="kbd-key">Shift</div><div class="kbd-plus">+</div><div class="kbd-key">S</div>
+                <span style="color:var(--muted);font-size:.85rem;align-self:center;margin:0 .4rem;">Windows</span>
+              </div>
+              <div class="kbd-combo" style="margin-top:.3rem;">
+                <div class="kbd-key" style="font-size:.8rem;">⌘ Cmd</div><div class="kbd-plus">+</div><div class="kbd-key">Shift</div><div class="kbd-plus">+</div><div class="kbd-key">4</div>
+                <span style="color:var(--muted);font-size:.85rem;align-self:center;margin:0 .4rem;">Mac</span>
+              </div>
+              <p class="sv-note">As soon as you let go of the mouse after dragging, the snip is automatically on your clipboard. You don't need to do anything else — just switch to your browser.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">2</div>
+            <div class="sv-body">
+              <strong>Open Claude or ChatGPT in your browser and click in the chat box.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="190" fill="#f0f2ff"/>
+                  <!-- url bar -->
+                  <rect x="8" y="8" width="384" height="22" rx="5" fill="white" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="200" y="23" font-size="10" fill="#6b7280" font-family="sans-serif" text-anchor="middle">claude.ai</text>
+                  <!-- chat area -->
+                  <rect x="8" y="36" width="384" height="108" rx="4" fill="white"/>
+                  <text x="200" y="90" font-size="11" fill="#c5c9e0" font-family="sans-serif" text-anchor="middle">Previous conversation here…</text>
+                  <!-- input box HIGHLIGHTED -->
+                  <rect x="8" y="150" width="384" height="34" rx="8" fill="white" stroke="#4f6ef7" stroke-width="2.5"/>
+                  <text x="26" y="172" font-size="10" fill="#9ca3af" font-family="sans-serif">Click here and type your message…</text>
+                  <!-- cursor blink -->
+                  <rect x="22" y="158" width="2" height="16" rx="1" fill="#4f6ef7"/>
+                  <!-- icons right side -->
+                  <text x="348" y="173" font-size="14" font-family="sans-serif">📎</text>
+                  <rect x="368" y="155" width="22" height="22" rx="5" fill="#4f6ef7"/>
+                  <text x="379" y="170" font-size="12" fill="white" font-family="sans-serif" text-anchor="middle">↑</text>
+                  <!-- label -->
+                  <rect x="100" y="120" width="200" height="22" rx="5" fill="rgba(79,110,247,0.12)" stroke="#c5c9ff" stroke-width="1"/>
+                  <text x="200" y="135" font-size="10" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">← Click anywhere in this box</text>
+                </svg>
+              </div>
+              <p class="sv-note">Open claude.ai or chatgpt.com in your web browser (Chrome, Safari, Edge, Firefox — any of them). Click once anywhere inside the chat input box at the bottom. You'll see the cursor appear inside it.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">3</div>
+            <div class="sv-body">
+              <strong>Press paste — your screenshot appears instantly!</strong>
+              <div class="kbd-combo">
+                <div class="kbd-key">Ctrl</div><div class="kbd-plus">+</div><div class="kbd-key">V</div>
+                <span style="color:var(--muted);font-size:.85rem;align-self:center;margin:0 .5rem;">Windows</span>
+                <div class="kbd-key">⌘ Cmd</div><div class="kbd-plus">+</div><div class="kbd-key">V</div>
+                <span style="color:var(--muted);font-size:.85rem;align-self:center;margin:0 .4rem;">Mac</span>
+              </div>
+              <div class="screen-demo" style="margin-top:.6rem;">
+                <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="200" fill="#f0f2ff"/>
+                  <rect x="8" y="8" width="384" height="22" rx="5" fill="white" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="200" y="23" font-size="10" fill="#6b7280" font-family="sans-serif" text-anchor="middle">claude.ai</text>
+                  <rect x="8" y="36" width="384" height="120" rx="4" fill="white"/>
+                  <!-- image thumbnail in chat -->
+                  <rect x="20" y="46" width="90" height="68" rx="6" fill="#e0e4ff" stroke="#a0a8e8" stroke-width="1.5"/>
+                  <text x="65" y="76" font-size="20" font-family="sans-serif" text-anchor="middle">🖼️</text>
+                  <text x="65" y="102" font-size="8" fill="#4f6ef7" font-family="sans-serif" text-anchor="middle" font-weight="700">screenshot.png</text>
+                  <!-- green check badge -->
+                  <circle cx="103" cy="46" r="10" fill="#2ecc71"/>
+                  <text x="103" y="51" font-size="11" fill="white" font-family="sans-serif" text-anchor="middle">✓</text>
+                  <!-- label -->
+                  <text x="200" y="130" font-size="10" fill="#2ecc71" font-family="sans-serif" text-anchor="middle" font-weight="700">Image attached! Now type what you want AI to do.</text>
+                  <!-- input box -->
+                  <rect x="8" y="162" width="384" height="32" rx="8" fill="white" stroke="#c5c9ff" stroke-width="1.5"/>
+                  <text x="26" y="182" font-size="10" fill="#9ca3af" font-family="sans-serif">Type your prompt here, then press Enter…</text>
+                  <rect x="370" y="167" width="22" height="22" rx="5" fill="#4f6ef7"/>
+                  <text x="381" y="182" font-size="12" fill="white" font-family="sans-serif" text-anchor="middle">↑</text>
+                </svg>
+              </div>
+              <p class="sv-note">Your screenshot thumbnail appears right in the chat. Now just type what you want AI to do with it, then press Enter to send!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== DRAG & DROP ===== -->
+        <div id="method-drag" class="method-content" style="display:none;">
+          <p style="font-size:.88rem;color:var(--muted);margin:.25rem 0 .85rem;">This works well if your screenshot was saved as a file on your Desktop or in your Downloads folder.</p>
+
+          <div class="step-visual">
+            <div class="sv-num">1</div>
+            <div class="sv-body">
+              <strong>Open Claude or ChatGPT in your browser.</strong>
+              <p class="sv-note">Go to claude.ai or chatgpt.com — and make sure you can see both the browser window AND your Desktop (or wherever your screenshot file is saved) at the same time. You may need to resize the browser window so it doesn't take up the full screen.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">2</div>
+            <div class="sv-body">
+              <strong>Find your screenshot file — it's usually on your Desktop.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="160" fill="#e8eeff"/>
+                  <!-- desktop background -->
+                  <text x="200" y="80" font-size="11" fill="#c5c9e0" font-family="sans-serif" text-anchor="middle">Desktop</text>
+                  <!-- file icon -->
+                  <rect x="155" y="40" width="90" height="80" rx="8" fill="white" stroke="#c5c9ff" stroke-width="2"/>
+                  <text x="200" y="88" font-size="28" font-family="sans-serif" text-anchor="middle">🖼️</text>
+                  <text x="200" y="112" font-size="9" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="600">Screenshot 2024</text>
+                  <text x="200" y="124" font-size="9" fill="#3b4160" font-family="sans-serif" text-anchor="middle">.png</text>
+                  <!-- glow to indicate selection -->
+                  <rect x="151" y="36" width="98" height="88" rx="10" fill="none" stroke="#4f6ef7" stroke-width="2.5" stroke-dasharray="5,3"/>
+                </svg>
+              </div>
+              <p class="sv-note">On <strong>Windows</strong>: your screenshot might be in the Pictures folder or on your Desktop. On <strong>Mac</strong>: screenshots save directly to your Desktop by default — look for a file named "Screenshot [date and time].png".</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">3</div>
+            <div class="sv-body">
+              <strong>Click on the file, hold the mouse button down, and drag it into the browser window.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="190" fill="#e8eeff"/>
+                  <!-- left: desktop area -->
+                  <rect x="0" y="0" width="155" height="190" fill="#dde2f8"/>
+                  <text x="77" y="20" font-size="9" fill="#a0a8e0" font-family="sans-serif" text-anchor="middle">DESKTOP</text>
+                  <!-- file icon being dragged -->
+                  <rect x="40" y="70" width="70" height="65" rx="6" fill="white" stroke="#4f6ef7" stroke-width="2" opacity="0.7"/>
+                  <text x="75" y="108" font-size="22" font-family="sans-serif" text-anchor="middle" opacity="0.7">🖼️</text>
+                  <text x="75" y="127" font-size="8" fill="#4f6ef7" font-family="sans-serif" text-anchor="middle" opacity="0.7">screenshot.png</text>
+                  <!-- drag arrow -->
+                  <line x1="118" y1="103" x2="182" y2="103" stroke="#4f6ef7" stroke-width="2.5" marker-end="url(#arr)" stroke-dasharray="6,3"/>
+                  <defs>
+                    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                      <path d="M0,0 L0,6 L8,3 z" fill="#4f6ef7"/>
+                    </marker>
+                  </defs>
+                  <!-- right: browser/chat area -->
+                  <rect x="155" y="0" width="245" height="190" fill="#f0f2ff"/>
+                  <rect x="163" y="8" width="229" height="18" rx="4" fill="white" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="277" y="20" font-size="9" fill="#6b7280" font-family="sans-serif" text-anchor="middle">claude.ai</text>
+                  <!-- chat drop zone highlighted -->
+                  <rect x="163" y="32" width="229" height="130" rx="6" fill="rgba(79,110,247,0.08)" stroke="#4f6ef7" stroke-width="2" stroke-dasharray="6,3"/>
+                  <text x="277" y="92" font-size="11" fill="#4f6ef7" font-family="sans-serif" text-anchor="middle" font-weight="700">Drop anywhere</text>
+                  <text x="277" y="108" font-size="11" fill="#4f6ef7" font-family="sans-serif" text-anchor="middle" font-weight="700">in the chat</text>
+                  <text x="277" y="124" font-size="18" font-family="sans-serif" text-anchor="middle">⬇️</text>
+                </svg>
+              </div>
+              <p class="sv-note">Click the file icon, keep holding the mouse button, move your mouse over to the browser window, and then drop it anywhere in the chat area. You'll see the chat area light up with a blue border when you're hovering over it — that means it's ready to accept the file.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">4</div>
+            <div class="sv-body">
+              <strong>Release the mouse — the image appears in the chat!</strong>
+              <p class="sv-note">When you let go, the image uploads and a thumbnail appears in the chat window. You'll see a small preview of your screenshot right there in the conversation.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">5</div>
+            <div class="sv-body">
+              <strong>Type your prompt below the image and press Enter.</strong>
+              <p class="sv-note">Click in the text box (if it's not already active), type what you want AI to do — for example: <em>"Write 10 questions in the exact same format as this one."</em> — then press Enter to send.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PAPERCLIP ===== -->
+        <div id="method-clip" class="method-content" style="display:none;">
+          <p style="font-size:.88rem;color:var(--muted);margin:.25rem 0 .85rem;">This method is good when your screenshot is already saved as a file and you prefer clicking over dragging.</p>
+
+          <div class="step-visual">
+            <div class="sv-num">1</div>
+            <div class="sv-body">
+              <strong>Open Claude or ChatGPT in your browser.</strong>
+              <p class="sv-note">Go to claude.ai or chatgpt.com — you'll see the chat window with a text box at the bottom for typing your messages.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">2</div>
+            <div class="sv-body">
+              <strong>Look for the 📎 paperclip (or photo) icon inside the chat box and click it.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="120" fill="#f0f2ff"/>
+                  <rect x="8" y="8" width="384" height="22" rx="5" fill="white" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="200" y="23" font-size="10" fill="#6b7280" font-family="sans-serif" text-anchor="middle">claude.ai</text>
+                  <rect x="8" y="36" width="384" height="76" rx="4" fill="white"/>
+                  <text x="200" y="65" font-size="11" fill="#d0d4ee" font-family="sans-serif" text-anchor="middle">Chat area…</text>
+                  <!-- input box -->
+                  <rect x="16" y="78" width="368" height="28" rx="7" fill="white" stroke="#c5c9ff" stroke-width="1.5"/>
+                  <text x="34" y="96" font-size="10" fill="#9ca3af" font-family="sans-serif">Type a message…</text>
+                  <!-- paperclip icon HIGHLIGHTED -->
+                  <circle cx="335" cy="92" r="14" fill="rgba(247,146,79,0.15)" stroke="var(--accent)" stroke-width="2"/>
+                  <text x="335" y="98" font-size="15" font-family="sans-serif" text-anchor="middle">📎</text>
+                  <!-- arrow pointing to it -->
+                  <line x1="335" y1="60" x2="335" y2="74" stroke="var(--accent)" stroke-width="2" marker-end="url(#arr2)"/>
+                  <defs>
+                    <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto">
+                      <path d="M0,0 L8,3 L0,6 z" fill="var(--accent)"/>
+                    </marker>
+                  </defs>
+                  <rect x="283" y="42" width="104" height="18" rx="4" fill="rgba(247,146,79,0.15)" stroke="var(--accent)" stroke-width="1"/>
+                  <text x="335" y="55" font-size="9" fill="#7a3d00" font-family="sans-serif" text-anchor="middle" font-weight="700">Click this icon!</text>
+                  <!-- send button -->
+                  <rect x="356" y="83" width="22" height="22" rx="5" fill="#4f6ef7"/>
+                  <text x="367" y="98" font-size="12" fill="white" font-family="sans-serif" text-anchor="middle">↑</text>
+                </svg>
+              </div>
+              <p class="sv-note">Look at the bottom-left or bottom-right of the chat input box. You'll see a small <strong>📎 paperclip icon</strong> (Claude) or a photo/image icon (ChatGPT). Click it once.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">3</div>
+            <div class="sv-body">
+              <strong>A file browser window opens — navigate to your screenshot.</strong>
+              <div class="screen-demo">
+                <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                  <rect width="400" height="180" fill="#e8eeff"/>
+                  <!-- file picker window -->
+                  <rect x="30" y="10" width="340" height="160" rx="8" fill="white" stroke="#c5c9ff" stroke-width="1.5" filter="url(#shadow)"/>
+                  <defs>
+                    <filter id="shadow"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(79,110,247,0.15)"/></filter>
+                  </defs>
+                  <!-- title bar -->
+                  <rect x="30" y="10" width="340" height="28" rx="8" fill="#eef1ff"/>
+                  <rect x="30" y="28" width="340" height="10" fill="#eef1ff"/>
+                  <text x="200" y="29" font-size="11" fill="#3b4160" font-family="sans-serif" text-anchor="middle" font-weight="700">Open File</text>
+                  <!-- sidebar -->
+                  <rect x="30" y="38" width="80" height="132" fill="#f8f9ff" rx="0"/>
+                  <text x="70" y="60" font-size="9" fill="#6b7280" font-family="sans-serif" text-anchor="middle">Desktop</text>
+                  <text x="70" y="78" font-size="9" fill="#6b7280" font-family="sans-serif" text-anchor="middle">Downloads</text>
+                  <text x="70" y="96" font-size="9" fill="#6b7280" font-family="sans-serif" text-anchor="middle">Documents</text>
+                  <!-- files area -->
+                  <rect x="110" y="38" width="260" height="100" fill="white"/>
+                  <!-- file icons -->
+                  <rect x="120" y="48" width="55" height="50" rx="5" fill="#eef1ff" stroke="#4f6ef7" stroke-width="2"/>
+                  <text x="147" y="76" font-size="20" font-family="sans-serif" text-anchor="middle">🖼️</text>
+                  <text x="147" y="92" font-size="7" fill="#4f6ef7" font-family="sans-serif" text-anchor="middle" font-weight="700">Screenshot</text>
+                  <rect x="185" y="48" width="55" height="50" rx="5" fill="#f8f9ff" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="212" y="76" font-size="20" font-family="sans-serif" text-anchor="middle">📄</text>
+                  <text x="212" y="92" font-size="7" fill="#9ca3af" font-family="sans-serif" text-anchor="middle">Document</text>
+                  <rect x="250" y="48" width="55" height="50" rx="5" fill="#f8f9ff" stroke="#d0d4ee" stroke-width="1"/>
+                  <text x="277" y="76" font-size="20" font-family="sans-serif" text-anchor="middle">📄</text>
+                  <text x="277" y="92" font-size="7" fill="#9ca3af" font-family="sans-serif" text-anchor="middle">Document</text>
+                  <!-- open button -->
+                  <rect x="270" y="146" width="90" height="24" rx="5" fill="#4f6ef7"/>
+                  <text x="315" y="162" font-size="11" fill="white" font-family="sans-serif" text-anchor="middle" font-weight="700">Open</text>
+                  <rect x="170" y="146" width="90" height="24" rx="5" fill="#eef1ff" stroke="#c5c9ff" stroke-width="1"/>
+                  <text x="215" y="162" font-size="11" fill="#6b7280" font-family="sans-serif" text-anchor="middle">Cancel</text>
+                </svg>
+              </div>
+              <p class="sv-note">A window pops up showing your computer's files. Look for your screenshot — it's usually on the Desktop. Click it once to select it (it'll highlight in blue), then click the "Open" button.</p>
+            </div>
+          </div>
+
+          <div class="step-visual">
+            <div class="sv-num">4</div>
+            <div class="sv-body">
+              <strong>The image appears in the chat — now type your prompt and press Enter.</strong>
+              <p class="sv-note">Your screenshot uploads and a thumbnail appears in the chat. Click in the text box, type what you want AI to do with it, and press Enter to send.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout info" style="margin-top:1rem;">
+          <strong>📌 Which method is best?</strong> For most teachers, Paste (⚡) becomes the go-to once you get used to it — it's the fastest because there's no saving or hunting for files. But all three methods work perfectly fine.
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(2)">← Back</button>
+        <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+      </div>
+    </div><!-- /step-3 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 4: What to Screenshot + Real Prompts                   -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-4">
+      <p class="step-label">Step 4 of 5 — What to Screenshot</p>
+
+      <div class="lesson-section">
+        <h2>🎯 What to Screenshot and Why</h2>
+        <p>Here are the most powerful ways teachers are using this technique:</p>
+
+        <div class="use-case">
+          <div class="uc-icon">📋</div>
+          <div>
+            <h3>Screenshot a question format → "Make more like this"</h3>
+            <p>Found a question style you love in a workbook, textbook, or online? Snip it and ask AI to write 10 more in the exact same format.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">📖</div>
+          <div>
+            <h3>Screenshot a reading passage → "Write comprehension questions for this"</h3>
+            <p>Snap a photo of any reading story or article — even from a physical book — and ask AI to generate questions, summaries, or vocabulary lists based on that exact text.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">📚</div>
+          <div>
+            <h3>Screenshot pages of a story → "Build a vocabulary list and comprehension questions"</h3>
+            <p>Take a photo of one or more pages from any story — a classroom reader, a chapter book, even a picture book — and ask AI to pull out challenging vocabulary words with definitions, then write comprehension questions at exactly the right level for your students. You can do this for any story you already use, without ever having to retype the text.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">📝</div>
+          <div>
+            <h3>Screenshot a rubric → "Make a rubric like this for ___"</h3>
+            <p>Show AI a rubric you already like and ask it to create a new one with the same structure for a different assignment or subject.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">🗂️</div>
+          <div>
+            <h3>Screenshot a worksheet layout → "Recreate this layout with new content"</h3>
+            <p>Show AI a worksheet design — two columns, matching section, word bank at top — and ask it to recreate the same layout for a different topic.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">✏️</div>
+          <div>
+            <h3>Photo of student work → "Give me feedback on this"</h3>
+            <p>Take a photo of a student's handwritten essay or math work (no names!) and ask AI to suggest feedback, identify misconceptions, or suggest the next teaching step.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">📊</div>
+          <div>
+            <h3>Screenshot a test question → "Explain why the answer is ___"</h3>
+            <p>Snap a tricky standardized test question and ask AI to explain the correct answer and the reasoning behind it — perfect for test prep coaching.</p>
+          </div>
+        </div>
+
+        <div class="use-case">
+          <div class="uc-icon">🌐</div>
+          <div>
+            <h3>Screenshot a website style → "Build a site that looks like this"</h3>
+            <p>See a review game or classroom website you love? Screenshot it and ask AI to build something similar with your own content.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson-section">
+        <h2>💬 Real Prompts to Use After Uploading a Screenshot</h2>
+        <p>Upload your screenshot first, then use one of these prompts. Replace the parts in [brackets] with your specifics.</p>
+
+        <div class="prompt-card">
+          <div class="pc-label">Copy a question format <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a question I like. Please write 10 more questions about [TOPIC] for [GRADE] students using the exact same format — same question style, same number of answer choices, same labeling (A, B, C, D), and same overall structure.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Generate questions from a reading passage <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a reading passage. Please:
+1. Write 5 multiple choice comprehension questions based on this text
+2. Write 2 short answer questions that require students to use evidence from the passage
+3. Identify 5 vocabulary words from the passage that [GRADE] students might find challenging and write student-friendly definitions for each</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Recreate a rubric structure <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a rubric I like. Please create a new rubric for [ASSIGNMENT TYPE] for [GRADE] students using the exact same table structure, scoring scale, and category format shown in the image. Replace the categories with ones appropriate for [ASSIGNMENT TYPE].</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Match a worksheet layout <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a worksheet I like. Please create a new worksheet about [TOPIC] for [GRADE] that uses the same general layout — same column structure, same section organization, and same type of activities — but with completely new content about [TOPIC].</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Feedback on student work <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a photo of a student's [essay / math work / graphic organizer]. This student is in [GRADE]. Please:
+1. Identify 2–3 specific strengths in their work
+2. Identify 2–3 areas for growth
+3. Suggest one next step I could teach this student
+Keep the feedback kind, specific, and actionable.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Explain a test question <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a test question. The correct answer is [ANSWER]. Please explain in simple terms why that answer is correct, why each wrong answer is incorrect, and what concept a student needs to understand to get this type of question right. Write the explanation for a [GRADE] student.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Build a website from a screenshot <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>I've attached a screenshot of a review website I like. Please build me a similar site in a single HTML file about [TOPIC] for [GRADE] students. Match the general look and feel — same color scheme if possible, same layout style, same type of interactive features. Use this content: [PASTE YOUR CONTENT OR QUESTIONS].</code>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(3)">← Back</button>
+        <button class="btn-next" onclick="goToStep(5)">Continue →</button>
+      </div>
+    </div><!-- /step-4 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 5: Tips + Workflow + Try It                            -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-5">
+      <p class="step-label">Step 5 of 5 — Tips &amp; Try It</p>
+
+      <div class="lesson-section">
+        <h2>💡 Tips for the Best Results</h2>
+
+        <h3>Snip closely around what matters</h3>
+        <p>The more focused your screenshot, the better AI understands what to copy. If you want it to replicate a question format, crop the snip to just that one question — not the whole page.</p>
+
+        <h3>Name what you're showing it</h3>
+        <p>Start your prompt by telling AI what the image is: "This is a screenshot of a 4th grade reading comprehension question…" It helps AI pay attention to the right details.</p>
+
+        <h3>You can upload multiple images</h3>
+        <p>Want to show AI two examples so it can find the pattern? Upload both! You can say "Here are two examples of the question format I want. Make 8 more like these."</p>
+
+        <h3>Photos of physical materials work too</h3>
+        <p>Don't have a digital file? Take a photo with your phone of any printed worksheet, textbook page, or handwritten note. As long as the text is readable, AI can work with it.</p>
+
+        <div class="callout warn">
+          <strong>⚠️ Privacy reminder:</strong> Before photographing or screenshotting student work, remove or cover any student names, ID numbers, or other identifying information. Never upload images that could identify a specific student.
+        </div>
+      </div>
+
+      <div class="lesson-section">
+        <h2>⚡ The 4-Step "Show AI" Workflow</h2>
+        <p>Here's the entire process from start to finish — it takes under 2 minutes once you know it:</p>
+        <ol class="steps">
+          <li><strong>Find your example.</strong> Open the worksheet, website, book, or document that has the format or content you want to replicate.</li>
+          <li><strong>Snip it.</strong> Use <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>4</kbd> to capture just the relevant section. It auto-copies to your clipboard.</li>
+          <li><strong>Paste into AI.</strong> Open Claude or ChatGPT, click in the chat box, and press <kbd>Ctrl</kbd>+<kbd>V</kbd> / <kbd>Cmd</kbd>+<kbd>V</kbd> to paste the image.</li>
+          <li><strong>Type your prompt.</strong> Tell AI what to do with it — make more like this, generate questions from this, match this format, etc.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>✅ That's it!</strong> Once you get comfortable with this workflow, it becomes second nature. Most experienced AI users say showing screenshots is the technique that saves them the most time.
+        </div>
+      </div>
+
+      <div class="lesson-section">
+        <h2>✏️ Try It Right Now</h2>
+        <div class="try-it">
+          <div class="try-label">🧪 Your First Screenshot Challenge</div>
+          <p>Here's a quick practice activity to try before your next lesson:</p>
+          <ol style="font-size:.92rem;color:#5a3000;padding-left:1.3rem;margin-top:.5rem;">
+            <li style="margin-bottom:.5rem;">Find a question from any worksheet, textbook, or website that you like the format of.</li>
+            <li style="margin-bottom:.5rem;">Take a snip of just that one question.</li>
+            <li style="margin-bottom:.5rem;">Open Claude or ChatGPT and paste the snip.</li>
+            <li style="margin-bottom:.5rem;">Type: <em>"Write 5 more questions about [your topic] in the exact same format as this one."</em></li>
+            <li>Review the result and refine if needed!</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(4)">← Back</button>
+        <a href="lesson-4-images.html" class="btn-next" style="text-decoration:none;">Next Lesson →</a>
+      </div>
+    </div><!-- /step-5 -->
+
+  </div><!-- /lesson-steps -->
+
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function goToStep(n) {
+  document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll('.step-pip').forEach((p, i) => {
+    p.classList.remove('active', 'done');
+    if (i + 1 < n) p.classList.add('done');
+    else if (i + 1 === n) p.classList.add('active');
+  });
+  const top = document.getElementById('lesson-steps').getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+function showMethod(method, btn) {
+  document.querySelectorAll('.method-content').forEach(el => el.style.display = 'none');
+  btn.closest('.lesson-section').querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('method-' + method).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function showOS(os, btn) {
+  document.querySelectorAll('.os-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.os-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('os-' + os).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function copyCard(btn) {
+  const card = btn.closest('.prompt-card');
+  const text = card.querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+
+</body>
+</html>

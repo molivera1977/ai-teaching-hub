@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 4 — Making Images | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #9b59b6; --grad-b: #e056a0; }
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      margin: .75rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .tool-card .tool-icon { font-size: 2rem; flex-shrink: 0; }
+    .tool-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .2rem; }
+    .tool-card p  { font-size: .84rem; color: var(--muted); margin: 0 0 .3rem; }
+    .tool-card .tool-tag { font-size: .72rem; font-weight: 700; border-radius: 20px; padding: .15rem .6rem; }
+    .free  { background: #eefbf4; color: #1a7a47; }
+    .paid  { background: #fff7ed; color: #7a3d00; }
+    .freemium { background: #eef1ff; color: #2c3780; }
+    .img-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: .75rem;
+      margin: 1rem 0;
+    }
+    .img-example {
+      background: linear-gradient(135deg, #e8eeff 0%, #f0e8ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .img-example img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .img-example .prompt-text { padding: .4rem .75rem .6rem; font-style: italic; }
+    .img-example .tool-badge { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: #eef1ff; color: var(--brand); border-radius: 20px; display: inline-block; padding: .15rem .6rem; margin: .5rem .75rem 0; }
+    .prompt-card {
+      background: #f8f9ff;
+      border: 1px solid #dde2ff;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: .75rem 0;
+    }
+    .prompt-card .pc-label { font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--brand); margin-bottom:.3rem; display:flex; justify-content:space-between; align-items:center; }
+    .prompt-card code { font-size:.86rem; color:#1a2060; font-family:'Courier New',monospace; line-height:1.5; display:block; }
+    .copy-small { font-size:.72rem; font-weight:700; color:var(--brand); background:#eef1ff; border:none; border-radius:6px; padding:.2rem .55rem; cursor:pointer; }
+
+    /* ---- WIZARD STEP SYSTEM ---- */
+    .lesson-step { display: none; }
+    .lesson-step.active { display: block; }
+    .step-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1rem 0 .5rem;
+    }
+    .step-pip {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--border); transition: background .2s;
+    }
+    .step-pip.done { background: var(--green); }
+    .step-pip.active { background: var(--brand); }
+    .step-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: .75rem;
+    }
+    .step-nav-solo { justify-content: flex-end; }
+    .btn-next {
+      background: var(--brand); color: #fff; font-weight: 700;
+      font-size: .95rem; padding: .7rem 1.8rem; border-radius: 30px;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(79,110,247,.3); transition: transform .15s;
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+    .btn-back {
+      background: none; color: var(--muted); font-weight: 600;
+      font-size: .9rem; padding: .6rem 1rem; border-radius: 30px;
+      border: 1px solid var(--border); cursor: pointer; transition: color .15s;
+    }
+    .btn-back:hover { color: var(--brand); }
+    .step-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted);
+      text-align: center; margin-bottom: .25rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html" class="active">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 4 of 6</div>
+  <h1>🎨 Making Images &amp; Visuals with AI</h1>
+  <p>Generate custom illustrations, diagrams, and classroom visuals from a simple text description — no design skills needed.</p>
+</section>
+
+<div class="container">
+
+  <div class="lesson-nav">
+    <a href="lesson-3-screenshots.html">← Lesson 3</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-5-print-save.html">Lesson 5 →</a>
+  </div>
+
+  <div id="lesson-steps">
+
+    <!-- Step bar -->
+    <div class="step-bar">
+      <div class="step-pip active"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STEP 1: Intro + Example Gallery                             -->
+    <!-- ============================================================ -->
+    <div class="lesson-step active" id="step-1">
+      <p class="step-label">Step 1 of 5 — AI Can Draw</p>
+
+      <div class="lesson-section">
+        <h2>🖼️ AI Can Draw — And It's Amazing</h2>
+        <p>AI image generators let you describe any picture in words and the AI creates it for you in seconds. No clipart hunting, no stock photo subscriptions, no design software.</p>
+        <p>Imagine you need an illustration of a frog adapting to a desert environment, a diagram showing the phases of the moon, or a cartoon scientist for a worksheet header. Just describe it — and it appears.</p>
+        <div class="callout info">
+          <strong>📌 How it works:</strong> You type a description (called a "prompt") and the AI generates a brand-new image that has never existed before. Every image is original and unique to your request.
+        </div>
+
+        <div class="img-gallery">
+          <div class="img-example"><img src="images/example-frog.png" alt="AI-generated cartoon frog on a cactus"><div class="tool-badge">Perplexity</div><div class="prompt-text">"A cartoon frog sitting on a cactus in the desert, colorful and kid-friendly"</div></div>
+          <div class="img-example"><img src="images/example-moon.png" alt="Diagram of the 8 phases of the moon"><div class="tool-badge">ChatGPT</div><div class="prompt-text">"A labeled diagram of the 8 phases of the moon, simple and clear for 4th graders"</div></div>
+          <div class="img-example"><img src="images/example-scientist.png" alt="Friendly cartoon scientist with a beaker"><div class="tool-badge">Canva AI</div><div class="prompt-text">"A friendly cartoon scientist in a lab coat holding a beaker, watercolor style"</div></div>
+          <div class="img-example"><img src="images/example-egypt.png" alt="Illustrated map of ancient Egypt"><div class="tool-badge">Google Gemini</div><div class="prompt-text">"A simple illustrated map of ancient Egypt with the Nile River and pyramids labeled"</div></div>
+        </div>
+
+        <div class="callout tip">
+          <strong>✅ No artistic ability needed.</strong> If you can describe what you want in a sentence, AI can create it. The more specific your description, the better the result — and you'll learn exactly how to do that in the next steps.
+        </div>
+      </div>
+
+      <div class="step-nav step-nav-solo">
+        <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div><!-- /step-1 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 2: Best AI Image Tools                                 -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-2">
+      <p class="step-label">Step 2 of 5 — The Best Tools</p>
+
+      <div class="lesson-section">
+        <h2>🛠️ The Best AI Image Tools for Teachers</h2>
+        <p>There are several tools available. Here are the most teacher-friendly options:</p>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="images/logo-chatgpt.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="ChatGPT logo">
+          </div>
+          <div>
+            <h3>ChatGPT (chatgpt.com) <span class="tool-tag freemium">Free tier available</span></h3>
+            <p>ChatGPT can generate images directly in the chat. Just ask it to "draw" or "create an image of" something — it uses DALL·E under the hood.</p>
+            <p><strong>Best for:</strong> Detailed illustrations, classroom posters, story scenes, labeled diagrams.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="images/logo-gemini.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="Google Gemini logo">
+          </div>
+          <div>
+            <h3>Google Gemini (gemini.google.com) <span class="tool-tag freemium">Free tier available</span></h3>
+            <p>Gemini can generate images right inside the chat. If you use Google Workspace at school, Gemini is already part of your ecosystem and easy to access.</p>
+            <p><strong>Best for:</strong> Educational maps, illustrated scenes, colorful classroom visuals.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="images/logo-canva.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="Canva logo">
+          </div>
+          <div>
+            <h3>Canva AI (canva.com) <span class="tool-tag free">Free for teachers</span></h3>
+            <p>Canva has built-in AI image generation. The big advantage: generate an image AND place it directly into a poster, worksheet, or slide — all without leaving Canva. Teachers get Canva Pro free!</p>
+            <p><strong>Best for:</strong> Worksheets, posters, newsletters, and slide decks — when you need the image AND the design in one place.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="images/logo-perplexity.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#1c1c1e;" alt="Perplexity logo">
+          </div>
+          <div>
+            <h3>Perplexity (perplexity.ai) <span class="tool-tag freemium">Free tier available</span></h3>
+            <p>Perplexity lets you generate images from multiple AI engines — including Gemini, ChatGPT, and others — all from one place. Great for comparing styles or finding the look you want fast.</p>
+            <p><strong>Best for:</strong> Quickly comparing image styles across different AI models without switching between apps.</p>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <strong>🤔 What about Claude?</strong> Claude is great for writing, lesson planning, and text tasks — but it does <em>not</em> generate images the way these four tools do. If you ask Claude to "draw" something, it will describe the image in words rather than create a picture. For actual AI image creation, use one of the four tools above.
+        </div>
+
+        <div class="callout tip">
+          <strong>✅ Recommendation for beginners:</strong> Start with ChatGPT or Gemini since you're already in those tools. Once you're comfortable, explore Canva for an all-in-one design + AI image experience — and Perplexity when you want to compare styles from multiple AIs at once.
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+        <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+      </div>
+    </div><!-- /step-2 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 3: How to Write a Great Image Prompt                  -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-3">
+      <p class="step-label">Step 3 of 5 — Writing Image Prompts</p>
+
+      <div class="lesson-section">
+        <h2>💬 How to Write a Great Image Prompt</h2>
+        <p>Image prompts work differently from text prompts. Instead of giving instructions, you're <strong>describing a picture</strong> — what's in it, the style, the mood, and the colors.</p>
+
+        <h3>The formula for a strong image prompt:</h3>
+        <div class="callout info">
+          <strong>[Subject] + [Setting/Context] + [Style] + [Details]</strong><br><br>
+          Example: "A friendly cartoon elephant [subject] reading a book in a library [setting], watercolor illustration style [style], soft pastel colors, child-friendly [details]"
+        </div>
+
+        <h3>Style words to know:</h3>
+        <ul>
+          <li><strong>Cartoon / illustrated</strong> — fun, colorful, great for younger students</li>
+          <li><strong>Watercolor</strong> — soft, artistic, works well for stories and reading corners</li>
+          <li><strong>Realistic</strong> — looks like a photograph, good for science topics</li>
+          <li><strong>Flat design / minimal</strong> — clean and modern, great for diagrams and icons</li>
+          <li><strong>Diagram / labeled chart</strong> — ask for this when you want educational visuals with labels</li>
+        </ul>
+
+        <h3>Tips for better results:</h3>
+        <ul>
+          <li><strong>Be descriptive, not vague.</strong> Instead of "a dog," try "a golden retriever puppy sitting in a field of sunflowers, happy expression, cartoon illustration style."</li>
+          <li><strong>Say what you DON'T want.</strong> Add "no text in the image," "no scary elements," or "simple background" to guide the AI away from unwanted results.</li>
+          <li><strong>Ask for revisions.</strong> If it's not right, describe what to change: "Make it more colorful," "Change the background to white," or "Make the character look younger."</li>
+          <li><strong>Generate multiple versions.</strong> Ask the AI to "generate 4 different versions" so you have options to choose from.</li>
+        </ul>
+
+        <div class="callout warn">
+          <strong>⚠️ Important — Copyright &amp; Accuracy:</strong>
+          AI images are generally safe to use for educational purposes, but always check your school district's policy. Also — AI sometimes adds incorrect details (like wrong number of fingers, or inaccurate historical elements). Always review images before using them with students.
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(2)">← Back</button>
+        <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+      </div>
+    </div><!-- /step-3 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 4: Ready-Made Prompts                                  -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-4">
+      <p class="step-label">Step 4 of 5 — Ready-Made Prompts</p>
+
+      <div class="lesson-section">
+        <h2>📋 Ready-Made Image Prompts for Classrooms</h2>
+        <p>Copy any of these into Claude or ChatGPT and ask it to generate an image. Customize the topic as needed.</p>
+
+        <div class="prompt-card">
+          <div class="pc-label">Science Diagram <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Create a simple, clearly labeled diagram of the water cycle showing evaporation, condensation, precipitation, and collection. Use a clean, flat design style with blue and green colors. Make it appropriate for 4th grade students.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Worksheet Header / Character <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Illustrate a friendly cartoon [animal or character] holding a pencil and looking curious. Colorful, fun, child-friendly cartoon style. White background. The character should look like a helpful classroom mascot.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Historical Scene <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Create an illustrated scene showing [historical event or time period]. Style: colorful educational illustration similar to a children's history book. Include key details that represent the time period. No text in the image.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Classroom Poster <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Design a motivational classroom poster with the message "[YOUR QUOTE OR MESSAGE]". Use bright, bold colors, large readable text, and a fun illustrated border. Style should be energetic and appropriate for elementary school students.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Story Illustration <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Create a watercolor-style illustration for a children's story where [describe the scene]. Include [main character description]. Soft, warm colors, gentle storybook illustration style. No text in the image.</code>
+        </div>
+
+        <div class="prompt-card">
+          <div class="pc-label">Math Visual / Model <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+          <code>Create a clear visual showing [math concept, e.g., "equivalent fractions using pizza slices" or "a number line from 0 to 20"]. Clean, flat design, bright colors, labeled clearly. Appropriate for [grade] students.</code>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(3)">← Back</button>
+        <button class="btn-next" onclick="goToStep(5)">Continue →</button>
+      </div>
+    </div><!-- /step-4 -->
+
+    <!-- ============================================================ -->
+    <!-- STEP 5: 10 Classroom Uses + Try It                         -->
+    <!-- ============================================================ -->
+    <div class="lesson-step" id="step-5">
+      <p class="step-label">Step 5 of 5 — Try It</p>
+
+      <div class="lesson-section">
+        <h2>🏫 10 Ways to Use AI Images in Your Classroom</h2>
+        <ol class="steps">
+          <li>Custom worksheet headers and borders that match your unit theme.</li>
+          <li>Illustrations for reading passages you created with AI in Lesson 2.</li>
+          <li>Vocabulary cards with a picture showing the meaning of each word.</li>
+          <li>Story starter images — show students a mysterious scene and have them write about it.</li>
+          <li>Science diagram visuals to display on your projector during a lesson.</li>
+          <li>Bulletin board backgrounds and decorations.</li>
+          <li>Class newsletter graphics and parent communication visuals.</li>
+          <li>Portraits of historical figures for a timeline or display.</li>
+          <li>Maps and geographic visuals for social studies units.</li>
+          <li>Reward certificates and classroom incentive materials.</li>
+        </ol>
+      </div>
+
+      <div class="lesson-section">
+        <h2>✏️ Try It Right Now</h2>
+        <div class="try-it">
+          <div class="try-label">🧪 Your First AI Image Challenge</div>
+          <p>Pick any topic from your current unit and generate your first AI image in under 3 minutes:</p>
+          <ol style="font-size:.92rem;color:#5a3000;padding-left:1.3rem;margin-top:.5rem;">
+            <li style="margin-bottom:.5rem;">Open ChatGPT (free) or Claude at claude.ai.</li>
+            <li style="margin-bottom:.5rem;">Think of one image that would be useful in your classroom right now — a diagram, a character, a scene, a poster.</li>
+            <li style="margin-bottom:.5rem;">Use the formula: <em>[Subject] + [Setting] + [Style] + [Details]</em> — write your description.</li>
+            <li style="margin-bottom:.5rem;">Type "Generate an image of…" followed by your description and send it.</li>
+            <li>If it's not quite right, ask for a revision: describe one specific thing to change.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="goToStep(4)">← Back</button>
+        <a href="lesson-5-print-save.html" class="btn-next" style="text-decoration:none;">Next Lesson →</a>
+      </div>
+    </div><!-- /step-5 -->
+
+  </div><!-- /lesson-steps -->
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function goToStep(n) {
+  document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll('.step-pip').forEach((p, i) => {
+    p.classList.remove('active', 'done');
+    if (i + 1 < n) p.classList.add('done');
+    else if (i + 1 === n) p.classList.add('active');
+  });
+  const top = document.getElementById('lesson-steps').getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+function copyCard(btn) {
+  const card = btn.closest('.prompt-card');
+  const text = card.querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+
+</body>
+</html>

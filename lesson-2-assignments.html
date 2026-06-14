@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 2 — Creating Assignments | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #2ecc71; --grad-b: #1a9e55; }
+
+    /* ---- STEP SYSTEM ---- */
+    .lesson-step { display: none; }
+    .lesson-step.active { display: block; }
+    .step-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1rem 0 .5rem;
+    }
+    .step-pip {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--border); transition: background .2s;
+    }
+    .step-pip.done   { background: var(--green); }
+    .step-pip.active { background: var(--brand); }
+    .step-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: .75rem;
+    }
+    .step-nav-solo { justify-content: flex-end; }
+    .btn-next {
+      background: var(--brand); color: #fff; font-weight: 700;
+      font-size: .95rem; padding: .7rem 1.8rem; border-radius: 30px;
+      border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(79,110,247,.3);
+      transition: transform .15s;
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+    .btn-back {
+      background: none; color: var(--muted); font-weight: 600;
+      font-size: .9rem; padding: .6rem 1rem; border-radius: 30px;
+      border: 1px solid var(--border); cursor: pointer; transition: color .15s;
+    }
+    .btn-back:hover { color: var(--brand); border-color: var(--brand); }
+    .step-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); text-align: center;
+      margin-bottom: .25rem;
+    }
+
+    /* ---- PROMPT CARDS ---- */
+    .prompt-card {
+      background: #f8f9ff;
+      border: 1px solid #dde2ff;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: .75rem 0;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .prompt-card:hover { border-color: var(--brand); background: #eef1ff; }
+    .prompt-card .pc-label { font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--brand); margin-bottom:.3rem; }
+    .prompt-card code { font-size:.86rem; color:#1a2060; font-family:'Courier New',monospace; line-height:1.5; }
+    .copy-small { float:right; font-size:.72rem; font-weight:700; color:var(--brand); background:#eef1ff; border:none; border-radius:6px; padding:.2rem .55rem; cursor:pointer; margin-top:-.1rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html" class="active">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 2 of 6</div>
+  <h1>📝 Creating Classroom Assignments with AI</h1>
+  <p>Quizzes, rubrics, reading passages, differentiated versions — all in minutes, not hours.</p>
+</section>
+
+<div class="container" id="lesson-steps">
+
+  <!-- Top lesson nav -->
+  <div class="lesson-nav">
+    <a href="lesson-1-prompting.html">← Lesson 1</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-3-screenshots.html">Lesson 3 →</a>
+  </div>
+
+  <!-- Step progress bar -->
+  <div class="step-bar">
+    <div class="step-pip active" id="pip-1"></div>
+    <div class="step-pip" id="pip-2"></div>
+    <div class="step-pip" id="pip-3"></div>
+    <div class="step-pip" id="pip-4"></div>
+    <div class="step-pip" id="pip-5"></div>
+  </div>
+
+  <!-- ===== STEP 1 ===== -->
+  <div class="lesson-step active" id="step-1">
+    <div class="step-label">Step 1 of 5 — What You'll Be Able to Do</div>
+
+    <div class="lesson-section">
+      <h2>📌 What You'll Be Able to Do</h2>
+      <p>By the end of this lesson you'll know how to use AI to create:</p>
+      <ul>
+        <li>Multiple choice and short-answer quizzes</li>
+        <li>Reading passages on any topic at any grade level</li>
+        <li>Grading rubrics for essays and projects</li>
+        <li>Differentiated versions of the same assignment</li>
+        <li>Discussion questions, exit tickets, and warm-ups</li>
+      </ul>
+      <div class="callout info">
+        <strong>💡 Remember from Lesson 1:</strong> The better your prompt, the better your result. Each section below includes ready-made prompts you can copy and paste directly into Claude or ChatGPT.
+      </div>
+    </div>
+
+    <div class="step-nav step-nav-solo">
+      <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 2 ===== -->
+  <div class="lesson-step" id="step-2">
+    <div class="step-label">Step 2 of 5 — Creating Quizzes</div>
+
+    <div class="lesson-section">
+      <h2>✅ Part 1 — Creating Quizzes</h2>
+      <p>AI can write a full quiz in seconds. Just tell it the subject, grade, format, and number of questions. Here are prompts you can copy and use right now:</p>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Multiple Choice Quiz &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create a 10-question multiple choice quiz about [TOPIC] for [GRADE] students. Each question should have 4 answer choices. Include an answer key at the end.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Short Answer Quiz &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write a 5-question short-answer quiz about [TOPIC] for [GRADE] students. Questions should require students to explain their thinking, not just recall facts. Include a sample answer for each question.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 True/False + Correction &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create a 10-question true/false quiz about [TOPIC] for [GRADE]. For every false statement, students must rewrite it to make it true. Include an answer key.</code>
+      </div>
+
+      <div class="try-it">
+        <div class="try-label">🧪 Your Turn</div>
+        <p>Paste one of these prompts into Claude or ChatGPT. Replace [TOPIC] and [GRADE] with your own. Share the result with a colleague!</p>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 3 ===== -->
+  <div class="lesson-step" id="step-3">
+    <div class="step-label">Step 3 of 5 — Writing Reading Passages</div>
+
+    <div class="lesson-section">
+      <h2>📖 Part 2 — Writing Reading Passages</h2>
+      <p>Need a text about a specific science or social studies topic? AI can write one matched to your exact grade level and length. This is one of the biggest time-savers for teachers.</p>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Informational Passage &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write an informational reading passage about [TOPIC] for [GRADE] students. The passage should be approximately [LENGTH] words. Use clear, engaging language appropriate for this grade level. Include a title and 3–5 comprehension questions at the end.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Narrative / Story &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write a short fictional story for [GRADE] students that teaches the concept of [TOPIC/THEME]. The story should be about [LENGTH] words and include relatable characters. Add 3 discussion questions at the end.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Two-Sided Debate Passage &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write a two-sided informational passage about [TOPIC] for [GRADE] students. Present one paragraph arguing for one side and one paragraph for the other side. Then add 2 questions asking students to choose a side and support it with evidence from the text.</code>
+      </div>
+
+      <div class="callout tip">
+        <strong>✅ Pro tip — Lexile levels:</strong> You can ask AI to match a specific reading level. Try adding: "Write this at approximately a [Lexile score] Lexile level" or just say "beginner," "grade level," or "advanced."
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 4 ===== -->
+  <div class="lesson-step" id="step-4">
+    <div class="step-label">Step 4 of 5 — Creating Rubrics</div>
+
+    <div class="lesson-section">
+      <h2>📊 Part 3 — Creating Rubrics</h2>
+      <p>Rubrics used to take forever to build from scratch. AI can produce a complete, detailed rubric in about 30 seconds. You can then tweak it to match your exact expectations.</p>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Essay Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create a 4-point rubric for grading a [GRADE] opinion essay. Include the following categories: Claim/Thesis, Evidence & Support, Organization, and Language/Conventions. Format it as a table with clear descriptions for each score level (4=Exceeds, 3=Meets, 2=Approaching, 1=Beginning).</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Project Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create a rubric for a [GRADE] student project about [TOPIC]. The project involves [DESCRIBE THE PROJECT]. Include 4 categories that are most important for this assignment. Use a 1–4 scale with clear descriptions at each level.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Presentation Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write a rubric for evaluating a student oral presentation for [GRADE]. Include categories for: Content Knowledge, Organization, Speaking Clearly, and Visual Aids. Use a 4-point scale and student-friendly language so students can self-assess.</code>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+      <button class="btn-next" onclick="goToStep(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 5 ===== -->
+  <div class="lesson-step" id="step-5">
+    <div class="step-label">Step 5 of 5 — Differentiation &amp; Quick Wins</div>
+
+    <div class="lesson-section">
+      <h2>🎯 Part 4 — Differentiating Assignments</h2>
+      <p>This is where AI truly shines for teachers. You can take any assignment and instantly create easier or harder versions — or adapt it for English learners or students with reading challenges.</p>
+
+      <h3>How it works:</h3>
+      <ol class="steps">
+        <li>Create your original assignment (or write one with AI).</li>
+        <li>Copy the entire assignment text.</li>
+        <li>Paste it into the chat and use one of the prompts below.</li>
+      </ol>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Simplify for Struggling Readers &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Here is a [GRADE] assignment: [PASTE YOUR ASSIGNMENT]. Rewrite it at a lower reading level (approximately 2 grades below). Keep all the same content and questions, but use shorter sentences, simpler vocabulary, and add visual cues like bold key words.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Extend for Advanced Students &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Here is a [GRADE] assignment: [PASTE YOUR ASSIGNMENT]. Create an extended version for advanced students. Add 2–3 higher-order thinking questions that require analysis, evaluation, or creative application of the concepts.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Adapt for English Learners &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Here is a [GRADE] assignment: [PASTE YOUR ASSIGNMENT]. Adapt it for English Language Learners. Simplify sentence structures, define key vocabulary words in parentheses, and add sentence frames or word banks where helpful.</code>
+      </div>
+
+      <div class="callout warn">
+        <strong>⚠️ Always review AI-generated assignments!</strong> Check for factual accuracy, age-appropriateness, and alignment with your standards before using with students. AI is a great starting point — you make the final call.
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2>⚡ Quick-Win Prompts for Every Day</h2>
+      <p>These small but powerful prompts can save you 10–20 minutes every single day:</p>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Exit Ticket &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write 3 exit ticket questions for a [GRADE] lesson about [TOPIC]. One should check basic understanding, one should ask students to explain their thinking, and one should connect to their own lives.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Warm-Up / Bell Ringer &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create 5 different warm-up activities for a [GRADE] class starting a unit on [TOPIC]. Each should take about 3–5 minutes and activate prior knowledge or curiosity.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Vocabulary List with Definitions &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Create a vocabulary list for a [GRADE] unit on [TOPIC]. Include 10 key words, a student-friendly definition for each, and an example sentence. Format it as a table.</code>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-label">📋 Discussion Questions &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Write 8 discussion questions about [TOPIC/BOOK/ARTICLE] for [GRADE] students. Include a mix of factual, inferential, and open-ended questions. Label each type.</code>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(4)">← Back</button>
+    </div>
+  </div>
+
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function goToStep(n) {
+  document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll('.step-pip').forEach((p, i) => {
+    p.classList.remove('active', 'done');
+    if (i + 1 < n) p.classList.add('done');
+    else if (i + 1 === n) p.classList.add('active');
+  });
+  const top = document.getElementById('lesson-steps').getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+function copyCard(btn) {
+  const card = btn.closest('.prompt-card');
+  const text = card.querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+
+</body>
+</html>

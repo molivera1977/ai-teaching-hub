@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1 — Talking to AI | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #4f6ef7; --grad-b: #5ea7e8; }
+
+    /* ---- STEP SYSTEM ---- */
+    .lesson-step { display: none; }
+    .lesson-step.active { display: block; }
+    .step-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; padding: 1rem 0 .5rem;
+    }
+    .step-pip {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--border); transition: background .2s;
+    }
+    .step-pip.done   { background: var(--green); }
+    .step-pip.active { background: var(--brand); }
+    .step-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: .75rem;
+    }
+    .step-nav-solo { justify-content: flex-end; }
+    .btn-next {
+      background: var(--brand); color: #fff; font-weight: 700;
+      font-size: .95rem; padding: .7rem 1.8rem; border-radius: 30px;
+      border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(79,110,247,.3);
+      transition: transform .15s;
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+    .btn-back {
+      background: none; color: var(--muted); font-weight: 600;
+      font-size: .9rem; padding: .6rem 1rem; border-radius: 30px;
+      border: 1px solid var(--border); cursor: pointer; transition: color .15s;
+    }
+    .btn-back:hover { color: var(--brand); border-color: var(--brand); }
+    .step-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); text-align: center;
+      margin-bottom: .25rem;
+    }
+
+    /* ---- COMPARISON TABLE ---- */
+    .compare-table { width:100%; border-collapse:collapse; font-size:.88rem; margin:1rem 0; }
+    .compare-table th { background:#eef1ff; color:var(--brand); font-weight:700; padding:.6rem .9rem; text-align:left; }
+    .compare-table td { padding:.6rem .9rem; border-bottom:1px solid var(--border); vertical-align:top; }
+    .compare-table tr:last-child td { border-bottom:none; }
+    .bad  { color:#c0392b; }
+    .good { color:#1a7a47; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html" class="active">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 1 of 6</div>
+  <h1>💬 Talking to AI — How to Write Good Prompts</h1>
+  <p>The single most important skill for using AI effectively. Learn it once, use it forever.</p>
+</section>
+
+<div class="container" id="lesson-steps">
+
+  <!-- Top lesson nav -->
+  <div class="lesson-nav">
+    <a href="index.html">← Back to Home</a>
+    <div class="progress-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-2-assignments.html">Lesson 2 →</a>
+  </div>
+
+  <!-- Step progress bar -->
+  <div class="step-bar">
+    <div class="step-pip active" id="pip-1"></div>
+    <div class="step-pip" id="pip-2"></div>
+    <div class="step-pip" id="pip-3"></div>
+    <div class="step-pip" id="pip-4"></div>
+    <div class="step-pip" id="pip-5"></div>
+  </div>
+
+  <!-- ===== STEP 1 ===== -->
+  <div class="lesson-step active" id="step-1">
+    <div class="step-label">Step 1 of 5 — What Is a Prompt?</div>
+
+    <div class="lesson-section">
+      <h2>🤔 What Is a Prompt?</h2>
+      <p>When you type something to an AI — a question, a request, an instruction — that's called a <strong>prompt</strong>. It's just what you type into the chat box.</p>
+      <p>Think of prompting like giving instructions to a very capable substitute teacher. If you're vague, they'll make their best guess (and it might not be what you wanted). If you're specific and clear, they'll do exactly what you need.</p>
+      <div class="callout info">
+        <strong>📌 Key idea:</strong> The quality of what AI gives you is almost entirely determined by the quality of your prompt. Better prompt = better result.
+      </div>
+    </div>
+
+    <div class="step-nav step-nav-solo">
+      <button class="btn-next" onclick="goToStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 2 ===== -->
+  <div class="lesson-step" id="step-2">
+    <div class="step-label">Step 2 of 5 — The Anatomy of a Great Prompt</div>
+
+    <div class="lesson-section">
+      <h2>⚡ The Anatomy of a Great Prompt</h2>
+      <p>A strong prompt usually has some or all of these parts. You don't need all of them every time, but the more context you give, the better the result.</p>
+
+      <h3>1. Your Role (who you are)</h3>
+      <p>Tell the AI a bit about yourself. This helps it match the right tone and level.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        <code>I am a 4th grade teacher…</code>
+      </div>
+
+      <h3>2. The Task (what you want)</h3>
+      <p>Be direct. Use action words like <em>write, create, list, summarize, explain, rewrite</em>.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        <code>…create a short reading passage…</code>
+      </div>
+
+      <h3>3. The Details (specifics that matter)</h3>
+      <p>Grade level, subject, length, format, tone — anything that shapes the output.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        <code>…about the water cycle, written at a 4th grade reading level, about 150 words long.</code>
+      </div>
+
+      <h3>4. The Audience (who is this for?)</h3>
+      <p>Mentioning your students helps AI adjust vocabulary and complexity.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        <code>…My students are 9–10 years old and this is their first introduction to the topic.</code>
+      </div>
+
+      <div class="callout tip">
+        <strong>✅ Full example prompt (all 4 parts combined):</strong><br><br>
+        "I am a 4th grade teacher. Create a short reading passage about the water cycle, written at a 4th grade reading level, about 150 words long. My students are 9–10 years old and this is their first introduction to the topic."
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" onclick="goToStep(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 3 ===== -->
+  <div class="lesson-step" id="step-3">
+    <div class="step-label">Step 3 of 5 — Weak vs. Strong Prompts</div>
+
+    <div class="lesson-section">
+      <h2>🔍 Weak Prompts vs. Strong Prompts</h2>
+      <p>Here are some real examples of the same idea asked two different ways. Notice how much better the specific version works:</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr><th>❌ Weak Prompt</th><th>✅ Strong Prompt</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bad">"Write something about fractions."</td>
+            <td class="good">"Write a 5-question multiple choice quiz about adding fractions with unlike denominators for 5th grade students."</td>
+          </tr>
+          <tr>
+            <td class="bad">"Give me a lesson idea."</td>
+            <td class="good">"Give me 3 engaging lesson hook ideas for teaching 3rd graders about animal adaptations. Each idea should take under 5 minutes."</td>
+          </tr>
+          <tr>
+            <td class="bad">"Make it simpler."</td>
+            <td class="good">"Rewrite this paragraph at a 2nd grade reading level, keeping the same main idea but using shorter sentences and simpler vocabulary."</td>
+          </tr>
+          <tr>
+            <td class="bad">"Write a rubric."</td>
+            <td class="good">"Create a 4-point rubric for a 4th grade opinion essay. Include categories for: claim, evidence, organization, and conventions."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-next" onclick="goToStep(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 4 ===== -->
+  <div class="lesson-step" id="step-4">
+    <div class="step-label">Step 4 of 5 — Prompting Strategies</div>
+
+    <div class="lesson-section">
+      <h2>🛠️ 5 Prompting Strategies for Teachers</h2>
+
+      <h3>1. Give it a persona</h3>
+      <p>Tell the AI to act as a specific type of expert to get a more focused response.</p>
+      <div class="example-box">
+        <div class="ex-label">Try this</div>
+        <code>Act as an experienced elementary school literacy coach. Help me write a parent letter explaining our new reading program in simple, friendly language.</code>
+      </div>
+
+      <h3>2. Ask for options, not just one answer</h3>
+      <p>AI works great as a brainstorming partner. Ask for multiple versions so you can choose.</p>
+      <div class="example-box">
+        <div class="ex-label">Try this</div>
+        <code>Give me 5 different ways to introduce the concept of multiplication to 3rd graders. Make each idea different from the others.</code>
+      </div>
+
+      <h3>3. Tell it what format you want</h3>
+      <p>Bullet points? A table? A numbered list? Just say so.</p>
+      <div class="example-box">
+        <div class="ex-label">Try this</div>
+        <code>List 10 discussion questions about the book Charlotte's Web. Format them as a numbered list, organized from easiest to most challenging.</code>
+      </div>
+
+      <h3>4. Ask it to revise</h3>
+      <p>Not happy with the first result? Don't start over. Just tell it what to change.</p>
+      <div class="example-box">
+        <div class="ex-label">Try this</div>
+        <code>That's good, but can you make the tone more exciting and add one more question at the end?</code>
+      </div>
+
+      <h3>5. Paste in your own text</h3>
+      <p>You can copy and paste anything — a passage, a rubric, student work — and ask AI to work with it.</p>
+      <div class="example-box">
+        <div class="ex-label">Try this</div>
+        <code>Here is a paragraph a student wrote: [paste text here]. Give me 3 specific, kind pieces of feedback I could give this student to improve their writing.</code>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+      <button class="btn-next" onclick="goToStep(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ===== STEP 5 ===== -->
+  <div class="lesson-step" id="step-5">
+    <div class="step-label">Step 5 of 5 — Try It &amp; Common Mistakes</div>
+
+    <div class="lesson-section">
+      <h2>✏️ Try It Yourself</h2>
+      <p>Use the prompt builder below to practice writing a strong prompt. Fill in the blanks, then copy your prompt into Claude or ChatGPT and see what you get!</p>
+
+      <div class="try-it">
+        <div class="try-label">🧪 Prompt Builder</div>
+        <p>Fill in the boxes below to build your first prompt:</p>
+        <textarea id="role" placeholder="I am a ___ grade teacher teaching ___." rows="2"></textarea>
+        <textarea id="task" placeholder="Please create / write / generate a ___." rows="2"></textarea>
+        <textarea id="details" placeholder="It should be ___ words long, at a ___ reading level, about ___." rows="2"></textarea>
+        <textarea id="audience" placeholder="My students are ___ years old and ___." rows="2"></textarea>
+        <br>
+        <button class="copy-btn" onclick="buildAndCopy()">📋 Build &amp; Copy My Prompt</button>
+        <div id="built-prompt" style="display:none;margin-top:.75rem;background:#fff;border:1px solid #e0c8a0;border-radius:8px;padding:.75rem;font-size:.88rem;color:#3b2200;line-height:1.6;"></div>
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2>🚫 Common Mistakes to Avoid</h2>
+      <ul>
+        <li><strong>Being too vague:</strong> "Help me with my class" tells AI almost nothing. Always say what subject, grade, and what you need.</li>
+        <li><strong>Accepting the first result blindly:</strong> Always read the output carefully. AI can get facts wrong, especially specific dates, names, or statistics.</li>
+        <li><strong>Giving up after one try:</strong> If the result isn't right, keep the conversation going. Say "try again" or "change this part."</li>
+        <li><strong>Sharing student names or personal data:</strong> Never type real student names, birthdates, or personal information into AI tools.</li>
+      </ul>
+      <div class="callout warn">
+        <strong>⚠️ Privacy tip:</strong> When using AI for student work, use fictional names or just say "a student" instead of using real names. This protects student privacy.
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="goToStep(4)">← Back</button>
+    </div>
+  </div>
+
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function goToStep(n) {
+  document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  document.querySelectorAll('.step-pip').forEach((p, i) => {
+    p.classList.remove('active', 'done');
+    if (i + 1 < n) p.classList.add('done');
+    else if (i + 1 === n) p.classList.add('active');
+  });
+  const top = document.getElementById('lesson-steps').getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+function buildAndCopy() {
+  const role     = document.getElementById('role').value.trim();
+  const task     = document.getElementById('task').value.trim();
+  const details  = document.getElementById('details').value.trim();
+  const audience = document.getElementById('audience').value.trim();
+  const parts    = [role, task, details, audience].filter(Boolean);
+  if (!parts.length) { alert('Fill in at least one box first!'); return; }
+  const normalized = parts.map(p => /[.!?]$/.test(p.trim()) ? p.trim() : p.trim() + '.');
+  const prompt = normalized.join(' ');
+  const box = document.getElementById('built-prompt');
+  box.textContent = prompt;
+  box.style.display = 'block';
+  navigator.clipboard.writeText(prompt).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Build & Copy My Prompt', 2000);
+  });
+}
+</script>
+
+</body>
+</html>

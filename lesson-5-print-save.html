@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 5 — Save and Print | AI for Educators</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --grad-a: #1a9e55; --grad-b: #0d7a8a; }
+    .prompt-card {
+      background: #f8f9ff;
+      border: 1px solid #dde2ff;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: .75rem 0;
+    }
+    .prompt-card .pc-label {
+      font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+      color:var(--brand); margin-bottom:.3rem; display:flex; justify-content:space-between; align-items:center;
+    }
+    .prompt-card code {
+      font-size:.86rem; color:#1a2060; font-family:'Courier New',monospace;
+      line-height:1.6; display:block; white-space:pre-wrap;
+    }
+    .copy-small { font-size:.72rem; font-weight:700; color:var(--brand); background:#eef1ff; border:none; border-radius:6px; padding:.2rem .55rem; cursor:pointer; }
+    kbd {
+      background: #eef1ff; color: var(--brand); border: 1px solid #c5c9ff;
+      border-radius: 5px; padding: .1rem .4rem; font-size: .8rem; font-family: monospace;
+    }
+    .method-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.5rem;
+      margin: 1rem 0;
+    }
+    .method-card.best { border-color: #2ecc71; background: #f4fff8; }
+    .method-card.good { border-color: var(--brand); background: #f8f9ff; }
+    .method-card h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .method-card p { font-size: .9rem; margin-bottom: .6rem; }
+    .method-card .who { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem; }
+    .method-card.best .who { color: #1a7a47; }
+    .method-card.good .who { color: var(--brand); }
+    .img-steps { display:flex; flex-direction:column; gap:.4rem; margin:.5rem 0; }
+    .img-step {
+      display:flex; gap:.75rem; align-items:flex-start;
+      background:#fff; border:1px solid var(--border); border-radius:8px;
+      padding:.6rem .9rem; font-size:.87rem; color:#3b4160;
+    }
+    .img-step .step-num {
+      background:var(--brand); color:#fff; font-weight:700; font-size:.75rem;
+      min-width:22px; height:22px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">🤖 AI for Educators</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
+    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
+    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
+    <li><a href="lesson-4-images.html">Lesson 4</a></li>
+    <li><a href="lesson-5-print-save.html" class="active">Lesson 5</a></li>
+    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+  </ul>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-num">Lesson 5 of 6</div>
+  <h1>🖨️ Save and Print What AI Creates</h1>
+  <p>The easiest ways to get AI content off the screen and into your hands — starting with the simplest method first.</p>
+</section>
+
+<div class="container">
+
+  <div class="lesson-nav">
+    <a href="lesson-4-images.html">← Lesson 4</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-6-websites.html">Lesson 6 →</a>
+  </div>
+
+  <!-- Intro -->
+  <div class="lesson-section">
+    <h2>✋ Good News — This Is Easier Than You Think</h2>
+    <p>Once AI creates something great for you, the next step is getting it into a format you can actually use — printed, shared, or saved as a file. Here's the best-kept secret:</p>
+    <div class="callout info">
+      <strong>📌 Start here:</strong> Most of the time, you don't have to figure out how to save anything. You can just <strong>ask the AI to create a Word doc, Google Doc, or PDF for you directly.</strong> That's Method 1 — and it's where we start.
+    </div>
+    <p>The other methods (copy-paste, saving images, etc.) are backup options for when you need them. But most teachers find they use Method 1 almost every time.</p>
+  </div>
+
+  <!-- METHOD 1: Ask AI for the file -->
+  <div class="lesson-section">
+    <h2>⭐ Method 1 — Just Ask AI to Create the File</h2>
+    <p>This is the easiest approach, and it's probably what you'll use most. After AI gives you a response, you can ask it to put everything into a Word document, Google Doc, or PDF — fully formatted and ready to print.</p>
+
+    <div class="method-card best">
+      <div class="who">✅ Best option — ChatGPT (Free Teacher Plan or Plus)</div>
+      <h3>✨ Ask ChatGPT for a Word doc, PDF, or HTML file</h3>
+      <p>ChatGPT can generate a real file and give you a download link to click. No copy-paste, no extra steps — it just hands you the finished file.</p>
+      <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+        <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create a downloadable Word document of this quiz. Format it with a title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key on the last page.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+        <div class="pc-label">Ask for a PDF <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create a downloadable PDF of this rubric. Format it as a clean table with the assignment title at the top and a space for the student's name.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+        <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
+      </div>
+      <p style="font-size:.85rem;color:#1a5a30;">ChatGPT will show a <strong>download link</strong> in the chat. Click it — the file saves to your Downloads folder. Open and print.</p>
+    </div>
+
+    <div class="method-card good">
+      <div class="who">✅ Great option — Google Gemini</div>
+      <h3>🔵 Ask Gemini for a Word doc, Google Doc, PDF, or HTML file</h3>
+      <p>Go to <strong>gemini.google.com</strong>, describe what you need, and ask for the file in whatever format works best for you. Gemini handles all four well.</p>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create a downloadable Word document of this quiz. Format it with a title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key at the end.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for a Google Doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a Google Doc I can open and print. Format it with a title, a Name and Date line, numbered questions with writing space, and an answer key at the bottom.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for a PDF <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create a downloadable PDF of this quiz. Format it with a title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key at the end.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
+      </div>
+      <p style="font-size:.85rem;color:#2c3780;">Gemini will give you a download link or attachment in the chat. Click it, open the file, and print.</p>
+    </div>
+
+    <div class="method-card good">
+      <div class="who">✅ Works great — Claude</div>
+      <h3>🤖 Ask Claude for a Word doc or PDF</h3>
+      <p>Claude will generate the file right in the chat — no extra steps. Just ask, and it gives you a download link or attachment to click.</p>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a Word document — clean and print-ready, with a title at the top, a Name/Date line, numbered questions with writing space, and an answer key at the end.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for a PDF <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a downloadable PDF — clean and print-ready, with a title at the top, a Name/Date line, numbered questions with writing space, and an answer key at the end.</code>
+      </div>
+      <div class="prompt-card" style="background:#fff;">
+        <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+        <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
+      </div>
+      <p style="font-size:.85rem;color:#2c3780;">Claude will give you the file right in the chat. Click the link or attachment to download it, then open and print.</p>
+    </div>
+  </div>
+
+  <!-- Printing from HTML -->
+  <div class="lesson-section">
+    <h2>🌐 Printing Directly from an HTML File</h2>
+    <p>This is a method most teachers don't know about — and once you try it, you may never go back to Word docs for certain things.</p>
+    <p>When AI creates a worksheet, quiz, or handout as an <strong>HTML file</strong> (a web page file), you can open it in any browser and print it directly. No Word, no Google Docs, no formatting to fix.</p>
+
+    <div class="callout info">
+      <strong>Why HTML prints better than Word or Google Docs:</strong>
+      <ul style="margin:.5rem 0 0;padding-left:1.2rem;">
+        <li><strong>It looks exactly the same every time</strong> — no fonts shifting, no margins going weird, no layout surprises.</li>
+        <li><strong>No app needed</strong> — any device with a browser can open and print it. Your school computer, your laptop at home, a Chromebook — it doesn't matter.</li>
+        <li><strong>Faster to share</strong> — send the file to a colleague and they open it, it looks identical on their screen.</li>
+        <li><strong>No accidental edits</strong> — unlike a Word doc, students can't easily mess with the formatting if you hand it out digitally.</li>
+        <li><strong>AI-generated HTML can be beautifully designed</strong> — columns, boxes, color sections, tables — things that are painful to set up manually in Word.</li>
+      </ul>
+    </div>
+
+    <h3>How to print an HTML file:</h3>
+    <ol class="steps">
+      <li>Ask your AI to create the worksheet or handout <strong>"as an HTML file."</strong> It will write the code and either give you a download or show it as an Artifact.</li>
+      <li>Save the file to your computer with a <strong>.html</strong> extension (e.g., <em>quiz-water-cycle.html</em>).</li>
+      <li><strong>Double-click</strong> the file — it opens automatically in your browser (Chrome, Safari, Edge).</li>
+      <li>Press <kbd>Ctrl</kbd>+<kbd>P</kbd> (Windows) or <kbd>Cmd</kbd>+<kbd>P</kbd> (Mac) to print.</li>
+      <li>In the print dialog, choose your printer and click <strong>Print</strong>. Done.</li>
+    </ol>
+
+    <div class="prompt-card">
+      <div class="pc-label">Ask AI for a printable HTML worksheet <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+      <code>Please create this quiz as a printable HTML file. Use a clean layout with the title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key section at the bottom. Make it look professional and easy to read when printed.</code>
+    </div>
+
+    <div class="callout tip">
+      <strong>✅ Pro tip:</strong> In the print dialog, look for <strong>"More settings"</strong> and check <strong>"Background graphics"</strong> if your HTML has colored boxes or shading — this makes sure those print too, not just plain black and white text.
+    </div>
+  </div>
+
+  <!-- Saving images -->
+  <div class="lesson-section">
+    <h2>🖼️ Saving AI-Generated Images</h2>
+    <p>When AI creates an image, saving it is simple:</p>
+    <ol class="steps">
+      <li>Hover over the image in the chat — a <strong>download icon ⬇️</strong> usually appears. Click it.</li>
+      <li>If no icon appears, <strong>right-click</strong> the image (or hold <kbd>Control</kbd> and click on Mac) and choose <strong>"Save image as…"</strong></li>
+      <li>Save it to your Desktop so it's easy to find.</li>
+    </ol>
+    <p>Once saved, you can insert it into any Google Doc or Word document (Insert → Image → Upload from computer), or print it by double-clicking the file and pressing <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>P</kbd>.</p>
+  </div>
+
+  <!-- Quick pick -->
+  <div class="lesson-section">
+    <h2>🤔 Not Sure Which Method to Use?</h2>
+    <ul style="font-size:.93rem;line-height:2.2;">
+      <li><strong>Using ChatGPT (Teacher Plan or Plus)?</strong> → Ask it to generate a downloadable Word or PDF file directly.</li>
+      <li><strong>Using Google Docs every day?</strong> → Use Gemini's "Help me write" — content appears right in your Doc.</li>
+      <li><strong>Using Claude?</strong> → Ask it to create a Word document — it'll give you the file right in the chat.</li>
+      <li><strong>Saving an AI-generated image?</strong> → Right-click → Save image as.</li>
+    </ul>
+  </div>
+
+  <!-- Try it -->
+  <div class="lesson-section">
+    <h2>✏️ Try It Now</h2>
+    <div class="try-it">
+      <div class="try-label">🧪 Practice — From AI to Printed Paper</div>
+      <p>Follow these steps to go from AI chat to a printed worksheet in under 5 minutes:</p>
+      <ol style="font-size:.92rem;color:#5a3000;padding-left:1.3rem;margin-top:.5rem;">
+        <li style="margin-bottom:.5rem;">Open your AI tool (ChatGPT, Claude, or Gemini).</li>
+        <li style="margin-bottom:.5rem;">Ask it to write a short 5-question quiz on any topic you're teaching.</li>
+        <li style="margin-bottom:.5rem;">Use Method 1 to get it as a Word doc, Google Doc, or PDF — whichever fits your tool.</li>
+        <li style="margin-bottom:.5rem;">Print one copy.</li>
+        <li>You now have a real, printed AI-created worksheet in your hands!</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <a href="lesson-4-images.html">← Lesson 4</a>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot"></div>
+    </div>
+    <a href="lesson-6-websites.html">Lesson 6 →</a>
+  </div>
+
+</div>
+
+<footer>
+  Made with ❤️ for educators &nbsp;·&nbsp; AI for Educators Teaching Hub
+</footer>
+
+<script>
+function copyCard(btn) {
+  const card = btn.closest('.prompt-card');
+  const text = card.querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+
+</body>
+</html>
