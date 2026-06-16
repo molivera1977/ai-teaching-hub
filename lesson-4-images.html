@@ -498,14 +498,10 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
     inp.value='';btn.disabled=true;
     var t=mrAddBubble('Mr. AI is thinking...','mr-ai-thinking');
     try{
-      var r=await fetch('https://api.anthropic.com/v1/messages',{
+      var r=await fetch('https://mr-ai-proxy.molivera1977.workers.dev',{
         method:'POST',
-        headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-        body:JSON.stringify({
-          model:'claude-haiku-4-5',max_tokens:300,
-          system:'You are Mr. AI, a friendly and patient course assistant helping teachers learn how to use AI tools in their classroom. This course is designed for complete beginners who have never used AI before and are not comfortable with technology. Answer every question in plain everyday English, just like a helpful colleague explaining something over lunch. Never use technical jargon. If a tech word is truly unavoidable, explain it right away in simple terms. Keep answers to 3 to 5 short sentences maximum. Be warm, encouraging, and patient. Never make the teacher feel silly for asking. Only answer questions about using AI for teaching.',
-          messages:mrHistory.concat([{role:'user',content:q}])
-        })
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({messages:mrHistory.concat([{role:'user',content:q}])})
       });
       var d=await r.json();
       t.remove();
