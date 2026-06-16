@@ -8,6 +8,7 @@
   <style>
     .home-step { display: none; }
     .home-step.active { display: block; }
+    #home-steps { display: none; }
     .step-bar {
       display: flex; align-items: center; justify-content: center;
       gap: .5rem; padding: 1rem 0 .5rem;
@@ -64,7 +65,7 @@
   <div class="tag">✨ Free · Self-Paced · No Tech Skills Required</div>
   <h1>Using AI in Your Classroom<br>Starts Here</h1>
   <p>A step-by-step guide for teachers who are curious about AI but don't know where to begin. No jargon, no overwhelm — just clear, practical lessons.</p>
-  <a href="#home-steps" class="hero-btn" onclick="goToStep(1)">What is AI? →</a>
+  <a href="#" class="hero-btn" onclick="goToStep(1);return false;">What is AI? →</a>
 </section>
 
 <div class="container" id="home-steps">
@@ -514,6 +515,8 @@
 
 <script>
 function goToStep(n) {
+  const stepsEl = document.getElementById('home-steps');
+  stepsEl.style.display = 'block';
   document.querySelectorAll('.home-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
   document.querySelectorAll('.step-pip').forEach((p, i) => {
@@ -521,7 +524,7 @@ function goToStep(n) {
     if (i + 1 < n) p.classList.add('done');
     else if (i + 1 === n) p.classList.add('active');
   });
-  const top = document.getElementById('home-steps').getBoundingClientRect().top + window.scrollY - 80;
+  const top = stepsEl.getBoundingClientRect().top + window.scrollY - 80;
   window.scrollTo({ top, behavior: 'smooth' });
 }
 </script>
