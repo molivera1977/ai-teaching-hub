@@ -519,3 +519,48 @@ footer {
 /* scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-thumb { background: #c7cde8; border-radius: 4px; }
+
+/* ---- FONT SCALE WIDGET ---- */
+#fs-widget {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: .35rem .6rem;
+  box-shadow: 0 4px 16px rgba(30,40,90,.12);
+  font-family: inherit;
+}
+#fs-widget span {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 0 .15rem;
+  white-space: nowrap;
+  user-select: none;
+}
+#fs-widget button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: .18rem .52rem;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--brand);
+  cursor: pointer;
+  line-height: 1.4;
+  transition: background .12s, color .12s;
+}
+#fs-widget button:hover:not(:disabled) {
+  background: #eef1ff;
+}
+#fs-widget button:disabled {
+  color: #ccc;
+  border-color: #e5e7f0;
+  cursor: default;
+}
