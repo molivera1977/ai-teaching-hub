@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "AI Teaching Hub",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "5500"],
-      "port": 5500
+      "name": "ai-teaching-hub",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "7779", "."],
+      "port": 7779
     }
   ]
 }
