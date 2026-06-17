@@ -239,11 +239,12 @@ nav {
 .card {
   background: var(--card);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 20px rgba(79,110,247,.13);
   padding: 1.6rem 1.4rem;
   text-decoration: none;
   color: var(--text);
   border: 1px solid var(--border);
+  border-top: 5px solid var(--border);
   transition: transform .2s, box-shadow .2s;
   display: flex;
   flex-direction: column;
@@ -251,19 +252,33 @@ nav {
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(79,110,247,.16);
+  box-shadow: 0 10px 32px rgba(79,110,247,.22);
 }
 .card-icon {
-  font-size: 2rem;
+  font-size: 2.25rem;
   line-height: 1;
 }
 .card-num {
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .08em;
+  font-size: .88rem;
+  font-weight: 800;
+  letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--brand);
 }
+
+/* Per-lesson accent colors */
+.cards-grid .card:nth-child(1) { border-top-color: #4f6ef7; }
+.cards-grid .card:nth-child(1) .card-num { color: #4f6ef7; }
+.cards-grid .card:nth-child(2) { border-top-color: #9b59b6; }
+.cards-grid .card:nth-child(2) .card-num { color: #9b59b6; }
+.cards-grid .card:nth-child(3) { border-top-color: #e85d04; }
+.cards-grid .card:nth-child(3) .card-num { color: #e85d04; }
+.cards-grid .card:nth-child(4) { border-top-color: #d4a017; }
+.cards-grid .card:nth-child(4) .card-num { color: #d4a017; }
+.cards-grid .card:nth-child(5) { border-top-color: #16a34a; }
+.cards-grid .card:nth-child(5) .card-num { color: #16a34a; }
+.cards-grid .card:nth-child(6) { border-top-color: #0ea5e9; }
+.cards-grid .card:nth-child(6) .card-num { color: #0ea5e9; }
 .card h2 {
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
