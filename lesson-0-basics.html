@@ -642,6 +642,11 @@ function goToStep(n) {
     if (i + 1 < n) p.classList.add('done');
     else if (i + 1 === n) p.classList.add('active');
   });
+  document.querySelectorAll('.progress-dots .dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 < n) d.classList.add('done');
+    else if (i + 1 === n) d.classList.add('active');
+  });
   const nav = document.querySelector('nav');
   const navOffset = nav && window.getComputedStyle(nav).position === 'sticky' ? nav.offsetHeight + 16 : 16;
   const top = document.getElementById('lesson-steps').getBoundingClientRect().top + window.scrollY - navOffset;
@@ -651,6 +656,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.title = 'Jump to Step ' + (i + 1);
     p.addEventListener('click', () => goToStep(i + 1));
+  });
+  const stepCount = document.querySelectorAll('.lesson-step').length;
+  document.querySelectorAll('.progress-dots .dot').forEach((d, i) => {
+    if (i < stepCount) {
+      d.title = 'Jump to Step ' + (i + 1);
+      d.addEventListener('click', () => goToStep(i + 1));
+    } else {
+      d.style.opacity = '0.35';
+    }
   });
 });
 

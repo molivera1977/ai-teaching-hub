@@ -495,8 +495,10 @@ nav {
   width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--border);
-  transition: background .2s;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
 }
+.dot:hover { transform: scale(1.35); }
 .dot.active { background: var(--grad-a, var(--brand)); box-shadow: 0 0 0 3px rgba(79,110,247,.2); }
 .dot.done   { background: var(--green); }
 
