@@ -522,10 +522,18 @@ nav {
   display: flex;
   gap: .75rem;
   align-items: flex-start;
+  transition: transform .15s, box-shadow .15s;
 }
+.intro-item:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
 .intro-item .icon { font-size: 1.5rem; flex-shrink: 0; }
 .intro-item h3 { font-size: .9rem; font-weight: 700; margin-bottom: .25rem; }
 .intro-item p  { font-size: .82rem; color: var(--muted); margin: 0; }
+/* AI tool color variants */
+.intro-item.ai-claude   { border-left: 6px solid #d97757; background: linear-gradient(to right, #fef5f0 0%, var(--card) 80px); }
+.intro-item.ai-chatgpt  { border-left: 6px solid #10a37f; background: linear-gradient(to right, #f0fbf6 0%, var(--card) 80px); }
+.intro-item.ai-gemini   { border-left: 6px solid #4285f4; background: linear-gradient(to right, #eff5ff 0%, var(--card) 80px); }
+.intro-item.ai-copilot  { border-left: 6px solid #0078d4; background: linear-gradient(to right, #eff7ff 0%, var(--card) 80px); }
+.intro-item.ai-perplexity { border-left: 6px solid #f97316; background: linear-gradient(to right, #fff7ed 0%, var(--card) 80px); }
 @media(max-width:540px){ .intro-grid{ grid-template-columns:1fr; } }
 
 /* ---- FOOTER ---- */
