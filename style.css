@@ -179,6 +179,10 @@ nav {
   max-width: 600px;
   margin: 0 auto 1.5rem;
 }
+@keyframes hero-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 18px rgba(0,0,0,.15), 0 0 0 0 rgba(255,255,255,.55); }
+  50%      { transform: scale(1.06); box-shadow: 0 6px 22px rgba(0,0,0,.2), 0 0 0 16px rgba(255,255,255,0); }
+}
 .hero-btn {
   display: inline-block;
   background: #fff;
@@ -190,8 +194,9 @@ nav {
   text-decoration: none;
   box-shadow: 0 4px 18px rgba(0,0,0,.15);
   transition: transform .15s;
+  animation: hero-pulse 2s ease-in-out infinite;
 }
-.hero-btn:hover { transform: translateY(-2px); }
+.hero-btn:hover { transform: translateY(-2px) scale(1.06); animation-play-state: paused; }
 
 /* ---- LESSON HERO (inner pages) ---- */
 .lesson-hero {
