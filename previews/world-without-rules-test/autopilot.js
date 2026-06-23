@@ -385,13 +385,27 @@
     };
   }
 
+  /* slowly glide down the directions page so viewers can read all of it,
+     then return to the top before signing in */
+  async function scrollThroughDirections() {
+    window.scrollTo(0, 0);
+    await wait(1400);
+    const target = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const steps = 55;
+    for (let i = 1; i <= steps; i++) { window.scrollTo(0, target() * i / steps); await wait(90); }
+    await wait(1400);
+    for (let i = steps; i >= 0; i--) { window.scrollTo(0, target() * i / steps); await wait(14); }
+    await wait(700);
+  }
+
   /* ---- the movie ---- */
   async function run() {
     try { localStorage.removeItem('wwrt_session_v1'); } catch (e) {}
     makeCursor();
     await wait(T.welcome);   app.showReadAloudIntro();
     await wait(T.readAloud); app.showDirections();
-    await wait(T.directions); app.showLogin();
+    await scrollThroughDirections();   // glide down the directions so all of it is read
+    app.showLogin();
     await wait(600);
 
     // LOGIN — cursor picks "Mr. O", types the PIN, clicks Sign In
