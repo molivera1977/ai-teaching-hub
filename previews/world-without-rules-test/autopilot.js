@@ -246,6 +246,9 @@
       await wait(200);
     }
     words.forEach(w => w.classList.remove('hl'));
+    // let the spoken audio finish (up to ~4.5s) so it isn't cut off at the end;
+    // if no audio is playing, speaking() is false and this returns immediately
+    for (let i = 0; i < 18 && window.speechSynthesis && window.speechSynthesis.speaking; i++) await wait(250);
     try { window.speechSynthesis.cancel(); } catch (e) {}
     sb.textContent = '🔊';
     await wait(450);

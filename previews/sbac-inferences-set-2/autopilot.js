@@ -138,6 +138,8 @@
       await wait(190);
     }
     words.forEach(w => w.classList.remove('speaking'));
+    // let the spoken audio finish (up to ~4.5s) so it isn't cut off at the end
+    for (let i = 0; i < 18 && window.speechSynthesis && window.speechSynthesis.speaking; i++) await wait(250);
     try { if (typeof stopReading === 'function') stopReading(); } catch (e) {}
     try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {}
     await wait(450);
