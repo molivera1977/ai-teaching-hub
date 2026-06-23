@@ -21,11 +21,19 @@
       display: flex;
       gap: 1rem;
       align-items: flex-start;
+      transition: transform .15s, box-shadow .15s;
     }
+    .tool-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
     .tool-card .tool-icon { font-size: 2rem; flex-shrink: 0; }
     .tool-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .2rem; }
     .tool-card p  { font-size: .84rem; color: var(--muted); margin: 0 0 .3rem; }
     .tool-card .tool-tag { font-size: .72rem; font-weight: 700; border-radius: 20px; padding: .15rem .6rem; }
+    /* Brand-colored borders */
+    .tool-card.tc-chatgpt   { border-left: 6px solid #10a37f; background: linear-gradient(to right, #f0fbf6 0%, var(--card) 100px); }
+    .tool-card.tc-gemini    { border-left: 6px solid #4285f4; background: linear-gradient(to right, #eff5ff 0%, var(--card) 100px); }
+    .tool-card.tc-canva     { border-left: 6px solid #00c4cc; background: linear-gradient(to right, #ecfeff 0%, var(--card) 100px); }
+    .tool-card.tc-perplexity{ border-left: 6px solid #f97316; background: linear-gradient(to right, #fff7ed 0%, var(--card) 100px); }
+    .tool-card.tc-copilot   { border-left: 6px solid #0078d4; background: linear-gradient(to right, #eff7ff 0%, var(--card) 100px); }
     .free  { background: #eefbf4; color: #1a7a47; }
     .paid  { background: #fff7ed; color: #7a3d00; }
     .freemium { background: #eef1ff; color: #2c3780; }
@@ -156,7 +164,7 @@
         <h2>🛠️ The Best AI Image Tools for Teachers</h2>
         <p>There are several tools available. Here are the most teacher-friendly options:</p>
 
-        <div class="tool-card">
+        <div class="tool-card tc-chatgpt">
           <div class="tool-icon">
             <img src="images/logo-chatgpt.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="ChatGPT logo">
           </div>
@@ -167,7 +175,7 @@
           </div>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card tc-gemini">
           <div class="tool-icon">
             <img src="images/logo-gemini.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="Google Gemini logo">
           </div>
@@ -178,7 +186,7 @@
           </div>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card tc-canva">
           <div class="tool-icon">
             <img src="images/logo-canva.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="Canva logo">
           </div>
@@ -189,7 +197,7 @@
           </div>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card tc-perplexity">
           <div class="tool-icon">
             <img src="images/logo-perplexity.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#1c1c1e;" alt="Perplexity logo">
           </div>
@@ -200,7 +208,7 @@
           </div>
         </div>
 
-        <div class="tool-card">
+        <div class="tool-card tc-copilot">
           <div class="tool-icon">
             <img src="images/logo-copilot.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#fff;" alt="Microsoft Copilot logo">
           </div>
