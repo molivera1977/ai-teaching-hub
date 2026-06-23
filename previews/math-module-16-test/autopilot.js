@@ -17,7 +17,18 @@
   };
 
   const $ = id => document.getElementById(id);
-  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  /* ---- pause / resume control ---- */
+  let _paused = false;
+  const _waiters = [];
+  function _gate() { return _paused ? new Promise(res => _waiters.push(res)) : Promise.resolve(); }
+  function setPaused(p) {
+    _paused = p;
+    const btn = document.getElementById('demo-pause');
+    if (btn) btn.textContent = p ? '▶ Resume' : '⏸ Pause';
+    if (!p) _waiters.splice(0).forEach(fn => fn());
+  }
+  const wait = ms => _gate().then(() => new Promise(r => setTimeout(r, ms))).then(_gate);
 
   function blockNetwork() {
     const of = window.fetch ? window.fetch.bind(window) : null;
@@ -34,10 +45,12 @@
     const b = document.createElement('div');
     b.id = 'demo-banner';
     b.innerHTML = '👀 <strong>PREVIEW</strong> — auto-playing the full test (sped up). '
-      + '<span id="demo-replay" style="text-decoration:underline;cursor:pointer;margin-left:6px;">↻ Replay</span>';
+      + '<span id="demo-pause" style="display:inline-block;background:rgba(255,255,255,.22);border-radius:6px;padding:2px 10px;cursor:pointer;margin-left:8px;font-weight:700;">⏸ Pause</span>'
+      + '<span id="demo-replay" style="text-decoration:underline;cursor:pointer;margin-left:10px;">↻ Replay</span>';
     b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#6c5ce7,#e056a0);color:#fff;text-align:center;font:600 13px/1.3 system-ui,sans-serif;padding:9px 12px;box-shadow:0 2px 10px rgba(0,0,0,.25);';
     document.body.appendChild(b);
     const c = document.querySelector('.container'); if (c) c.style.marginTop = '40px';
+    $('demo-pause').onclick = () => setPaused(!_paused);
     $('demo-replay').onclick = () => { try { localStorage.clear(); } catch (e) {} location.reload(); };
   }
 
