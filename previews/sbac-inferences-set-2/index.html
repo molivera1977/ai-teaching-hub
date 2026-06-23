@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBAC Reading Review - Inferences Set 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a2744;--blue:#2563eb;--sky:#dbeafe;--green:#16a34a;--green-bg:#dcfce7;--red:#dc2626;--red-bg:#fee2e2;--gray:#64748b;--light:#f8fafc;--border:#e2e8f0;--passage-bg:#f0f4ff;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--light);color:var(--navy);min-height:100vh;}
+.tts-word.speaking{background:#fde68a;border-radius:3px;outline:2px solid #f59e0b;padding:0 1px;}
+.cover-page{position:fixed;inset:0;z-index:999;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
+.cover-page.hidden{display:none;}
+.cover-stars{font-size:2.2rem;margin-bottom:18px;letter-spacing:10px;}
+.cover-title{font-family:'Merriweather',serif;font-size:2.6rem;font-weight:700;color:white;line-height:1.2;margin-bottom:10px;}
+.cover-sub{font-size:1.15rem;color:#93c5fd;margin-bottom:52px;font-weight:600;letter-spacing:.05em;}
+.cover-btn{background:#2563eb;color:white;border:none;font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:900;padding:20px 60px;border-radius:14px;cursor:pointer;box-shadow:0 8px 32px rgba(37,99,235,.5);transition:transform .15s,box-shadow .15s;}
+.cover-btn:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(37,99,235,.7);}
+.name-screen{position:fixed;inset:0;z-index:998;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
+.name-screen.hidden{display:none;}
+.name-title{font-family:'Merriweather',serif;font-size:1.9rem;font-weight:700;color:white;margin-bottom:10px;}
+.name-sub{color:#93c5fd;font-size:1rem;margin-bottom:32px;}
+.name-input{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:700;padding:16px 24px;border-radius:10px;border:2px solid #60a5fa;background:#1e3a6e;color:white;width:360px;max-width:90vw;text-align:center;outline:none;margin-bottom:8px;}
+.name-input::placeholder{color:#475569;}
+.name-input:focus{border-color:#93c5fd;}
+.name-error{color:#f87171;font-size:.88rem;font-weight:700;min-height:22px;margin-bottom:16px;}
+.name-btn{background:#2563eb;color:white;border:none;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:15px 50px;border-radius:10px;cursor:pointer;transition:background .2s;}
+.name-btn:hover{background:#1d4ed8;}
+.resume-toast{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2744;color:#93c5fd;border:1px solid #60a5fa44;padding:12px 24px;border-radius:10px;font-weight:700;font-size:.88rem;z-index:500;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.finish-warning{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fee2e2;color:#dc2626;border:1.5px solid #dc2626;padding:12px 24px;border-radius:10px;font-weight:700;font-size:.88rem;z-index:500;box-shadow:0 4px 20px rgba(0,0,0,.2);max-width:90vw;text-align:center;}
+header{background:var(--navy);color:white;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.header-inner{max-width:1100px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.site-title{font-size:1.2rem;font-weight:900;letter-spacing:-.02em;}
+.site-title span{color:#60a5fa;}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.score-badge{background:#60a5fa22;border:1px solid #60a5fa55;border-radius:999px;padding:5px 14px;font-size:.82rem;font-weight:700;color:#93c5fd;white-space:nowrap;}
+.font-controls{display:flex;align-items:center;gap:4px;}
+.font-lbl{color:#93c5fd;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-right:4px;}
+.font-btn{background:#1e3a6e;color:#93c5fd;border:1px solid #2d4f8a;border-radius:5px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;padding:3px 9px;transition:all .15s;}
+.font-btn:hover,.font-btn.active-font{background:#2563eb;color:white;border-color:#2563eb;}
+.passage-nav{background:#253258;display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:2px solid #60a5fa33;}
+.passage-nav::-webkit-scrollbar{display:none;}
+.passage-nav button{background:none;border:none;color:#93c5fd;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;padding:9px 14px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;flex-shrink:0;display:flex;align-items:center;gap:5px;}
+.passage-nav button:hover{color:white;background:rgba(255,255,255,.05);}
+.passage-nav button.active{color:white;border-bottom-color:#60a5fa;background:rgba(96,165,250,.1);}
+.nav-prog{background:#60a5fa22;border-radius:999px;padding:1px 6px;font-size:.68rem;font-weight:900;color:#60a5fa;}
+.nav-done{color:#16a34a;font-weight:900;font-size:.8rem;}
+.tts-bar{background:#1e3a6e;border-bottom:1px solid #2d4f8a;padding:7px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.tts-label{color:#93c5fd;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;}
+.tts-btn{background:#2563eb;color:white;border:none;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:6px;cursor:pointer;transition:background .15s;}
+.tts-btn:hover{background:#1d4ed8;}
+.tts-btn.stop{background:#dc2626;}
+.tts-btn.stop:hover{background:#b91c1c;}
+.tts-status{color:#60a5fa;font-size:.75rem;font-weight:700;font-style:italic;}
+main{max-width:1100px;margin:0 auto;padding:16px 20px 60px;}
+.progress-label{font-size:.72rem;font-weight:800;color:var(--gray);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+.progress-bar{height:7px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:999px;transition:width .5s ease;width:0%;}
+.passage-panel{display:none;}
+.passage-panel.active{display:block;}
+.passage-header{margin-bottom:12px;}
+.passage-tag{display:inline-block;background:var(--blue);color:white;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:5px;}
+.passage-title{font-family:'Merriweather',serif;font-size:1.1rem;font-weight:700;margin-bottom:2px;}
+.passage-author{font-size:.85rem;color:var(--gray);}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+@media(max-width:750px){.layout{grid-template-columns:1fr;}}
+.passage-col{position:sticky;top:120px;}
+.passage-read-btn{width:100%;background:#1e3a6e;color:#93c5fd;border:1px solid #2d4f8a;border-bottom:none;border-radius:12px 12px 0 0;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:800;padding:9px;cursor:pointer;transition:background .15s;}
+.passage-read-btn:hover{background:#253258;color:white;}
+.passage-box{background:var(--passage-bg);border:1px solid #c7d7fb;border-radius:0 0 12px 12px;padding:20px 22px;font-family:'Merriweather',serif;font-size:.9rem;line-height:1.9;max-height:calc(100vh - 240px);overflow-y:auto;}
+.passage-box p{margin-bottom:12px;}
+.passage-box p:last-child{margin-bottom:0;}
+.passage-box .section-head{font-weight:700;margin-top:16px;}
+.passage-box .footnote{font-size:.75rem;color:var(--gray);margin-top:12px;}
+.passage-box .copyright{font-size:.72rem;color:var(--gray);border-top:1px solid #c7d7fb;margin-top:16px;padding-top:10px;}
+.pass-prog-wrap{margin-bottom:14px;}
+.pass-prog-label{font-size:.75rem;font-weight:800;color:var(--gray);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+.pass-prog-bar{height:6px;background:var(--border);border-radius:999px;overflow:hidden;}
+.pass-prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60a5fa);border-radius:999px;transition:width .4s ease;width:0%;}
+.questions-box{display:flex;flex-direction:column;gap:16px;}
+.question-card{background:white;border:1.5px solid var(--border);border-radius:12px;padding:16px;}
+.q-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px;}
+.q-num{background:var(--navy);color:white;font-weight:900;font-size:.82rem;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.q-stem{font-size:.87rem;font-weight:700;line-height:1.5;flex:1;}
+.q-read-btn{background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:6px;font-size:.95rem;width:30px;height:30px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;padding:0;}
+.q-read-btn:hover{background:#bfdbfe;}
+.part-label{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);background:var(--sky);padding:2px 8px;border-radius:4px;margin:7px 0 5px;}
+.part-row{display:flex;align-items:center;gap:8px;margin:7px 0 4px;}
+.part-row .part-label{margin:0;}
+.part-stem{font-size:.85rem;font-weight:700;margin-bottom:9px;line-height:1.5;}
+.choices{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.choice-btn{width:100%;text-align:left;background:var(--light);border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:600;color:var(--navy);cursor:pointer;display:flex;align-items:flex-start;gap:8px;transition:all .15s;line-height:1.45;}
+.choice-btn:hover:not(:disabled){background:var(--sky);border-color:var(--blue);}
+.choice-btn .letter{font-weight:900;color:var(--blue);min-width:16px;flex-shrink:0;}
+.choice-btn.correct{background:var(--green-bg);border-color:var(--green);color:#14532d;}
+.choice-btn.correct .letter{color:var(--green);}
+.choice-btn.wrong{background:var(--red-bg);border-color:var(--red);color:#7f1d1d;}
+.choice-btn.wrong .letter{color:var(--red);}
+.choice-btn:disabled{cursor:default;}
+.feedback{margin-top:9px;font-size:.8rem;font-weight:700;padding:8px 11px;border-radius:8px;display:none;}
+.feedback.show{display:block;}
+.feedback.correct{background:var(--green-bg);color:var(--green);}
+.feedback.wrong{background:var(--red-bg);color:var(--red);}
+.next-story-btn{display:block;width:100%;margin-top:14px;background:var(--navy);color:white;border:none;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:900;padding:13px;border-radius:10px;cursor:pointer;transition:background .2s;}
+.next-story-btn:hover{background:#2563eb;}
+.finish-btn{display:block;width:100%;margin-top:14px;background:#94a3b8;color:white;border:none;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:900;padding:13px;border-radius:10px;cursor:not-allowed;transition:all .2s;opacity:.7;}
+.finish-btn-ready{background:#16a34a !important;cursor:pointer !important;opacity:1 !important;}
+.finish-btn-ready:hover{background:#15803d !important;}
+.final-results{display:none;padding:30px 0 60px;}
+.final-results.show{display:block;}
+.final-header{text-align:center;padding:0 20px 24px;}
+.final-student{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:4px;}
+.final-time-line{font-size:.85rem;color:var(--gray);margin-bottom:18px;}
+.final-score-big{font-size:4.5rem;font-weight:900;color:var(--navy);line-height:1;}
+.final-pct{font-size:1.5rem;font-weight:700;color:var(--blue);margin-bottom:8px;}
+.final-msg{font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.submit-status{font-size:.88rem;font-weight:700;color:var(--green);margin-bottom:20px;min-height:20px;}
+.res-summary{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+.res-sum-item{background:white;border:1.5px solid var(--border);border-radius:12px;padding:14px 22px;text-align:center;min-width:110px;}
+.res-sum-val{font-size:1.5rem;font-weight:900;color:var(--navy);}
+.res-sum-key{font-size:.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+.res-passage-block{background:white;border:1.5px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;}
+.res-pass-header{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--light);border-bottom:1px solid var(--border);}
+.res-pass-title{font-weight:800;font-size:.88rem;}
+.res-pass-score{font-weight:900;font-size:.95rem;}
+.res-table{width:100%;border-collapse:collapse;font-size:.8rem;}
+.res-table th{background:var(--navy);color:white;padding:7px 11px;font-weight:800;text-align:left;}
+.res-table td{padding:7px 11px;border-bottom:1px solid var(--border);}
+.res-table tr:last-child td{border-bottom:none;}
+.row-right td{background:#f0fdf4;}
+.row-wrong td{background:#fff5f5;}
+.q-type-cell{font-size:.73rem;color:var(--gray);font-weight:700;}
+.ans-right{color:var(--green);font-weight:900;}
+.ans-wrong{color:var(--red);font-weight:900;}
+.res-skills-block{background:white;border:1.5px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;}
+.skill-row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border);}
+.skill-row:last-child{border-bottom:none;}
+.skill-name{font-size:.8rem;font-weight:700;min-width:170px;}
+.skill-bar-wrap{flex:1;height:10px;background:var(--border);border-radius:999px;overflow:hidden;}
+.skill-bar-fill{height:100%;border-radius:999px;transition:width .6s ease;}
+.skill-pct{font-size:.8rem;font-weight:900;min-width:80px;text-align:right;}
+.dashboard-panel{display:none;max-width:900px;margin:20px auto;padding:0 20px 60px;}
+.dashboard-panel.show{display:block;}
+.dash-header{font-family:'Merriweather',serif;font-size:1.4rem;font-weight:700;margin-bottom:4px;}
+.dash-sub{font-size:.85rem;color:var(--gray);margin-bottom:20px;}
+.dash-summary-bar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.dash-sum-item{background:white;border:1.5px solid var(--border);border-radius:10px;padding:14px 20px;text-align:center;min-width:100px;}
+.dash-sum-val{font-size:1.8rem;font-weight:900;}
+.dash-sum-key{font-size:.72rem;color:var(--gray);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+.dash-table{width:100%;border-collapse:collapse;font-size:.85rem;background:white;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);}
+.dash-table th{background:var(--navy);color:white;padding:10px 14px;font-weight:800;text-align:left;}
+.dash-table td{padding:9px 14px;border-bottom:1px solid var(--border);}
+.dash-table tr:last-child td{border-bottom:none;}
+.dash-table tr:nth-child(even) td{background:var(--light);}
+.dash-score-bar{height:6px;background:var(--border);border-radius:999px;overflow:hidden;margin-top:4px;}
+.dash-score-fill{height:100%;border-radius:999px;}
+.dash-empty{text-align:center;color:var(--gray);padding:40px;font-size:.9rem;}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px;}
+.btn-restart{background:var(--navy);color:white;border:none;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;padding:13px 28px;border-radius:10px;cursor:pointer;}
+.btn-restart:hover{background:#253258;}
+.btn-print{background:var(--blue);color:white;border:none;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;padding:13px 28px;border-radius:10px;cursor:pointer;}
+.btn-print:hover{background:#1d4ed8;}
+.btn-dash{background:#7c3aed;color:white;border:none;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;padding:13px 28px;border-radius:10px;cursor:pointer;}
+.btn-dash:hover{background:#6d28d9;}
+@media print{header,.tts-bar,.passage-nav,.progress-bar,.progress-label,.btn-row,.passage-read-btn,.q-read-btn,.next-story-btn,.finish-btn,.font-controls,.resume-toast,.finish-warning{display:none !important;}.final-results,.dashboard-panel{display:block !important;}.passage-panel{display:none !important;}}
+</style>
+</head>
+<body>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+<div class="resume-toast" id="resumeToast">Progress restored! Keep going where you left off.</div>
+<div id="finishWarning" class="finish-warning"></div>
+
+<div class="cover-page" id="coverPage">
+  <div class="cover-stars">&#x1F4D6; &#x2B50; &#x1F4D6;</div>
+  <div class="cover-title">SBAC Reading Review</div>
+  <div class="cover-sub">&#x2014; Inferences &bull; Set 2 &#x2014;</div>
+  <button class="cover-btn" onclick="showNameScreen()">&#x25B6; Start</button>
+</div>
+
+<div class="name-screen hidden" id="nameScreen">
+  <div class="cover-stars">&#x270F;&#xFE0F;</div>
+  <div class="name-title">What is your name?</div>
+  <div class="name-sub">Type your full name before you begin.</div>
+  <input class="name-input" id="nameInput" type="text" placeholder="First and Last Name" autocomplete="off"/>
+  <div class="name-error" id="nameError">&nbsp;</div>
+  <button class="name-btn" onclick="startReview()">Begin Review &#x2192;</button>
+</div>
+
+<div class="name-screen hidden" id="resumePopup">
+  <div class="cover-stars">&#x1F4BE;</div>
+  <div class="name-title">Resume Session?</div>
+  <div class="name-sub" id="resumePopupMsg">A previous session was found on this device.</div>
+  <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+    <button class="name-btn" onclick="resumeYes()" style="background:#16a34a;">&#x2705; Yes, Resume</button>
+    <button class="name-btn" onclick="resumeNo()" style="background:#dc2626;">&#x274C; No, Start Fresh</button>
+  </div>
+</div>
+
+<div id="appShell" style="display:none;">
+<header>
+  <div class="header-inner">
+    <div class="site-title">SBAC Reading Review <span>&#x2013; Inferences Set 2</span></div>
+    <div class="header-right">
+      <div class="font-controls">
+        <span class="font-lbl">Text:</span>
+        <button class="font-btn" id="font-small" onclick="setFont('small')" style="font-size:.75rem;">A</button>
+        <button class="font-btn active-font" id="font-medium" onclick="setFont('medium')" style="font-size:.9rem;">A</button>
+        <button class="font-btn" id="font-large" onclick="setFont('large')" style="font-size:1.05rem;">A</button>
+      </div>
+      <div class="score-badge" id="scoreBadge">0 of 0 answered</div>
+    </div>
+  </div>
+  <nav class="passage-nav" id="passageNav"></nav>
+  <div class="tts-bar">
+    <span class="tts-label">&#x1F50A; Read Aloud:</span>
+    <button class="tts-btn stop" onclick="stopReading()"><span aria-hidden="true">&#x23F9;</span> Stop</button>
+    <span class="tts-status" id="ttsStatus"></span>
+  </div>
+</header>
+<main>
+  <div class="progress-label">Overall Progress</div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div id="passagePanels"></div>
+  <div class="final-results" id="finalResults">
+    <div class="final-header">
+      <div class="final-student" id="finalName"></div>
+      <div class="final-time-line" id="finalTime"></div>
+      <div class="final-score-big" id="finalScore"></div>
+      <div class="final-pct" id="finalLabel"></div>
+      <div class="final-msg" id="finalMsg"></div>
+      <div class="submit-status" id="submitStatus"></div>
+    </div>
+    <div id="resultsTableContainer" style="max-width:900px;margin:0 auto;padding:0 20px;"></div>
+    <div class="btn-row">
+      <button class="btn-print" onclick="window.print()">&#x1F5A8; Print Results</button>
+      <button class="btn-dash" onclick="showDashboard()">&#x1F4CA; Class Dashboard</button>
+      <button class="btn-restart" onclick="restartAll()">&#x1F504; Start Over</button>
+    </div>
+  </div>
+</main>
+</div>
+
+<div class="dashboard-panel" id="dashboardPanel">
+  <div class="dash-header">&#x1F4CA; Class Dashboard</div>
+  <div class="dash-sub">All student results submitted on this device &mdash; sorted by score</div>
+  <div id="dashContent"></div>
+  <div class="btn-row">
+    <button class="btn-print" onclick="window.print()">&#x1F5A8; Print Dashboard</button>
+    <button class="btn-restart" onclick="hideDashboard()">&#x2190; Back to Results</button>
+  </div>
+</div>
+
+<script>
+
+
+
+const passages = [
+  {
+    tag: "Passage 1 · Informational",
+    title: "The Dog Who Learned to Listen",
+    author: "An original passage",
+    text: `<p>Most dogs bark at strangers. Most dogs chase squirrels. But a golden retriever named Roselle did something far more important on September 11, 2001.</p>
+<p>Roselle was a guide dog. Her owner, Michael Hingson, was blind. Every day, Roselle led Michael safely to his office on the 78th floor of the World Trade Center in New York City.</p>
+<p>On that Tuesday morning, a plane struck the tower. The building shook. People screamed. Smoke filled the air. Michael could not see the chaos around him, but Roselle stayed completely calm. She did not bark. She did not run. She pressed close to Michael's side and waited.</p>
+<p>"Forward," Michael told her. Roselle moved.</p>
+<p>For the next hour, Roselle guided Michael down 78 flights of stairs. Around them, people were frightened and confused. But Roselle walked steadily, never rushing, never stopping. Other people in the stairwell reached out to touch her golden fur. It helped them feel less afraid.</p>
+<p>When they finally reached the street, the tower collapsed behind them. Roselle kept walking, leading Michael to safety.</p>
+<p>Later, Michael said that Roselle never thought of herself as a hero. She simply did her job — the job she had trained years to do. She listened, she led, and she never gave up.</p>
+<p>Roselle received many awards for her courage. But on the day that mattered most, she did not need a trophy. She needed only to trust her training and love her owner.</p>`,
+    questions: [
+      {
+        stem: "What can the reader infer about why Roselle stayed calm when the building shook?",
+        choices: [
+          "Roselle did not notice that anything was wrong.",
+          "Roselle had been trained to stay calm and guide her owner in difficult situations.",
+          "Roselle was excited to walk down the stairs.",
+          "Roselle had been in an emergency before and knew what to do."
+        ],
+        correct: 1,
+        explanation: "The passage says Roselle 'simply did her job — the job she had trained years to do,' which supports the inference that her training prepared her to stay calm."
+      },
+      {
+        stem: "Which detail from the passage best supports the idea that Roselle helped people other than Michael on that day?",
+        choices: [
+          "Roselle was a guide dog who led Michael to his office every day.",
+          "Other people in the stairwell reached out to touch her golden fur, and it helped them feel less afraid.",
+          "Roselle received many awards for her courage.",
+          "Michael told Roselle to move forward and she obeyed."
+        ],
+        correct: 1,
+        explanation: "People in the stairwell touching Roselle's fur to feel less afraid shows she helped others beyond just guiding Michael."
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "Which sentence best describes the main idea of the passage?",
+          choices: [
+            "Guide dogs are smarter than other dogs.",
+            "The World Trade Center was a dangerous place to work.",
+            "A trained guide dog used her skills to save her owner and comfort others during a crisis.",
+            "Michael Hingson was brave because he went to work every day despite being blind."
+          ],
+          correct: 2,
+          explanation: "The whole passage focuses on how Roselle used her training to guide Michael to safety and help others during the September 11 emergency."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "Most dogs bark at strangers and chase squirrels.",
+            "For the next hour, Roselle guided Michael down 78 flights of stairs, walking steadily, never rushing, never stopping.",
+            "Roselle received many awards for her courage.",
+            "Michael Hingson was blind and worked on the 78th floor."
+          ],
+          correct: 1,
+          explanation: "Roselle guiding Michael steadily down 78 floors without stopping is the clearest example of her using her training during a crisis."
+        }
+      }
+    ]
+  },
+  {
+    tag: "Passage 2 · Informational",
+    title: "The Girl Who Mapped the Ocean Floor",
+    author: "An original passage",
+    text: `<p>Before Marie Tharp came along, nobody knew what the bottom of the ocean really looked like. Most scientists believed the ocean floor was flat and featureless — like a giant bathtub. Marie proved them wrong.</p>
+<p>Marie grew up in the 1920s and 1930s, when most women were not encouraged to become scientists. But Marie loved maps. Her father made soil maps for the government, and as a little girl, she traveled with him all over the country. She watched him measure land and turn numbers into pictures. She decided she wanted to do the same thing.</p>
+<p>In 1948, Marie got a job at Columbia University in New York City. Her boss, a scientist named Bruce Heezen, collected data from ships crossing the Atlantic Ocean. The ships sent sound waves down to the ocean floor. By measuring how long it took the waves to bounce back, scientists could figure out how deep the water was at each spot.</p>
+<p>Bruce gathered the numbers. Marie turned them into maps.</p>
+<p>Day after day, Marie plotted thousands of data points on large sheets of paper. Slowly, a picture appeared. There was a giant mountain range running right down the middle of the Atlantic Ocean. And through the center of those mountains was a deep crack — a rift valley — stretching for thousands of miles.</p>
+<p>When Marie showed Bruce her discovery, he told her she was wrong. "That cannot be right," he said. It took two years and much more data before Bruce admitted that Marie had found something real.</p>
+<p>Marie's map of the ocean floor changed science forever. It helped prove the theory of plate tectonics — the idea that Earth's surface is made of giant moving pieces. Today, her map is considered one of the most important scientific documents of the twentieth century.</p>`,
+    questions: [
+      {
+        parts: true,
+        partA: {
+          stem: "What inference can be made about why Bruce Heezen first told Marie she was wrong?",
+          choices: [
+            "Bruce believed the ocean floor was flat, and Marie's discovery did not match what scientists expected.",
+            "Bruce wanted to take credit for Marie's discovery himself.",
+            "Bruce did not trust maps made from sound wave data.",
+            "Bruce had never heard of a rift valley before."
+          ],
+          correct: 0,
+          explanation: "The passage says scientists believed the ocean floor was flat. Marie's discovery of a mountain range and rift valley challenged that belief, which is why Bruce resisted it."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "Marie's father made soil maps and she traveled with him as a child.",
+            "The ships sent sound waves down to the ocean floor to measure depth.",
+            "Most scientists believed the ocean floor was flat and featureless — like a giant bathtub.",
+            "It took two years and much more data before Bruce admitted Marie had found something real."
+          ],
+          correct: 2,
+          explanation: "The detail that scientists believed the ocean floor was flat directly explains why Bruce rejected Marie's unexpected finding of mountains and a rift valley."
+        }
+      },
+      {
+        stem: "Which detail best supports the inference that Marie's work was difficult and required great patience?",
+        choices: [
+          "Marie loved maps from the time she was a little girl.",
+          "Day after day, Marie plotted thousands of data points on large sheets of paper.",
+          "Bruce Heezen collected data from ships crossing the Atlantic Ocean.",
+          "Marie's map helped prove the theory of plate tectonics."
+        ],
+        correct: 1,
+        explanation: "Plotting thousands of data points day after day shows that Marie's work required patience and persistence over a long period of time."
+      },
+      {
+        stem: "The reader can infer that Marie faced challenges as a scientist because of her gender. Which detail from the passage best supports this inference?",
+        choices: [
+          "Marie got a job at Columbia University in 1948.",
+          "Marie grew up in the 1920s and 1930s, when most women were not encouraged to become scientists.",
+          "Bruce gathered the numbers while Marie turned them into maps.",
+          "Marie's map is considered one of the most important scientific documents of the twentieth century."
+        ],
+        correct: 1,
+        explanation: "The passage directly states that most women were not encouraged to become scientists during the time Marie grew up, supporting the inference that she faced gender-related challenges."
+      }
+    ]
+  },
+  {
+    tag: "Passage 3 · Informational",
+    title: "Why Elephants Never Forget",
+    author: "An original passage",
+    text: `<p>You have probably heard the saying: an elephant never forgets. It turns out this is not just a saying. Elephants really do have remarkable memories — and scientists are beginning to understand why.</p>
+<p>Elephants live in family groups led by the oldest female, called the matriarch. She is usually the largest elephant in the group, and she has lived the longest. Over her lifetime, she learns to recognize hundreds of other elephants — both friends and strangers. She also remembers where to find water during dry seasons, even if she has not visited that spot in many years.</p>
+<p>In one study, scientists played recordings of calls from elephants the group had not heard in years. When researchers played the call of a friendly elephant, the matriarch moved the family calmly toward the sound. But when they played the call of a stranger, she positioned herself between the sound and her family, ready to protect them.</p>
+<p>Elephants also remember sadness. When an elephant in the family dies, the others will return to the place where the elephant died, sometimes years later. They stand quietly and touch the bones with their trunks. Scientists call this mourning behavior.</p>
+<p>Why do elephants have such powerful memories? Researchers believe it is connected to their large brains. The part of the brain connected to memory and emotion — called the hippocampus — is especially well developed in elephants.</p>
+<p>In the wild, a good memory can mean the difference between life and death. Knowing which animals are safe, where water is hidden, and which paths lead to danger helps the whole family survive. The matriarch's memory is the group's greatest tool.</p>`,
+    questions: [
+      {
+        stem: "What can the reader infer about why the matriarch is the leader of the elephant family?",
+        choices: [
+          "She is the leader because she is the fastest runner in the group.",
+          "Her age and experience give her the knowledge and memory the family needs to survive.",
+          "She is the leader because she has the loudest call.",
+          "Scientists chose her to be the leader during their studies."
+        ],
+        correct: 1,
+        explanation: "The passage explains that the matriarch has lived the longest, remembers the most, and uses that knowledge to protect and guide her family — making age and experience the basis for her leadership."
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "Which of these inferences about elephant memory is supported by the passage?",
+          choices: [
+            "Elephants only remember things that happened recently.",
+            "Elephants use their memories to keep their families safe.",
+            "Elephants have better memories than any other animal.",
+            "Elephants forget the location of water during dry seasons."
+          ],
+          correct: 1,
+          explanation: "The passage describes elephants using memory to recognize friends and strangers, find water, and protect their families — all supporting the idea that memory helps keep them safe."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "Elephants live in family groups led by the oldest female.",
+            "The part of the brain connected to memory is especially well developed in elephants.",
+            "When researchers played the call of a stranger, the matriarch positioned herself between the sound and her family, ready to protect them.",
+            "Elephants return to the place where a family member died, sometimes years later."
+          ],
+          correct: 2,
+          explanation: "The matriarch protecting her family from a stranger based on her memory of the call is the most direct example of memory being used for safety."
+        }
+      },
+      {
+        stem: "Read this sentence from the passage: 'Knowing which animals are safe, where water is hidden, and which paths lead to danger helps the whole family survive.' What does this sentence suggest about the matriarch's role?",
+        choices: [
+          "The matriarch teaches the young elephants how to find food.",
+          "The matriarch's memory is the most important resource the family has for staying alive.",
+          "The matriarch spends most of her time searching for water.",
+          "The matriarch decides when the family should move to a new location."
+        ],
+        correct: 1,
+        explanation: "The sentence lists survival skills that all depend on memory, and the passage connects this memory to the matriarch — suggesting her memory is the family's most important resource."
+      }
+    ]
+  },
+  {
+    tag: "Passage 4 · Literary",
+    title: "The Substitute",
+    author: "An original story",
+    text: `<p>When Mrs. Flores was absent, Room 14 always turned into a circus. Everyone knew it. The substitute would walk in looking nervous, and within five minutes, paper airplanes would be sailing across the room.</p>
+<p>But the substitute who arrived on Thursday was different.</p>
+<p>He was tall, with white hair and a calm face. He did not look nervous at all. He set his bag down on Mrs. Flores's desk, looked around the room slowly, and said nothing. Just looked.</p>
+<p>The class waited.</p>
+<p>"My name is Mr. Adeyemi," he finally said. "I have been a teacher for thirty-one years. I have seen every trick there is. So let's skip that part."</p>
+<p>Someone giggled. Mr. Adeyemi looked in that direction but did not look angry.</p>
+<p>"I thought we might do something interesting today instead," he said. He reached into his bag and pulled out a large glass jar filled with sand. He set it on the desk.</p>
+<p>"What is that?" asked Destiny.</p>
+<p>"A question," Mr. Adeyemi said. He pulled out three large rocks and dropped them into the jar one by one. Then he held up the jar. "Is it full?"</p>
+<p>"Yes," said most of the class.</p>
+<p>Mr. Adeyemi smiled and reached back into his bag. He pulled out a bag of small pebbles and poured them in. They filled the gaps between the rocks. "Now?"</p>
+<p>Nobody answered.</p>
+<p>He pulled out a bag of fine sand and poured it in. It filled every remaining space. Then he poured in a glass of water.</p>
+<p>"The point," he said, sitting on the edge of the desk, "is that there is always more room than you think. Always more to learn. Always more space for something important." He paused. "Room 14, I think you have more room than you realize."</p>
+<p>Nobody threw a paper airplane that day.</p>`,
+    questions: [
+      {
+        stem: "What can the reader infer about Mr. Adeyemi from the detail that he 'looked around the room slowly and said nothing'?",
+        choices: [
+          "Mr. Adeyemi was nervous and did not know how to begin.",
+          "Mr. Adeyemi was confident and in control from the moment he arrived.",
+          "Mr. Adeyemi was looking for something he had lost.",
+          "Mr. Adeyemi did not like the students in Room 14."
+        ],
+        correct: 1,
+        explanation: "Taking time to look around without speaking — while students waited — shows Mr. Adeyemi was calm and in control, not nervous like other substitutes."
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "Which sentence best describes the theme of this passage?",
+          choices: [
+            "Teachers should always be strict with their students.",
+            "Students learn best when a teacher is funny and entertaining.",
+            "There is always more room to grow and learn than you might think.",
+            "Science experiments are the best way to teach a lesson."
+          ],
+          correct: 2,
+          explanation: "Mr. Adeyemi's jar demonstration is about how there is always more room than it seems — and he applies this directly to the students, making it the central theme."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "He was tall, with white hair and a calm face.",
+            "Someone giggled but Mr. Adeyemi did not look angry.",
+            "'Room 14, I think you have more room than you realize,' he said.",
+            "Nobody threw a paper airplane that day."
+          ],
+          correct: 2,
+          explanation: "Mr. Adeyemi directly connects the jar lesson to the students by saying they have more room than they realize — this is the clearest statement of the theme."
+        }
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "What inference can be made about why nobody threw a paper airplane that day?",
+          choices: [
+            "The students were afraid Mr. Adeyemi would send them to the principal.",
+            "The students were engaged and impressed by Mr. Adeyemi.",
+            "The students had run out of paper to make airplanes.",
+            "The students were waiting for Mrs. Flores to come back."
+          ],
+          correct: 1,
+          explanation: "The passage shows Mr. Adeyemi capturing the class with his jar demonstration — the lack of paper airplanes suggests the students were genuinely engaged, not just scared."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "Mr. Adeyemi set his bag down on Mrs. Flores's desk and looked around.",
+            "He reached into his bag and pulled out a large glass jar filled with sand.",
+            "Nobody answered when he asked if the jar was full after adding pebbles.",
+            "He pulled out a glass of water and poured it in last."
+          ],
+          correct: 2,
+          explanation: "The students going silent — not answering when asked if the jar was full — shows they were genuinely curious and thinking, which is why they stopped misbehaving."
+        }
+      }
+    ]
+  },
+  {
+    tag: "Passage 5 · Literary",
+    title: "Too Loud",
+    author: "An original story",
+    text: `<p>Marcus did not like the lunch table by the window. It was where all the loud kids sat. They laughed big laughs and talked over each other and nobody ever seemed to need to breathe.</p>
+<p>Marcus preferred the corner table. It was quieter there. He could eat his sandwich and read his book and nobody bothered him. That was the way he liked it.</p>
+<p>One Tuesday, both corner seats were taken. Marcus stood in the middle of the cafeteria holding his tray, looking for somewhere to go.</p>
+<p>"Hey." A girl at the window table waved at him. It was Priya, from his math class. "You can sit here."</p>
+<p>Marcus hesitated. The table sounded like a thunderstorm.</p>
+<p>He sat down anyway, at the far end, near Priya. He opened his book.</p>
+<p>"What are you reading?" Priya asked.</p>
+<p>"A book about deep-sea creatures." He turned it so she could see the cover — a picture of an anglerfish with its glowing light dangling in front of its enormous teeth.</p>
+<p>Priya's eyes went wide. "Is that real?"</p>
+<p>"Yeah. They live where no light reaches. They make their own."</p>
+<p>"That's incredible." Priya called down the table. "Hey, Marcus knows about deep-sea fish!" And just like that, the thunderstorm turned toward him.</p>
+<p>For the next twenty minutes, Marcus answered questions about gulper eels and bioluminescence and the pressure at the bottom of the ocean. He forgot about his sandwich. He forgot about his book. He forgot about the noise.</p>
+<p>Walking back to class, Priya said, "You should sit with us more."</p>
+<p>Marcus thought about it. Maybe loud was not so bad, he decided, when you were the one doing the talking.</p>`,
+    questions: [
+      {
+        stem: "What can the reader infer about Marcus at the beginning of the passage?",
+        choices: [
+          "Marcus has no friends at school.",
+          "Marcus prefers to be by himself and finds noisy situations uncomfortable.",
+          "Marcus is not allowed to sit at the window table.",
+          "Marcus does not enjoy eating lunch at school."
+        ],
+        correct: 1,
+        explanation: "Marcus deliberately chooses the quiet corner table and describes the window table as sounding like a thunderstorm — showing he prefers solitude and finds noise uncomfortable."
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "Which of these inferences about Marcus is supported by the passage?",
+          choices: [
+            "Marcus wishes he were more like the loud kids at the window table.",
+            "Marcus is passionate about a topic and enjoys sharing what he knows.",
+            "Marcus is too shy to ever talk to other students.",
+            "Marcus regrets sitting at the window table."
+          ],
+          correct: 1,
+          explanation: "Marcus forgets his sandwich and his book while answering questions about deep-sea creatures for twenty minutes — showing he is enthusiastic and knowledgeable about the topic."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "Marcus hesitated before sitting at the window table.",
+            "Priya waved at Marcus and invited him to sit down.",
+            "For the next twenty minutes, Marcus answered questions about gulper eels and bioluminescence and the pressure at the bottom of the ocean.",
+            "Marcus opened his book after sitting down at the far end of the table."
+          ],
+          correct: 2,
+          explanation: "Marcus spending twenty minutes enthusiastically answering questions about deep-sea creatures shows his passion and knowledge on the topic."
+        }
+      },
+      {
+        stem: "What does Marcus most likely mean when he thinks that loud was not so bad 'when you were the one doing the talking'?",
+        choices: [
+          "Marcus decided he wanted to become a louder person in general.",
+          "Marcus realized that being part of a conversation he cared about made noise feel different.",
+          "Marcus was glad that the other students were finally quiet enough for him to speak.",
+          "Marcus thought that talking was always better than listening."
+        ],
+        correct: 1,
+        explanation: "Marcus was uncomfortable with noise when it had nothing to do with him, but when he was engaged in a conversation about something he loved, the noise stopped bothering him — showing context changes his experience of loudness."
+      }
+    ]
+  },
+  {
+    tag: "Passage 6 · Literary",
+    title: "Grandma's Garden in January",
+    author: "An original story",
+    text: `<p>In January, Grandma's garden looked dead.</p>
+<p>The rosebushes were bare sticks. The flower beds were patches of frozen mud. The big oak tree had dropped every one of its leaves. When Lily walked through the garden with her grandmother, she could not imagine that anything would ever grow there again.</p>
+<p>"It looks like nothing is alive," Lily said.</p>
+<p>Grandma pressed the toe of her boot into the dark soil. "It only looks that way," she said. "The roses are resting. The bulbs are sleeping underground, waiting. The oak is saving its energy." She paused. "This garden is doing a lot of work right now. You just cannot see it yet."</p>
+<p>Lily was not convinced. She pulled her coat tighter.</p>
+<p>In March, Grandma called her outside. Lily expected more mud. Instead, she saw hundreds of tiny green shoots pushing up through the soil — crocuses and daffodils reaching for the pale sunlight. The rosebushes had sprouted small red buds. The oak tree had a faint green haze around its branches.</p>
+<p>"You see?" Grandma said. She did not sound proud. She sounded certain. Like she had always known.</p>
+<p>That summer, Lily started her own small garden in the corner of the yard. She planted seeds and watered them and waited. Some days nothing seemed to be happening at all.</p>
+<p>On those days, she remembered January. She thought about resting, and sleeping, and saving energy. And she kept going.</p>`,
+    questions: [
+      {
+        stem: "What can the reader infer about Grandma from the detail that she 'did not sound proud. She sounded certain. Like she had always known'?",
+        choices: [
+          "Grandma was surprised that the garden had come back to life.",
+          "Grandma had many years of experience with gardens and trusted what she knew.",
+          "Grandma was trying to teach Lily a lesson about being patient.",
+          "Grandma wanted to show Lily that she was a better gardener."
+        ],
+        correct: 1,
+        explanation: "Sounding certain rather than proud suggests Grandma was not surprised — she knew from experience that the garden would come back, which reflects years of knowledge."
+      },
+      {
+        stem: "Which detail from the passage best supports the inference that Lily changed because of what she learned from Grandma?",
+        choices: [
+          "Lily pulled her coat tighter when she walked through the January garden.",
+          "Lily was not convinced when Grandma said the garden was doing work underground.",
+          "That summer, Lily started her own small garden and kept going even when nothing seemed to happen.",
+          "Lily walked through the garden with her grandmother in January."
+        ],
+        correct: 2,
+        explanation: "Lily starting her own garden and persisting through slow progress — remembering Grandma's January lesson — shows she was changed by what she learned."
+      },
+      {
+        parts: true,
+        partA: {
+          stem: "Which sentence best describes the theme of this passage?",
+          choices: [
+            "Gardening is harder than it looks.",
+            "Things that look like they have stopped growing are often still making progress.",
+            "Grandmothers always know more than their grandchildren.",
+            "Winter is the most difficult season for plants to survive."
+          ],
+          correct: 1,
+          explanation: "Both the garden and Lily's own experience show that stillness and apparent inactivity can actually be a form of progress — this is the central theme of the story."
+        },
+        partB: {
+          stem: "Which detail from the passage best supports your answer in Part A?",
+          choices: [
+            "The rosebushes were bare sticks and the flower beds were patches of frozen mud.",
+            "Grandma pressed the toe of her boot into the dark soil.",
+            "'The roses are resting. The bulbs are sleeping underground, waiting. This garden is doing a lot of work right now. You just cannot see it yet.'",
+            "The oak tree had dropped every one of its leaves."
+          ],
+          correct: 2,
+          explanation: "Grandma's words directly state that hidden, invisible work is happening — which is exactly what the theme is about."
+        }
+      }
+    ]
+  }
+];
+
+
+
+// ── STATE ────────────────────────────────────────────────────────
+let totalCorrect = 0;
+let totalAnswered = 0;
+const totalQuestions = passages.reduce(function(sum, p) {
+  return sum + p.questions.reduce(function(qs, q) { return qs + (q.parts ? 2 : 1); }, 0);
+}, 0);
+const answered = {};
+const explanationStore = {};
+let studentName = '';
+let startTime = null;
+
+// ── FONT SIZE ────────────────────────────────────────────────────
+const fontSizes = { small: '0.82rem', medium: '0.95rem', large: '1.12rem' };
+let currentFont = 'medium';
+
+function setFont(size) {
+  currentFont = size;
+  document.querySelectorAll('.passage-box').forEach(function(el) {
+    el.style.fontSize = fontSizes[size];
+  });
+  ['small','medium','large'].forEach(function(s) {
+    var btn = document.getElementById('font-' + s);
+    if (btn) btn.classList.toggle('active-font', s === size);
+  });
+  try { localStorage.setItem('sbac_font', size); } catch(e) {}
+}
+
+// ── COVER / NAME ─────────────────────────────────────────────────
+function showNameScreen() {
+  document.getElementById('coverPage').classList.add('hidden');
+  document.getElementById('nameScreen').classList.remove('hidden');
+  setTimeout(function() { document.getElementById('nameInput').focus(); }, 100);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var inp = document.getElementById('nameInput');
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') startReview(); });
+  // Restore font preference
+  try {
+    var saved = localStorage.getItem('sbac_font');
+    if (saved && fontSizes[saved]) setFont(saved);
+  } catch(e) {}
+});
+
+function startReview() {
+  var val = document.getElementById('nameInput').value.trim();
+  if (!val) {
+    document.getElementById('nameError').textContent = 'Please enter your name to continue.';
+    return;
+  }
+  studentName = val;
+  // Check for ANY saved progress on this device regardless of name
+  var saved = loadAnyProgress();
+  if (saved) {
+    showResumePopup(saved);
+    return;
+  }
+  launchReview(false);
+}
+
+function launchReview(restoring) {
+  if (!restoring) startTime = new Date();
+  document.getElementById('nameScreen').classList.add('hidden');
+  document.getElementById('resumePopup').classList.add('hidden');
+  document.getElementById('appShell').style.display = 'block';
+  buildNav();
+  buildPassages();
+  if (restoring) {
+    var saved = loadAnyProgress();
+    if (saved) {
+      if (saved.startTime) startTime = new Date(saved.startTime);
+      // Override student name with the saved name so results are correct
+      studentName = saved.name || studentName;
+      restoreProgress(saved);
+      showResumeToast();
+    }
+  }
+}
+
+function showResumePopup(saved) {
+  var popup = document.getElementById('resumePopup');
+  var msg = document.getElementById('resumePopupMsg');
+  if (msg) msg.textContent = 'There is a saved session for "' + (saved.name || 'a student') + '" with ' + (Object.keys(saved.answered || {}).length) + ' questions answered. Would you like to continue that session?';
+  if (popup) popup.classList.remove('hidden');
+}
+
+function resumeYes() {
+  launchReview(true);
+}
+
+function resumeNo() {
+  clearProgress();
+  document.getElementById('resumePopup').classList.add('hidden');
+  launchReview(false);
+}
+
+// ── PROGRESS SAVE/RESTORE ────────────────────────────────────────
+function saveProgress() {
+  try {
+    var data = {
+      name: studentName,
+      answered: answered,
+      totalCorrect: totalCorrect,
+      totalAnswered: totalAnswered,
+      startTime: startTime ? startTime.toISOString() : null
+    };
+    localStorage.setItem('sbac_progress_' + getSetId(), JSON.stringify(data));
+  } catch(e) {}
+}
+
+function loadAnyProgress() {
+  try {
+    var raw = localStorage.getItem('sbac_progress_' + getSetId());
+    if (!raw) return null;
+    var data = JSON.parse(raw);
+    // Return progress if it has any answered questions regardless of name
+    if (data && data.answered && Object.keys(data.answered).length > 0) return data;
+  } catch(e) {}
+  return null;
+}
+
+function loadProgress() {
+  return loadAnyProgress();
+}
+
+function clearProgress() {
+  try { localStorage.removeItem('sbac_progress_' + getSetId()); } catch(e) {}
+}
+
+function getSetId() {
+  return window.location.pathname + '_' + passages.length;
+}
+
+function restoreProgress(data) {
+  totalCorrect = data.totalCorrect || 0;
+  totalAnswered = data.totalAnswered || 0;
+  if (data.startTime) startTime = new Date(data.startTime);
+
+  Object.keys(data.answered || {}).forEach(function(key) {
+    var parts = key.split('-');
+    var pIdx = parseInt(parts[0]);
+    var qIdx = parseInt(parts[1]);
+    var part = parts[2];
+    var ans = data.answered[key];
+    answered[key] = ans;
+
+    // Disable buttons and show correct/wrong
+    for (var i = 0; i < 4; i++) {
+      var btn = document.getElementById('cb-' + pIdx + '-' + qIdx + '-' + part + '-' + i);
+      if (!btn) continue;
+      btn.disabled = true;
+      if (i === ans.correct) btn.classList.add('correct');
+      else if (i === ans.chosen && ans.chosen !== ans.correct) btn.classList.add('wrong');
+    }
+    // Show feedback
+    var fb = document.getElementById('fb-' + pIdx + '-' + qIdx + '-' + part);
+    if (fb) {
+      var exp = explanationStore[key] || '';
+      var isRight = ans.chosen === ans.correct;
+      fb.textContent = (isRight ? '\u2705 Correct! ' : '\u274C Not quite. ') + exp;
+      fb.className = 'feedback show ' + (isRight ? 'correct' : 'wrong');
+    }
+  });
+  updateScore();
+  updateAllProgressBars();
+}
+
+function showResumeToast() {
+  var toast = document.getElementById('resumeToast');
+  if (!toast) return;
+  toast.style.display = 'block';
+  setTimeout(function() { toast.style.display = 'none'; }, 3500);
+}
+
+// ── TTS ──────────────────────────────────────────────────────────
+var ttsActive = false;
+
+function setTtsStatus(msg) {
+  var el = document.getElementById('ttsStatus');
+  if (el) el.textContent = msg;
+}
+
+function stopReading() {
+  try { window.speechSynthesis.cancel(); } catch(e) {}
+  ttsActive = false;
+  clearHighlight();
+  setTtsStatus('');
+}
+
+function clearHighlight() {
+  document.querySelectorAll('.tts-word.speaking').forEach(function(el) {
+    el.classList.remove('speaking');
+  });
+}
+
+function wrapAndIndex(container) {
+  if (container.dataset.ttsWrapped) {
+    var spans = Array.from(container.querySelectorAll('.tts-word'));
+    var fullText = getPlainText(container);
+    var index = [];
+    var pos = 0;
+    spans.forEach(function(span) {
+      var word = span.textContent.trim();
+      if (!word) return;
+      var found = fullText.indexOf(word, pos);
+      if (found >= 0) {
+        index.push({ span: span, start: found, end: found + word.length });
+        pos = found + word.length;
+      }
+    });
+    return { fullText: fullText, index: index };
+  }
+  container.dataset.ttsWrapped = '1';
+  var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+  var textNodes = [];
+  var node;
+  while ((node = walker.nextNode())) textNodes.push(node);
+  textNodes.forEach(function(tn) {
+    if (!tn.nodeValue.trim()) return;
+    var frag = document.createDocumentFragment();
+    tn.nodeValue.split(/(\s+)/).forEach(function(token) {
+      if (/^\s+$/.test(token) || token === '') {
+        frag.appendChild(document.createTextNode(token));
+      } else {
+        var span = document.createElement('span');
+        span.className = 'tts-word';
+        span.textContent = token;
+        frag.appendChild(span);
+      }
+    });
+    tn.parentNode.replaceChild(frag, tn);
+  });
+  var spans = Array.from(container.querySelectorAll('.tts-word'));
+  var fullText = getPlainText(container);
+  var index = [];
+  var searchPos = 0;
+  spans.forEach(function(span) {
+    var word = span.textContent.trim();
+    if (!word) return;
+    var found = fullText.indexOf(word, searchPos);
+    if (found >= 0) {
+      index.push({ span: span, start: found, end: found + word.length });
+      searchPos = found + word.length;
+    }
+  });
+  return { fullText: fullText, index: index };
+}
+
+function speakWithHighlight(textToSpeak, containerEl, onDone) {
+  try { window.speechSynthesis.cancel(); } catch(e) {}
+  clearHighlight();
+  ttsActive = true;
+  var spanIndex = [];
+  if (containerEl) {
+    try { spanIndex = wrapAndIndex(containerEl).index; } catch(e) {}
+  }
+  var utt = new SpeechSynthesisUtterance(textToSpeak);
+  utt.rate = 0.88;
+  var lastHighlighted = null;
+  utt.onboundary = function(event) {
+    if (!ttsActive || event.name !== 'word' || !spanIndex.length) return;
+    if (lastHighlighted) lastHighlighted.classList.remove('speaking');
+    var charIdx = event.charIndex;
+    var lo = 0, hi = spanIndex.length - 1, best = 0;
+    while (lo <= hi) {
+      var mid = Math.floor((lo + hi) / 2);
+      if (spanIndex[mid].start <= charIdx) { best = mid; lo = mid + 1; } else { hi = mid - 1; }
+    }
+    if (spanIndex[best]) {
+      spanIndex[best].span.classList.add('speaking');
+      try { spanIndex[best].span.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch(e) {}
+      lastHighlighted = spanIndex[best].span;
+    }
+  };
+  utt.onend = function() { clearHighlight(); ttsActive = false; setTtsStatus(''); if (onDone) onDone(); };
+  utt.onerror = function() { clearHighlight(); ttsActive = false; if (onDone) onDone(); };
+  try { window.speechSynthesis.speak(utt); } catch(e) { if (onDone) onDone(); }
+}
+
+var explanationSpeaking = false;
+
+function speakText(text, onDone) {
+  try {
+    window.speechSynthesis.cancel();
+    clearHighlight();
+    var utt = new SpeechSynthesisUtterance(text);
+    utt.rate = 0.92;
+    utt.onend = function() {
+      explanationSpeaking = false;
+      unlockAllChoices();
+      if (onDone) onDone();
+    };
+    utt.onerror = function() {
+      explanationSpeaking = false;
+      unlockAllChoices();
+      if (onDone) onDone();
+    };
+    window.speechSynthesis.speak(utt);
+  } catch(e) {
+    explanationSpeaking = false;
+    unlockAllChoices();
+  }
+}
+
+function lockAllChoices() {
+  document.querySelectorAll('.choice-btn:not(:disabled)').forEach(function(btn) {
+    btn.dataset.locked = '1';
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.5';
+  });
+  document.querySelectorAll('.q-read-btn, .next-story-btn, .finish-btn-ready').forEach(function(btn) {
+    btn.dataset.locked = '1';
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.5';
+  });
+}
+
+function unlockAllChoices() {
+  document.querySelectorAll('.choice-btn[data-locked], .q-read-btn[data-locked], .next-story-btn[data-locked], .finish-btn-ready[data-locked]').forEach(function(btn) {
+    delete btn.dataset.locked;
+    btn.style.pointerEvents = '';
+    btn.style.opacity = '';
+  });
+}
+
+function getPlainText(el) {
+  var text = el.innerText || el.textContent;
+  // Strip emoji and non-text symbols so TTS doesn't read icon names
+  text = text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{2B00}-\u{2BFF}\u{FE00}-\u{FEFF}]/gu, '');
+  // Also strip any leftover button labels that come from icon spans
+  text = text.replace(/\s+/g, ' ').trim();
+  return text;
+}
+
+function getActivePassageIdx() {
+  var panels = document.querySelectorAll('.passage-panel');
+  for (var i = 0; i < panels.length; i++) { if (panels[i].classList.contains('active')) return i; }
+  return 0;
+}
+
+function readPassage(pIdx) {
+  var pbox = document.getElementById('pbox-' + pIdx);
+  if (!pbox) return;
+  setTtsStatus('Reading passage...');
+  speakWithHighlight(getPlainText(pbox), pbox);
+}
+
+function readQuestionCard(cardEl) {
+  if (!cardEl) return;
+  if (explanationSpeaking) return;
+  stopReading();
+  setTtsStatus('Reading question...');
+  speakWithHighlight(getPlainText(cardEl), cardEl);
+}
+
+function readPartCard(elId) {
+  if (explanationSpeaking) return;
+  var el = document.getElementById(elId);
+  if (!el) return;
+  stopReading();
+  setTtsStatus('Reading question...');
+  speakWithHighlight(getPlainText(el), el);
+}
+
+function readQuestions() {
+  var idx = getActivePassageIdx();
+  var cards = Array.from(document.querySelectorAll('#panel' + idx + ' .question-card'));
+  if (!cards.length) return;
+  stopReading(); ttsActive = true;
+  setTtsStatus('Reading questions...');
+  var i = 0;
+  function next() {
+    if (!ttsActive || i >= cards.length) { setTtsStatus(''); ttsActive = false; return; }
+    speakWithHighlight(getPlainText(cards[i]), cards[i], function() { i++; next(); });
+  }
+  next();
+}
+
+function readAll() {
+  var idx = getActivePassageIdx();
+  var pbox = document.getElementById('pbox-' + idx);
+  var cards = Array.from(document.querySelectorAll('#panel' + idx + ' .question-card'));
+  stopReading(); ttsActive = true;
+  setTtsStatus('Reading all...');
+  speakWithHighlight(pbox ? getPlainText(pbox) : '', pbox, function() {
+    var i = 0;
+    function next() {
+      if (!ttsActive || i >= cards.length) { setTtsStatus(''); ttsActive = false; return; }
+      speakWithHighlight(getPlainText(cards[i]), cards[i], function() { i++; next(); });
+    }
+    next();
+  });
+}
+
+// ── NAV ──────────────────────────────────────────────────────────
+function buildNav() {
+  var nav = document.getElementById('passageNav');
+  passages.forEach(function(p, i) {
+    var btn = document.createElement('button');
+    var short = p.title.replace('from ', '').replace(/^"/, '').split(' ').slice(0, 4).join(' ');
+    btn.innerHTML = 'P' + (i + 1) + ': ' + short + '... <span class="nav-prog" id="navprog-' + i + '">0%</span>';
+    btn.id = 'navBtn' + i;
+    btn.onclick = (function(idx) { return function() { stopReading(); showPassage(idx); }; })(i);
+    if (i === 0) btn.classList.add('active');
+    nav.appendChild(btn);
+  });
+}
+
+function showPassage(idx) {
+  document.querySelectorAll('.passage-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.passage-nav button').forEach(function(b) { b.classList.remove('active'); });
+  var panel = document.getElementById('panel' + idx);
+  if (panel) { panel.classList.add('active'); panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  var nb = document.getElementById('navBtn' + idx);
+  if (nb) nb.classList.add('active');
+  document.getElementById('finalResults').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── BUILD UI ─────────────────────────────────────────────────────
+function buildPassages() {
+  var container = document.getElementById('passagePanels');
+  passages.forEach(function(p, pIdx) {
+    var panel = document.createElement('div');
+    panel.className = 'passage-panel' + (pIdx === 0 ? ' active' : '');
+    panel.id = 'panel' + pIdx;
+
+    // Count questions for this passage
+    var passTotal = p.questions.reduce(function(s, q) { return s + (q.parts ? 2 : 1); }, 0);
+
+    var qNum = 0;
+    var qHTML = p.questions.map(function(q, qIdx) {
+      if (q.parts) {
+        var aHTML = buildChoices(pIdx, qIdx, 'a', q.partA);
+        var bHTML = buildChoices(pIdx, qIdx, 'b', q.partB);
+        qNum++;
+        var n = qNum;
+        return '<div class="question-card" id="qcard-' + pIdx + '-' + qIdx + '">' +
+          '<div class="q-header"><div class="q-num">' + n + '</div>' +
+          '<div class="q-stem">This question has two parts. First answer Part A, then answer Part B.</div>' +
+          '</div>' +
+          '<div class="part-row"><div class="part-label">Part A</div>' +
+          '<button class="q-read-btn" onclick="readPartCard(\'partA-' + pIdx + '-' + qIdx + '\')" title="Read Part A"><span aria-hidden="true">&#x1F50A;</span></button></div>' +
+          '<p class="part-stem" id="partA-' + pIdx + '-' + qIdx + '">' + q.partA.stem + '</p>' +
+          '<ul class="choices">' + aHTML + '</ul>' +
+          '<div class="feedback" id="fb-' + pIdx + '-' + qIdx + '-a"></div>' +
+          '<div class="part-row" style="margin-top:12px;"><div class="part-label">Part B</div>' +
+          '<button class="q-read-btn" onclick="readPartCard(\'partB-' + pIdx + '-' + qIdx + '\')" title="Read Part B"><span aria-hidden="true">&#x1F50A;</span></button></div>' +
+          '<p class="part-stem" id="partB-' + pIdx + '-' + qIdx + '">' + q.partB.stem + '</p>' +
+          '<ul class="choices">' + bHTML + '</ul>' +
+          '<div class="feedback" id="fb-' + pIdx + '-' + qIdx + '-b"></div></div>';
+      } else {
+        qNum++;
+        var n = qNum;
+        var cHTML = buildChoices(pIdx, qIdx, '', q);
+        return '<div class="question-card" id="qcard-' + pIdx + '-' + qIdx + '">' +
+          '<div class="q-header"><div class="q-num">' + n + '</div>' +
+          '<div class="q-stem">' + q.stem + '</div>' +
+          '<button class="q-read-btn" onclick="readQuestionCard(document.getElementById(\'qcard-' + pIdx + '-' + qIdx + '\'))" title="Read this question aloud"><span aria-hidden="true">&#x1F50A;</span></button></div>' +
+          '<ul class="choices">' + cHTML + '</ul>' +
+          '<div class="feedback" id="fb-' + pIdx + '-' + qIdx + '-"></div></div>';
+      }
+    }).join('');
+
+    // Progress bar for this passage
+    var progBar = '<div class="pass-prog-wrap">' +
+      '<span class="pass-prog-label" id="pplabel-' + pIdx + '">0 of ' + passTotal + ' answered</span>' +
+      '<div class="pass-prog-bar"><div class="pass-prog-fill" id="ppfill-' + pIdx + '" style="width:0%"></div></div>' +
+      '</div>';
+
+    // Next / Finish button
+    var navBtn = pIdx < passages.length - 1 ?
+      '<button class="next-story-btn" onclick="showPassage(' + (pIdx + 1) + ')">Next Story &#x2192;</button>' :
+      '<button class="finish-btn" id="finishBtn" onclick="tryFinish()">&#x2705; Finish &amp; See My Results</button>';
+
+    panel.innerHTML =
+      '<div class="passage-header">' +
+        '<div class="passage-tag">' + p.tag + '</div>' +
+        '<div class="passage-title">' + p.title + '</div>' +
+        '<div class="passage-author">' + p.author + '</div>' +
+      '</div>' +
+      '<div class="layout">' +
+        '<div class="passage-col">' +
+          '<button class="passage-read-btn" onclick="readPassage(' + pIdx + ')">&#x1F50A; Read Passage Aloud</button>' +
+          '<div class="passage-box" id="pbox-' + pIdx + '">' + p.text + '</div>' +
+        '</div>' +
+        '<div class="questions-box">' + progBar + qHTML + navBtn + '</div>' +
+      '</div>';
+    container.appendChild(panel);
+  });
+}
+
+function buildChoices(pIdx, qIdx, part, qObj) {
+  var letters = ['A', 'B', 'C', 'D'];
+  var expKey = pIdx + '-' + qIdx + '-' + part;
+  explanationStore[expKey] = qObj.explanation;
+  return qObj.choices.map(function(c, cIdx) {
+    return '<li><button class="choice-btn"' +
+      ' onclick="answer(' + pIdx + ',' + qIdx + ',\'' + part + '\',' + cIdx + ',' + qObj.correct + ')"' +
+      ' id="cb-' + pIdx + '-' + qIdx + '-' + part + '-' + cIdx + '">' +
+      '<span class="letter">' + letters[cIdx] + '.</span><span>' + c + '</span></button></li>';
+  }).join('');
+}
+
+// ── PROGRESS BARS ────────────────────────────────────────────────
+function getPassageAnsweredCount(pIdx) {
+  var p = passages[pIdx];
+  var count = 0;
+  p.questions.forEach(function(q, qIdx) {
+    if (q.parts) {
+      if (answered[pIdx + '-' + qIdx + '-a']) count++;
+      if (answered[pIdx + '-' + qIdx + '-b']) count++;
+    } else {
+      if (answered[pIdx + '-' + qIdx + '-']) count++;
+    }
+  });
+  return count;
+}
+
+function getPassageTotalCount(pIdx) {
+  return passages[pIdx].questions.reduce(function(s, q) { return s + (q.parts ? 2 : 1); }, 0);
+}
+
+function updatePassageProgressBar(pIdx) {
+  var done = getPassageAnsweredCount(pIdx);
+  var total = getPassageTotalCount(pIdx);
+  var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  var fill = document.getElementById('ppfill-' + pIdx);
+  var label = document.getElementById('pplabel-' + pIdx);
+  if (fill) fill.style.width = pct + '%';
+  if (label) label.textContent = done + ' of ' + total + ' answered';
+  // Update nav tab
+  var navProg = document.getElementById('navprog-' + pIdx);
+  if (navProg) navProg.textContent = pct === 100 ? '✓' : pct + '%';
+}
+
+function updateAllProgressBars() {
+  passages.forEach(function(p, i) { updatePassageProgressBar(i); });
+}
+
+// ── ANSWER ───────────────────────────────────────────────────────
+function answer(pIdx, qIdx, part, chosen, correct) {
+  var key = pIdx + '-' + qIdx + '-' + part;
+  if (answered[key]) return;
+  var explanation = explanationStore[key] || '';
+  answered[key] = { chosen: chosen, correct: correct };
+  totalAnswered++;
+  var isCorrect = (chosen === correct);
+  if (isCorrect) totalCorrect++;
+
+  for (var i = 0; i < 4; i++) {
+    var btn = document.getElementById('cb-' + pIdx + '-' + qIdx + '-' + part + '-' + i);
+    if (!btn) continue;
+    btn.disabled = true;
+    if (i === correct) btn.classList.add('correct');
+    else if (i === chosen && !isCorrect) btn.classList.add('wrong');
+  }
+  var fb = document.getElementById('fb-' + pIdx + '-' + qIdx + '-' + part);
+  if (fb) {
+    fb.textContent = (isCorrect ? '\u2705 Correct! ' : '\u274C Not quite. ') + explanation;
+    fb.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+  }
+  explanationSpeaking = true;
+  lockAllChoices();
+  speakText(isCorrect ? 'Correct!' : 'Not quite. ' + explanation, function() {
+    updatePassageProgressBar(pIdx);
+    saveProgress();
+    // Re-check finish button after explanation
+    var fb3 = document.getElementById('finishBtn');
+    if (fb3) {
+      var allDone = Object.keys(answered).length >= totalQuestions;
+      fb3.disabled = !allDone;
+      fb3.classList.toggle('finish-btn-ready', allDone);
+    }
+  });
+  updateScore();
+  updatePassageProgressBar(pIdx);
+  saveProgress();
+
+  // Enable/disable finish button
+  var fb2 = document.getElementById('finishBtn');
+  if (fb2) {
+    var allDone = Object.keys(answered).length >= totalQuestions;
+    fb2.disabled = !allDone;
+    fb2.classList.toggle('finish-btn-ready', allDone);
+  }
+}
+
+function tryFinish() {
+  var total = totalQuestions;
+  var done = Object.keys(answered).length;
+  if (done < total) {
+    var remaining = total - done;
+    showFinishWarning(remaining);
+    return;
+  }
+  checkFinished();
+}
+
+function showFinishWarning(remaining) {
+  var w = document.getElementById('finishWarning');
+  if (w) {
+    w.textContent = 'You still have ' + remaining + ' question' + (remaining > 1 ? 's' : '') + ' unanswered. Please go back and answer them all before finishing.';
+    w.style.display = 'block';
+    setTimeout(function() { w.style.display = 'none'; }, 4000);
+  }
+}
+
+function updateScore() {
+  var done = Object.keys(answered).length;
+  document.getElementById('scoreBadge').textContent = done + ' of ' + totalQuestions + ' answered';
+  var pct = totalQuestions > 0 ? (done / totalQuestions) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ── GOOGLE FORM ───────────────────────────────────────────────────
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzptFLB9npqdEJOjCHLbpYRxUczX5eQt9jCpGWSW1XxR3ukMcuXhbMJKE1QvHv0As9Z/exec';
+
+function submitToGoogleSheets(name, score, pct, timeStr, timestamp, questionResults) {
+  try {
+    var row = [name, 'Set 2', score, pct + '%', timeStr, timestamp].concat(questionResults);
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ row: row })
+    }).catch(function() {});
+  } catch(e) {}
+}
+
+
+function buildDetailsString(timestamp) {
+  var letters = ['A', 'B', 'C', 'D'];
+  var lines = ['Completed: ' + timestamp, 'Score: ' + totalCorrect + '/' + totalQuestions];
+  passages.forEach(function(p, pIdx) {
+    var qNum = 0;
+    lines.push('--- ' + p.title + ' ---');
+    p.questions.forEach(function(q, qIdx) {
+      qNum++;
+      if (q.parts) {
+        ['a', 'b'].forEach(function(part) {
+          var qObj = part === 'a' ? q.partA : q.partB;
+          var key = pIdx + '-' + qIdx + '-' + part;
+          var ans = answered[key];
+          lines.push('Q' + qNum + ' Pt' + part.toUpperCase() + ': got=' + (ans ? letters[ans.chosen] : '?') + ' correct=' + letters[qObj.correct] + ' ' + (ans && ans.chosen === qObj.correct ? 'RIGHT' : 'WRONG'));
+        });
+      } else {
+        var key = pIdx + '-' + qIdx + '-';
+        var ans = answered[key];
+        lines.push('Q' + qNum + ': got=' + (ans ? letters[ans.chosen] : '?') + ' correct=' + letters[q.correct] + ' ' + (ans && ans.chosen === q.correct ? 'RIGHT' : 'WRONG'));
+      }
+    });
+  });
+  return lines.join('\n');
+}
+
+// ── CHECK FINISHED ───────────────────────────────────────────────
+
+
+// ── RESULTS TABLE ────────────────────────────────────────────────
+function buildResultsTable(pct, timestamp, timeStr) {
+  var letters = ['A', 'B', 'C', 'D'];
+  var container = document.getElementById('resultsTableContainer');
+  if (!container) return;
+
+  var html = '';
+
+  // Summary card
+  html += '<div class="res-summary">' +
+    '<div class="res-sum-item"><div class="res-sum-val">' + totalCorrect + '/' + totalQuestions + '</div><div class="res-sum-key">Score</div></div>' +
+    '<div class="res-sum-item"><div class="res-sum-val">' + pct + '%</div><div class="res-sum-key">Percent</div></div>' +
+    '<div class="res-sum-item"><div class="res-sum-val">' + timeStr + '</div><div class="res-sum-key">Time Taken</div></div>' +
+    '</div>';
+
+  // Per-passage breakdown
+  passages.forEach(function(p, pIdx) {
+    var passCorrect = 0;
+    var passTotal = 0;
+    var rows = '';
+    var qNum = 0;
+
+    p.questions.forEach(function(q, qIdx) {
+      if (q.parts) {
+        ['a', 'b'].forEach(function(part) {
+          qNum++;
+          var qObj = part === 'a' ? q.partA : q.partB;
+          var key = pIdx + '-' + qIdx + '-' + part;
+          var ans = answered[key];
+          var chosen = ans ? letters[ans.chosen] : '?';
+          var isRight = ans && ans.chosen === qObj.correct;
+          passTotal++;
+          if (isRight) passCorrect++;
+          var qLabel = 'Q' + qNum + ' Part ' + part.toUpperCase();
+          var qType = getQuestionType(qObj.stem);
+          rows += '<tr class="' + (isRight ? 'row-right' : 'row-wrong') + '">' +
+            '<td>' + qLabel + '</td>' +
+            '<td class="q-type-cell">' + qType + '</td>' +
+            '<td class="ans-cell ' + (isRight ? 'ans-right' : 'ans-wrong') + '">' + chosen + '</td>' +
+            '<td>' + letters[qObj.correct] + '</td>' +
+            '<td>' + (isRight ? '\u2705' : '\u274C') + '</td>' +
+            '</tr>';
+        });
+      } else {
+        qNum++;
+        var key = pIdx + '-' + qIdx + '-';
+        var ans = answered[key];
+        var chosen = ans ? letters[ans.chosen] : '?';
+        var isRight = ans && ans.chosen === q.correct;
+        passTotal++;
+        if (isRight) passCorrect++;
+        var qType = getQuestionType(q.stem);
+        rows += '<tr class="' + (isRight ? 'row-right' : 'row-wrong') + '">' +
+          '<td>Q' + qNum + '</td>' +
+          '<td class="q-type-cell">' + qType + '</td>' +
+          '<td class="ans-cell ' + (isRight ? 'ans-right' : 'ans-wrong') + '">' + chosen + '</td>' +
+          '<td>' + letters[q.correct] + '</td>' +
+          '<td>' + (isRight ? '\u2705' : '\u274C') + '</td>' +
+          '</tr>';
+      }
+    });
+
+    var passPct = Math.round((passCorrect / passTotal) * 100);
+    var passColor = passPct >= 80 ? '#16a34a' : passPct >= 60 ? '#ca8a04' : '#dc2626';
+
+    html += '<div class="res-passage-block">' +
+      '<div class="res-pass-header">' +
+        '<div class="res-pass-title">P' + (pIdx+1) + ': ' + p.title + '</div>' +
+        '<div class="res-pass-score" style="color:' + passColor + '">' + passCorrect + '/' + passTotal + ' (' + passPct + '%)</div>' +
+      '</div>' +
+      '<table class="res-table">' +
+        '<thead><tr><th>Question</th><th>Type</th><th>Your Answer</th><th>Correct</th><th>Result</th></tr></thead>' +
+        '<tbody>' + rows + '</tbody>' +
+      '</table></div>';
+  });
+
+  // Skills breakdown
+  var skillMap = {};
+  passages.forEach(function(p, pIdx) {
+    p.questions.forEach(function(q, qIdx) {
+      function addSkill(stem, key, isRight) {
+        var type = getQuestionType(stem);
+        if (!skillMap[type]) skillMap[type] = { right: 0, total: 0 };
+        skillMap[type].total++;
+        if (isRight) skillMap[type].right++;
+      }
+      if (q.parts) {
+        ['a','b'].forEach(function(part) {
+          var qObj = part === 'a' ? q.partA : q.partB;
+          var ans = answered[pIdx + '-' + qIdx + '-' + part];
+          addSkill(qObj.stem, pIdx + '-' + qIdx + '-' + part, ans && ans.chosen === qObj.correct);
+        });
+      } else {
+        var ans = answered[pIdx + '-' + qIdx + '-'];
+        addSkill(q.stem, pIdx + '-' + qIdx + '-', ans && ans.chosen === q.correct);
+      }
+    });
+  });
+
+  html += '<div class="res-skills-block"><div class="res-pass-header"><div class="res-pass-title">\uD83C\uDFAF Skills Breakdown</div></div>';
+  Object.keys(skillMap).sort().forEach(function(skill) {
+    var s = skillMap[skill];
+    var p = Math.round((s.right / s.total) * 100);
+    var col = p >= 80 ? '#16a34a' : p >= 60 ? '#ca8a04' : '#dc2626';
+    html += '<div class="skill-row">' +
+      '<div class="skill-name">' + skill + '</div>' +
+      '<div class="skill-bar-wrap"><div class="skill-bar-fill" style="width:' + p + '%;background:' + col + '"></div></div>' +
+      '<div class="skill-pct" style="color:' + col + '">' + s.right + '/' + s.total + ' (' + p + '%)</div>' +
+      '</div>';
+  });
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+function getQuestionType(stem) {
+  if (!stem) return 'Inference';
+  var s = stem.toLowerCase();
+  if (s.includes('main idea') || s.includes('best tells') || s.includes('best describes the main')) return 'Main Idea';
+  if (s.includes('theme')) return 'Theme';
+  if (s.includes('point of view') || s.includes('author')) return "Author's Point of View";
+  if (s.includes('detail') && s.includes('support')) return 'Text Evidence';
+  if (s.includes('problem')) return 'Main Problem';
+  if (s.includes('infer') || s.includes('conclusion') || s.includes('can be made')) return 'Inference';
+  if (s.includes('paragraph')) return 'Paragraph Analysis';
+  if (s.includes('quotation marks') || s.includes('word') || s.includes('mean')) return 'Word Choice / Craft';
+  return 'Inference';
+}
+
+var SKILL_TYPES = ['Inference', 'Main Idea', 'Text Evidence', 'Theme', "Author's POV", 'Word Choice', 'Paragraph Analysis', 'Main Problem'];
+
+function buildQuestionResults() {
+  var skillMap = {};
+  SKILL_TYPES.forEach(function(t) { skillMap[t] = { right: 0, total: 0 }; });
+  passages.forEach(function(p, pIdx) {
+    p.questions.forEach(function(q, qIdx) {
+      if (q.parts) {
+        ['a','b'].forEach(function(part) {
+          var qObj = part === 'a' ? q.partA : q.partB;
+          var key = pIdx + '-' + qIdx + '-' + part;
+          var ans = answered[key];
+          var isRight = ans && ans.chosen === qObj.correct;
+          var t = getQuestionType(qObj.stem);
+          if (skillMap[t]) { skillMap[t].total++; if (isRight) skillMap[t].right++; }
+        });
+      } else {
+        var key = pIdx + '-' + qIdx + '-';
+        var ans = answered[key];
+        var isRight = ans && ans.chosen === q.correct;
+        var t = getQuestionType(q.stem);
+        if (skillMap[t]) { skillMap[t].total++; if (isRight) skillMap[t].right++; }
+      }
+    });
+  });
+  return SKILL_TYPES.map(function(t) {
+    var s = skillMap[t];
+    return s.total > 0 ? s.right + '/' + s.total + ' (' + Math.round((s.right/s.total)*100) + '%)' : 'N/A';
+  });
+}
+
+
+function restartAll() { clearProgress(); location.reload(); }
+
+// -- DASHBOARD --
+var DASH_KEY = 'sbac_dashboard_' + passages.length;
+
+function saveResultToDashboard(name, score, pct, timestamp, timeSpent) {
+  try {
+    var existing = JSON.parse(localStorage.getItem(DASH_KEY) || '[]');
+    existing.push({ name: name, score: score, pct: pct, timestamp: timestamp, timeSpent: timeSpent });
+    localStorage.setItem(DASH_KEY, JSON.stringify(existing));
+  } catch(e) {}
+}
+
+function checkFinished() {
+  var done = Object.keys(answered).length;
+  if (done < totalQuestions) return;
+  try { stopReading(); } catch(e) {}
+  clearProgress();
+  var endTime = new Date();
+  var elapsed = startTime ? Math.round((endTime - startTime) / 1000) : 0;
+  var mins = Math.floor(elapsed / 60);
+  var secs = elapsed % 60;
+  var timeStr = mins + 'm ' + secs + 's';
+  var timestamp = endTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+    ' at ' + endTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  var pct = Math.round((totalCorrect / totalQuestions) * 100);
+  saveResultToDashboard(studentName, totalCorrect + '/' + totalQuestions, pct, timestamp, timeStr);
+
+  setTimeout(function() {
+    document.querySelectorAll('.passage-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('finalResults').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('finalName').textContent = studentName;
+    document.getElementById('finalTime').textContent = timestamp + ' \u00B7 Time: ' + timeStr;
+    document.getElementById('finalScore').textContent = totalCorrect + ' / ' + totalQuestions;
+    document.getElementById('finalLabel').textContent = pct + '%';
+    var msg = pct >= 90 ? '\u2B50 Outstanding! You are an inference master!' :
+              pct >= 75 ? 'Great job! Strong inference skills!' :
+              pct >= 60 ? 'Good effort! Keep practicing!' :
+                          'Keep reviewing - you have got this!';
+    document.getElementById('finalMsg').textContent = msg;
+    buildResultsTable(pct, timestamp, timeStr);
+    try {
+      submitToGoogleSheets(studentName, totalCorrect + '/' + totalQuestions, pct, timeStr, timestamp, buildQuestionResults());
+      document.getElementById('submitStatus').textContent = 'Results sent to your teacher!';
+    } catch(e) { document.getElementById('submitStatus').textContent = 'Results ready!'; }
+    speakText('You finished! You got ' + totalCorrect + ' out of ' + totalQuestions + ' correct!');
+  }, 600);
+}
+
+function showDashboard() {
+  document.getElementById('finalResults').classList.remove('show');
+  document.getElementById('dashboardPanel').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderDashboard();
+}
+
+function hideDashboard() {
+  document.getElementById('dashboardPanel').classList.remove('show');
+  document.getElementById('finalResults').classList.add('show');
+}
+
+function renderDashboard() {
+  var content = document.getElementById('dashContent');
+  var data = [];
+  try { data = JSON.parse(localStorage.getItem(DASH_KEY) || '[]'); } catch(e) {}
+  if (!data.length) {
+    content.innerHTML = '<p class="dash-empty">No results yet. Students who finish will appear here.</p>';
+    return;
+  }
+  data.sort(function(a, b) { return b.pct - a.pct; });
+  var total = data.length;
+  var avg = Math.round(data.reduce(function(s,r){return s+r.pct;},0) / total);
+  var avgCol = avg >= 80 ? '#16a34a' : avg >= 60 ? '#ca8a04' : '#dc2626';
+  var html = '<div class="dash-summary-bar">' +
+    '<div class="dash-sum-item"><div class="dash-sum-val" style="color:' + avgCol + '">' + avg + '%</div><div class="dash-sum-key">Class Average</div></div>' +
+    '<div class="dash-sum-item"><div class="dash-sum-val">' + total + '</div><div class="dash-sum-key">Students Completed</div></div>' +
+    '</div>' +
+    '<table class="dash-table"><thead><tr><th>#</th><th>Student</th><th>Score</th><th>%</th><th>Time</th><th>Completed</th></tr></thead><tbody>';
+  data.forEach(function(r, i) {
+    var col = r.pct >= 80 ? '#16a34a' : r.pct >= 60 ? '#ca8a04' : '#dc2626';
+    html += '<tr><td>' + (i+1) + '</td><td><strong>' + r.name + '</strong></td>' +
+      '<td>' + r.score +
+        '<div class="dash-score-bar"><div class="dash-score-fill" style="width:' + r.pct + '%;background:' + col + '"></div></div>' +
+      '</td>' +
+      '<td style="color:' + col + ';font-weight:900">' + r.pct + '%</td>' +
+      '<td>' + (r.timeSpent || '--') + '</td>' +
+      '<td style="font-size:.78rem;color:var(--gray)">' + (r.timestamp || '--') + '</td></tr>';
+  });
+  html += '</tbody></table>';
+  content.innerHTML = html;
+}
+
+function restartAll() { clearProgress(); location.reload(); }
+
+</script>
+<script src="autopilot.js?v=1"></script>
+</body>
+</html>
