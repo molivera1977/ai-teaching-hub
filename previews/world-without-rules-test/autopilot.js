@@ -106,13 +106,24 @@
     };
   }
 
+  /* pick answers like a real student — mostly right, ~18% miss */
+  function chooseAnswer(q) {
+    const correct = Array.isArray(q.answer) ? q.answer : [q.answer];
+    if (Math.random() < 0.18) {
+      const wrong = [];
+      for (let i = 0; i < q.choices.length; i++) if (!correct.includes(i)) wrong.push(i);
+      if (wrong.length) return [wrong[Math.floor(Math.random() * wrong.length)]];
+    }
+    return correct;
+  }
+
   async function answerCurrent() {
     const q = app.currentBank[app.currentIndex];
     if (!q) return;
-    const answers = Array.isArray(q.answer) ? q.answer : [q.answer];
+    const picks = chooseAnswer(q);
     const btns = document.querySelectorAll('.answer-btn');
     await wait(T.qSelect);
-    answers.forEach(i => { app.selectedIndices.add(i); if (btns[i]) btns[i].classList.add('selected'); });
+    picks.forEach(i => { app.selectedIndices.add(i); if (btns[i]) btns[i].classList.add('selected'); });
     $('confirm-btn').classList.remove('hidden');
     await wait(T.qConfirm);
     app.confirmAnswer();
