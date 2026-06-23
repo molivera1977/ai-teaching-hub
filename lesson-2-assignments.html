@@ -18,16 +18,36 @@
     .prompt-card {
       background: #f8f9ff;
       border: 1px solid #dde2ff;
+      border-left: 5px solid var(--brand);
       border-radius: 10px;
       padding: 1rem 1.2rem;
       margin: .75rem 0;
       cursor: pointer;
-      transition: border-color .15s, background .15s;
+      transition: border-color .15s, background .15s, transform .12s;
     }
-    .prompt-card:hover { border-color: var(--brand); background: #eef1ff; }
+    .prompt-card:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.06); }
     .prompt-card .pc-label { font-size:.7rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--brand); margin-bottom:.3rem; }
     .prompt-card code { font-size:.95rem; color:#1a2060; font-family:inherit; line-height:1.6; }
     .copy-small { float:right; font-size:.72rem; font-weight:700; color:var(--brand); background:#eef1ff; border:none; border-radius:6px; padding:.2rem .55rem; cursor:pointer; margin-top:-.1rem; }
+    /* Color variants */
+    .prompt-card.pc-green   { background:#f0fdf4; border-color:#bbf7d0; border-left-color:#22c55e; }
+    .prompt-card.pc-green   .pc-label, .prompt-card.pc-green   .copy-small { color:#15803d; }
+    .prompt-card.pc-green   .copy-small { background:#dcfce7; }
+    .prompt-card.pc-orange  { background:#fff7ed; border-color:#fed7aa; border-left-color:#f97316; }
+    .prompt-card.pc-orange  .pc-label, .prompt-card.pc-orange  .copy-small { color:#c2410c; }
+    .prompt-card.pc-orange  .copy-small { background:#ffedd5; }
+    .prompt-card.pc-blue    { background:#eff6ff; border-color:#bfdbfe; border-left-color:#3b82f6; }
+    .prompt-card.pc-blue    .pc-label, .prompt-card.pc-blue    .copy-small { color:#1d4ed8; }
+    .prompt-card.pc-blue    .copy-small { background:#dbeafe; }
+    .prompt-card.pc-pink    { background:#fdf2f8; border-color:#fbcfe8; border-left-color:#ec4899; }
+    .prompt-card.pc-pink    .pc-label, .prompt-card.pc-pink    .copy-small { color:#be185d; }
+    .prompt-card.pc-pink    .copy-small { background:#fce7f3; }
+    .prompt-card.pc-purple  { background:#faf5ff; border-color:#e9d5ff; border-left-color:#a855f7; }
+    .prompt-card.pc-purple  .pc-label, .prompt-card.pc-purple  .copy-small { color:#7e22ce; }
+    .prompt-card.pc-purple  .copy-small { background:#f3e8ff; }
+    .prompt-card.pc-teal    { background:#f0fdfa; border-color:#99f6e4; border-left-color:#14b8a6; }
+    .prompt-card.pc-teal    .pc-label, .prompt-card.pc-teal    .copy-small { color:#0f766e; }
+    .prompt-card.pc-teal    .copy-small { background:#ccfbf1; }
   </style>
 </head>
 <body>
@@ -185,17 +205,17 @@
         <li>Hit Enter — your quiz is ready in seconds.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Multiple Choice Quiz &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a 10-question multiple choice quiz about [TOPIC] for [GRADE] students. Each question should have 4 answer choices. Include an answer key at the end.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Short Answer Quiz &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a 5-question short-answer quiz about [TOPIC] for [GRADE] students. Questions should require students to explain their thinking, not just recall facts. Include a sample answer for each question.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 True/False + Correction &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a 10-question true/false quiz about [TOPIC] for [GRADE]. For every false statement, students must rewrite it to make it true. Include an answer key.</code>
       </div>
@@ -234,44 +254,44 @@
 
       <h3>📄 Passages</h3>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Informational Passage &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write an informational reading passage about [TOPIC] for [GRADE] students. The passage should be approximately [LENGTH, e.g. 300] words. Use clear, engaging language appropriate for this grade level. Include a title.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Narrative / Story &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a short fictional story for [GRADE] students that teaches the concept of [TOPIC/THEME]. The story should be about [LENGTH] words and include relatable characters and a clear resolution.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-teal">
         <div class="pc-label">📋 Two-Sided Debate Passage &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a two-sided informational passage about [TOPIC] for [GRADE] students. Present one paragraph arguing for one side and one paragraph for the other. Use balanced, factual language — do not take a position.</code>
       </div>
 
       <h3>❓ Question Sets — add these after any passage</h3>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Overall Comprehension Questions &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Using the passage above, write 6 comprehension questions for [GRADE] students. Include a mix of: 2 literal questions (directly stated in the text), 2 inferential questions (requires reading between the lines), and 2 evaluative questions (opinion or judgment supported by evidence). Label each type.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Main Idea &amp; Supporting Details &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Using the passage above, write 4 questions that focus specifically on main idea and supporting details. Include: 1 question asking students to identify the main idea, 2 questions asking them to identify a key supporting detail, and 1 question asking them to explain how a detail supports the main idea. Write for [GRADE] students.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Text Evidence Practice &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Using the passage above, write 4 questions that require students to cite text evidence in their answers. Each question should include the instruction "Use evidence from the text to support your answer." Make the questions open-ended and appropriate for [GRADE] students.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Author's Purpose &amp; Point of View &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Using the passage above, write 4 questions focused on author's purpose and point of view for [GRADE] students. Include questions about: why the author wrote this, what perspective they are writing from, word choices that reveal the author's attitude, and how a different point of view might change the passage.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Vocabulary in Context &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Using the passage above, identify 5 vocabulary words that are important for [GRADE] students to understand. For each word: quote the sentence it appears in, write a student-friendly definition, and write one question asking students to use context clues to figure out its meaning.</code>
       </div>
@@ -301,17 +321,17 @@
         <li>Hit Enter — then copy the result into a Word doc or Google Doc to print or share.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-teal">
         <div class="pc-label">📋 Essay Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a 4-point rubric for grading a [GRADE] opinion essay. Include the following categories: Claim/Thesis, Evidence & Support, Organization, and Language/Conventions. Format it as a table with clear descriptions for each score level (4=Exceeds, 3=Meets, 2=Approaching, 1=Beginning).</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Project Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a rubric for a [GRADE] student project about [TOPIC]. The project involves [DESCRIBE THE PROJECT]. Include 4 categories that are most important for this assignment. Use a 1–4 scale with clear descriptions at each level.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Presentation Rubric &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a rubric for evaluating a student oral presentation for [GRADE]. Include categories for: Content Knowledge, Organization, Speaking Clearly, and Visual Aids. Use a 4-point scale and student-friendly language so students can self-assess.</code>
       </div>
@@ -337,22 +357,22 @@
         <li>Hit Enter — read through the plan and tweak anything that doesn't fit your class.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Full Lesson Plan &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a complete lesson plan for a [GRADE] [SUBJECT] class on [TOPIC]. The lesson should take [TIME, e.g., "45 minutes"]. Include: an objective, a warm-up activity, direct instruction, a guided practice activity, an independent practice task, and a closing/exit ticket. Note any materials needed.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Mini-Lesson (15–20 Minutes) &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a 15-minute mini-lesson for [GRADE] students on [TOPIC]. Include a hook to grab attention, a clear explanation of the key concept, one quick guided example, and a 2-minute check for understanding at the end.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Sub Plan &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a substitute teacher plan for a [GRADE] [SUBJECT] class. The sub should be able to run the entire class without needing any special knowledge of the subject. Include: a greeting script to read to the class, a review activity on [TOPIC], independent work time with clear instructions, and a short class discussion or reflection to close. Keep instructions simple and step-by-step.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-teal">
         <div class="pc-label">📋 Week-at-a-Glance Unit Outline &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a 5-day unit outline for [GRADE] [SUBJECT] on [TOPIC]. For each day include: the daily objective, the main activity, and how the lesson will end. Keep it brief — this is an overview, not a full plan for each day.</code>
       </div>
@@ -384,12 +404,12 @@
         <li><strong>Answer keys</strong> — ask AI to solve the problems it creates and show its work.</li>
       </ul>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Math Word Problems &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write 8 math word problems about [TOPIC, e.g., "multiplying fractions" or "calculating area"] for [GRADE] students. Make the scenarios realistic and relatable. Include an answer key with step-by-step solutions.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Math Practice Set &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a practice problem set for [GRADE] students on [TOPIC]. Include 10 problems that progress from easier to harder. Format it with space to show work under each problem. Include a separate answer key at the end.</code>
       </div>
@@ -405,7 +425,7 @@
       <h3>🧪 Try it — Build a Math Worksheet</h3>
       <p>Use the prompt below to create a ready-to-print worksheet. The second version asks for an HTML file — try both and see which result looks better.</p>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Math Worksheet (plain text version) &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a math worksheet for [GRADE] students practicing [TOPIC, e.g., "adding fractions" or "long division"]. Include 12 problems that go from easier to harder. Write all fractions as words (for example, "three-fourths" instead of the symbol). Leave space under each problem for students to show their work. Add a simple answer key at the end on a separate section labeled "Teacher Answer Key."</code>
       </div>
@@ -436,22 +456,22 @@
         <li>Hit Enter — copy the result into a doc or paste it directly into a slide.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Exit Ticket &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write 3 exit ticket questions for a [GRADE] lesson about [TOPIC]. One should check basic understanding, one should ask students to explain their thinking, and one should connect to their own lives.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Warm-Up / Bell Ringer &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create 5 different warm-up activities for a [GRADE] class starting a unit on [TOPIC]. Each should take about 3–5 minutes and activate prior knowledge or curiosity.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-teal">
         <div class="pc-label">📋 Vocabulary List with Definitions &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Create a vocabulary list for a [GRADE] unit on [TOPIC]. Include 10 key words, a student-friendly definition for each, and an example sentence. Format it as a table.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Discussion Questions &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write 8 discussion questions about [TOPIC/BOOK/ARTICLE] for [GRADE] students. Include a mix of factual, inferential, and open-ended questions. Label each type.</code>
       </div>
@@ -478,27 +498,27 @@
         <li>Hit Enter — scan the ideas and grab anything that sparks something. Ask AI to expand on any idea you like.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Lesson Hook Ideas &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Give me 8 creative hook ideas to kick off a [GRADE] lesson on [TOPIC]. Each should take under 5 minutes and get students curious or thinking before I've taught anything. Make each one different — include a mix of questions, challenges, videos, demos, and discussion starters.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Project or Activity Ideas &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Brainstorm 10 project or activity ideas for a [GRADE] unit on [TOPIC]. Include a mix of individual and group options, and a mix of creative, research-based, and hands-on formats. Keep each description to 2–3 sentences.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Icebreakers &amp; Community Builders &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Give me 6 icebreaker or community-building activities for a [GRADE] class. They should be quick (5–10 minutes), require no materials, and work for students who don't know each other well yet. Include a mix of low-pressure and slightly more interactive options.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Ways to Introduce a Concept &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>I need to introduce [CONCEPT] to [GRADE] students who have never seen it before. Give me 6 different ways I could explain or introduce it — use analogies, real-world examples, visuals, stories, and hands-on approaches. I'll pick the one that fits my class best.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-teal">
         <div class="pc-label">📋 Unit Planning Ideas &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>I'm planning a unit on [TOPIC] for [GRADE] students. Brainstorm ideas for: a compelling essential question, 3–5 key understandings students should walk away with, possible performance tasks or final projects, and real-world connections I could make throughout the unit.</code>
       </div>
@@ -525,27 +545,27 @@
         <li>Hit Enter. Read the result, adjust the tone or details to match your voice, then copy it into your email or newsletter.</li>
       </ol>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-green">
         <div class="pc-label">📋 Class Newsletter &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a friendly, professional class newsletter for [GRADE] parents. This week we covered [TOPICS]. Upcoming: [EVENTS OR DATES]. Remind parents about [REMINDER, e.g., "picture day Friday" or "field trip permission slips"]. Keep it warm, brief, and easy to read — about 150 words.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Positive Progress Note &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a short, warm email to the parent of [STUDENT NAME], a [GRADE] student. I want to share that [he/she/they] has been doing well — specifically [SPECIFIC STRENGTH OR IMPROVEMENT, e.g., "showing great effort in writing" or "helping classmates during group work"]. Keep it genuine and encouraging, about 3–4 sentences.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Academic Concern Email &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Help me write a professional, caring email to the parent of [STUDENT NAME], a [GRADE] student. I want to share a concern about [ISSUE, e.g., "missing assignments" or "struggling with reading comprehension"]. I'd like to suggest [NEXT STEP, e.g., "a brief phone call" or "extra reading practice at home"]. Keep the tone supportive, not alarming — about 4–5 sentences.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Behavior Concern Email &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a professional, calm email to the parent of [STUDENT NAME] about a behavior concern. The issue is [DESCRIBE BEHAVIOR, e.g., "difficulty staying focused during instruction" or "a conflict with a classmate"]. I want to keep the parent informed and work together. Suggest we [NEXT STEP, e.g., "check in by phone this week"]. Tone: factual, not accusatory, about 4–5 sentences.</code>
       </div>
 
-      <div class="prompt-card">
+      <div class="prompt-card pc-orange">
         <div class="pc-label">📋 Event or Field Trip Announcement &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
         <code>Write a parent announcement for [EVENT, e.g., "our class field trip to the science museum"]. Date: [DATE]. Students need to bring: [ITEMS]. Permission slips are due by [DATE]. Cost: [AMOUNT or "no cost"]. Keep it friendly, clear, and under 120 words.</code>
       </div>
