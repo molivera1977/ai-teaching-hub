@@ -225,12 +225,33 @@
     driveReview();
   }
 
+  /* one-time "Tap to Start" gate — the tap is the user gesture browsers
+     require before they'll play the read-aloud audio */
+  function showStartOverlay(onStart) {
+    const ov = document.createElement('div');
+    ov.id = 'demo-start-overlay';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:100000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.93);backdrop-filter:blur(4px);color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px;';
+    ov.innerHTML =
+      '<div style="font-size:3rem;margin-bottom:8px;">👀🔊</div>'
+      + '<div style="font-size:1.5rem;font-weight:800;margin-bottom:10px;">Auto-Play Preview</div>'
+      + '<div style="font-size:1rem;opacity:.85;max-width:360px;margin-bottom:24px;line-height:1.55;">Watch a sample of this activity play itself — name, questions, and the read-aloud feature. Tap below to start <b>with sound</b>.</div>'
+      + '<button id="demo-start-btn" style="background:linear-gradient(90deg,#6c5ce7,#e056a0);color:#fff;border:none;border-radius:999px;padding:16px 40px;font-size:1.2rem;font-weight:800;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.4);">▶ Tap to Start</button>'
+      + '<div style="font-size:.8rem;opacity:.6;margin-top:16px;">🔊 Tapping turns on the read-aloud voice</div>';
+    document.body.appendChild(ov);
+    document.getElementById('demo-start-btn').onclick = function () {
+      try { const u = new SpeechSynthesisUtterance(' '); u.volume = 1; window.speechSynthesis.speak(u); } catch (e) {}
+      ov.style.transition = 'opacity .35s'; ov.style.opacity = '0';
+      setTimeout(() => ov.remove(), 360);
+      onStart();
+    };
+  }
+
   function boot() {
     if (typeof passages === 'undefined' || typeof answer !== 'function') { setTimeout(boot, 60); return; }
     blockNetwork();
     addBanner();
     patchSpeechAndLocks();
-    run();
+    showStartOverlay(run);   // wait for the viewer's tap, then play (with audio unlocked)
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

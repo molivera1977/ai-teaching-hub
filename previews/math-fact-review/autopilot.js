@@ -162,11 +162,30 @@
     endSession();                        // shows "Final Score: X Correct, Y Wrong"
   }
 
+  /* one-time "Tap to Start" gate (kept for consistency with the other
+     previews; this game has no read-aloud, so no sound promise) */
+  function showStartOverlay(onStart) {
+    const ov = document.createElement('div');
+    ov.id = 'demo-start-overlay';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:100000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.93);backdrop-filter:blur(4px);color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px;';
+    ov.innerHTML =
+      '<div style="font-size:3rem;margin-bottom:8px;">👀</div>'
+      + '<div style="font-size:1.5rem;font-weight:800;margin-bottom:10px;">Auto-Play Preview</div>'
+      + '<div style="font-size:1rem;opacity:.85;max-width:360px;margin-bottom:24px;line-height:1.55;">Watch this math-fact fluency game play itself — pick a level, then answer 10 × and 10 ÷ facts.</div>'
+      + '<button id="demo-start-btn" style="background:linear-gradient(90deg,#6c5ce7,#e056a0);color:#fff;border:none;border-radius:999px;padding:16px 40px;font-size:1.2rem;font-weight:800;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.4);">▶ Tap to Start</button>';
+    document.body.appendChild(ov);
+    document.getElementById('demo-start-btn').onclick = function () {
+      ov.style.transition = 'opacity .35s'; ov.style.opacity = '0';
+      setTimeout(() => ov.remove(), 360);
+      onStart();
+    };
+  }
+
   function boot() {
     if (typeof state === 'undefined' || typeof startPractice !== 'function') { setTimeout(boot, 60); return; }
     blockNetwork();
     addBanner();
-    run();
+    showStartOverlay(run);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
