@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A World Without Rules — Unit Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+
+<div class="container">
+  <h1>📖 A World Without Rules — Unit Test</h1>
+  <p class="welcome-sub">Government, Laws &amp; Public Services</p>
+
+  <!-- ══════════════════════════════════════════
+       START SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="start-screen">
+
+    <!-- WELCOME PANEL -->
+    <div id="welcome-panel">
+      <div class="cover-flex">
+        <div class="cover-img-wrap">
+          <img src="assets/cover.png" alt="A World Without Rules book cover" />
+        </div>
+        <div class="welcome-hero-text">
+          <p>This is the official unit test for <em>A World Without Rules</em>. Complete all four parts in order: Vocabulary, Comprehension, Written Response, and Cloze. Sign in to get started!</p>
+          <button class="lgs-btn" onclick="app.showReadAloudIntro()">🚀 Let's Begin the Test!</button>
+        </div>
+      </div>
+      <div style="text-align:right;margin-top:10px;">
+        <span onclick="app.promptTeacherReview()" style="font-size:0.72rem;color:#bbb;cursor:pointer;user-select:none;">Teacher Access</span>
+      </div>
+    </div>
+
+    <!-- STUDENT LOGIN PANEL -->
+    <div id="student-login-panel" class="hidden">
+
+      <!-- RESUME CARD -->
+      <div id="resume-container" class="hidden">
+        <div style="background:#fff8f0;border:3px solid #e67e22;border-radius:16px;padding:24px 20px;text-align:center;margin-bottom:16px;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">↩️</div>
+          <p style="margin:0 0 6px;font-weight:800;color:#a04000;font-size:1.1rem;">Welcome back!</p>
+          <p style="margin:0 0 16px;color:#555;font-size:0.9rem;">You have an unfinished test in progress:</p>
+          <div id="resume-detail" style="font-size:1.4rem;font-weight:800;color:#e67e22;margin-bottom:20px;"></div>
+          <button class="resume-btn" onclick="app.resumeSession()" style="width:100%;font-size:1rem;padding:14px;">↩️ Resume Where I Left Off</button>
+          <div style="margin-top:14px;">
+            <button onclick="app.discardProgress()"
+              style="background:none;border:none;color:#c0392b;font-size:0.82rem;cursor:pointer;
+                     font-family:inherit;text-decoration:underline;padding:4px;">
+              🗑️ Discard &amp; start over (Teacher PIN required)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 1 — SIGN IN -->
+      <div class="step-card" id="login-step-card">
+        <span class="step-label">Step 1 — Sign In</span>
+        <div class="login-box">
+          <label for="name-select">👤 Select your name:</label>
+          <select id="name-select" onchange="app.onNameSelect()">
+            <option value="">-- Choose your name --</option>
+          </select>
+          <div id="pin-section" class="hidden">
+            <label for="student-pin" id="pin-label">🔒 Enter your student number:</label>
+            <input type="password" id="student-pin" placeholder="Student number…"
+                   onkeydown="if(event.key==='Enter') app.attemptLogin()" autocomplete="new-password" />
+            <div id="guest-name-section" class="hidden">
+              <label for="guest-display-name">✏️ Enter your first name:</label>
+              <input type="text" id="guest-display-name" placeholder="e.g. Henry" maxlength="20"
+                     onkeydown="if(event.key==='Enter') app.attemptLogin()" />
+            </div>
+            <button class="sign-in-btn" onclick="app.attemptLogin()">✅ Sign In</button>
+          </div>
+          <div class="login-error" id="login-error"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — CHOOSE A SECTION -->
+      <div id="section-select" class="hidden">
+        <div class="step-card">
+          <span class="step-label">Step 2 — Your Test</span>
+          <div id="test-sequence" style="margin-bottom:16px;"></div>
+          <button class="start-btn" id="btn-start-next" onclick="app.startNextSection()"
+                  style="width:100%;justify-content:center;font-size:1.05rem;padding:16px 20px;">
+            ▶ Start
+          </button>
+        </div>
+        <div style="text-align:center;margin-bottom:8px;">
+          <button class="score-btn" onclick="app.showScores()">📊 View My Scores</button>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /#start-screen -->
+
+  <!-- ══════════════════════════════════════════
+       READ ALOUD INTRO
+  ══════════════════════════════════════════ -->
+  <div id="readaloud-screen" class="hidden">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:3.5rem;margin-bottom:10px;">🔊</div>
+      <h2 style="color:var(--primary);margin:0 0 8px;">Read Aloud is Available!</h2>
+      <p style="color:#555;font-size:0.95rem;line-height:1.6;max-width:420px;margin:0 auto;">
+        Every question and every answer choice has its own speaker button.<br>
+        You can use it as much as you need!
+      </p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto 24px;">
+      <div style="background:#eaf4ff;border:2px solid #b3d4f5;border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:16px;">
+        <span style="font-size:2rem;">1️⃣</span>
+        <div><strong>Tap 🔊 once</strong> — the question or choice is read aloud</div>
+      </div>
+      <div style="background:#fff3e0;border:2px solid #ffd08a;border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:16px;">
+        <span style="font-size:2rem;">2️⃣</span>
+        <div><strong>Tap ⏹ to stop</strong> — reading stops immediately</div>
+      </div>
+      <div style="background:#e8f5e9;border:2px solid #a5d6a7;border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:16px;">
+        <span style="font-size:2rem;">3️⃣</span>
+        <div><strong>Tap 🔊 again</strong> — it replays from the beginning</div>
+      </div>
+    </div>
+    <div style="background:#f3e8ff;border:2px solid #9b59b6;border-radius:10px;padding:8px 16px;
+                margin-bottom:14px;display:flex;align-items:center;gap:12px;
+                font-size:0.93rem;font-weight:bold;color:#6c3483;">
+      <span>📢 Please read this carefully — button unlocks in</span>
+      <div style="flex:1;height:8px;background:#e8d5f5;border-radius:4px;overflow:hidden;">
+        <div id="readaloud-fill" style="height:100%;background:#9b59b6;width:100%;border-radius:4px;transition:width 1s linear;"></div>
+      </div>
+      <span id="readaloud-count" style="min-width:28px;text-align:right;font-size:1rem;">6</span><span>s</span>
+    </div>
+    <button id="readaloud-btn" class="ready-btn" onclick="app.showDirections()" disabled style="opacity:0.45;cursor:not-allowed;">⏳ Please wait…</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       DIRECTIONS
+  ══════════════════════════════════════════ -->
+  <div id="directions-screen" class="hidden">
+    <h2 style="text-align:center;color:var(--primary);margin-top:0;margin-bottom:20px;">📋 How the Test Works</h2>
+
+    <div class="dir-section login-dir">
+      <div class="dir-row">
+        <h3 style="margin:0;">👤 Step 1 — Sign In</h3>
+        <button class="speak-btn" onclick="speakDir(this)">🔊</button>
+      </div>
+      <p class="dir-text">Choose your name from the list, then enter your student number and tap Sign In.</p>
+    </div>
+
+    <div class="dir-section form-dir">
+      <div class="dir-row">
+        <h3 style="margin:0;">📋 Step 2 — Complete All Four Parts</h3>
+        <button class="speak-btn" onclick="speakDir(this)">🔊</button>
+      </div>
+      <p class="dir-text">The test has four parts that must be completed in order: Vocabulary, Comprehension, Written Response, and Cloze. Each part unlocks only after you finish and submit the one before it. You have one attempt per part. After you finish the last part, you will see a summary of all your scores.</p>
+    </div>
+
+    <div class="dir-section" style="background:#fff3cd;border:2px solid #ffc107;border-radius:14px;padding:16px 18px;margin-bottom:14px;">
+      <div class="dir-row">
+        <h3 style="margin:0;color:#856404;">⚠️ No Answer Feedback</h3>
+        <button class="speak-btn" onclick="speakDir(this)" style="border-color:#ffc107;color:#856404;">🔊</button>
+      </div>
+      <p class="dir-text" style="color:#856404;">You will <strong>not</strong> see whether your answers are right or wrong during the test. Read each question carefully, choose your best answer, and confirm it. Your score is revealed at the end of each part.</p>
+    </div>
+
+    <div class="dir-section read-dir">
+      <div class="dir-row">
+        <h3 style="margin:0;">📖 Reading Timer</h3>
+        <button class="speak-btn" onclick="speakDir(this)">🔊</button>
+      </div>
+      <p class="dir-text">When each question appears, the answer choices are locked for 12 seconds. Use that time to read the question and all the choices carefully before making your selection.</p>
+      <span class="timer-chip chip-amber">⏱️ 12 second read lock</span>
+    </div>
+
+    <div class="dir-section timer-dir">
+      <div class="dir-row">
+        <h3 style="margin:0;">⏱ Overall Timer</h3>
+        <button class="speak-btn" onclick="speakDir(this)" style="border-color:#2ecc71;color:#2ecc71;">🔊</button>
+      </div>
+      <p class="dir-text">A timer runs during each part. It is not a countdown — there is no time limit. It only tracks how long you take so your teacher can see your progress.</p>
+      <span class="timer-chip chip-green">📊 No pressure — no time limit!</span>
+    </div>
+
+    <div style="background:#f3e8ff;border:2px solid #9b59b6;border-radius:10px;padding:8px 16px;
+                margin-bottom:14px;display:flex;align-items:center;gap:12px;
+                font-size:0.93rem;font-weight:bold;color:#6c3483;">
+      <span>📜 Read all directions — button unlocks in</span>
+      <div style="flex:1;height:8px;background:#e8d5f5;border-radius:4px;overflow:hidden;">
+        <div id="instruct-fill" style="height:100%;background:#9b59b6;width:100%;border-radius:4px;transition:width 1s linear;"></div>
+      </div>
+      <span id="instruct-count" style="min-width:28px;text-align:right;font-size:1rem;">20</span><span>s</span>
+    </div>
+    <button id="ready-btn" class="ready-btn" onclick="app.showLogin()">⏳ Read the directions above first…</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       QUIZ SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="quiz-screen" class="hidden">
+    <div id="tab-warning-banner" class="hidden" style="background:#fde8f0;border:2px solid #f48fb1;border-radius:10px;padding:8px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;font-size:0.88rem;font-weight:bold;color:#ad1457;">
+      <span>⚠️ Please stay on this page during the test.</span>
+      <button onclick="document.getElementById('tab-warning-banner').classList.add('hidden')" style="background:none;border:none;cursor:pointer;color:#ad1457;font-size:1rem;padding:2px 6px;font-family:inherit;">✕</button>
+    </div>
+    <div id="review-mode-banner" class="hidden" style="background:#fff3cd;border:2px solid #ffc107;border-radius:10px;padding:7px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;font-size:0.82rem;font-weight:bold;color:#856404;">
+      <span>🔍 Teacher Review Mode</span>
+      <button onclick="app.exitReviewMode()" style="background:none;border:1px solid #ffc107;border-radius:6px;padding:3px 10px;cursor:pointer;font-family:inherit;font-weight:bold;color:#856404;font-size:0.78rem;">✕ Exit</button>
+    </div>
+    <div class="q-badge">
+      <span class="q-badge-pill" id="progress-text">Question 1 of 24</span>
+      <span class="score-badge" id="name-badge"></span>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="timer-row">
+      <div class="timer-display" id="timer-display">00:00</div>
+    </div>
+
+    <!-- Reading lock bar (12s) -->
+    <div class="reading-timer-bar hidden" id="reading-timer-bar">
+      <span>📖 Read carefully — answers unlock in</span>
+      <div class="reading-timer-fill-wrap"><div class="reading-timer-fill" id="reading-fill"></div></div>
+      <span class="reading-timer-count" id="reading-count">12</span><span>s</span>
+    </div>
+
+    <div class="question-header">
+      <button class="speak-btn" id="speak-q-btn" onclick="app.speakQuestion()" title="Read question aloud">🔊</button>
+      <h2 id="question-text"></h2>
+    </div>
+
+    <div class="options-grid hidden" id="answers" role="radiogroup" aria-label="Answer choices"></div>
+
+    <div class="controls">
+      <button id="confirm-btn" class="action-btn hidden" onclick="app.confirmAnswer()">✅ That's My Answer!</button>
+      <button id="next-btn"    class="action-btn hidden" onclick="app.nextQuestion()">Next ➡️</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CONFIRM SUBMIT SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="confirm-submit-screen" class="hidden">
+    <div style="text-align:center;padding:30px 10px 10px;">
+      <div style="font-size:4rem;margin-bottom:16px;">📝</div>
+      <h2 style="color:var(--primary);margin:0 0 12px;">Ready to Submit?</h2>
+      <p id="confirm-submit-msg" style="color:#555;font-size:1.05rem;line-height:1.7;max-width:400px;margin:0 auto 24px;"></p>
+      <div style="background:#fff3cd;border:2px solid #ffc107;border-radius:12px;padding:14px 18px;margin-bottom:24px;font-size:0.9rem;color:#856404;text-align:left;max-width:400px;margin-left:auto;margin-right:auto;">
+        ⚠️ Once submitted you cannot change your answers or retake this section without teacher permission.
+      </div>
+      <button class="lgs-btn" onclick="app._finishSession()" style="width:100%;max-width:380px;display:block;margin:0 auto 16px;font-size:1.15rem;padding:18px;">✅ Submit My Test</button>
+      <button onclick="app.goBackFromConfirm()" style="background:none;border:none;color:#888;font-size:0.9rem;cursor:pointer;font-family:inherit;text-decoration:underline;">← Go Back to Last Question</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       END SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="end-screen" class="hidden">
+    <h2 style="text-align:center;">🎉 Section Complete!</h2>
+    <p id="final-score-sub" style="text-align:center;color:#666;margin-bottom:0;"></p>
+    <span id="final-percent"></span>
+    <p id="final-msg" style="font-size:1.3rem;text-align:center;"></p>
+    <!-- Primary: continue to next section (hidden on last section) -->
+    <div id="continue-btn-wrap" class="hidden" style="margin-top:16px;">
+      <button class="lgs-btn" id="continue-btn" onclick="app.continueToNextSection()" style="width:100%;font-size:1.1rem;padding:18px;">Continue →</button>
+    </div>
+    <div class="end-btns">
+      <button class="start-btn" style="background:#27ae60;box-shadow:0 5px 0 #1e8449;" onclick="app.restart()">🏠 Home</button>
+    </div>
+    <div id="written-response-btn-wrap" class="hidden" style="margin-top:16px;">
+      <div style="background:#f0f4ff;border:2px solid #a9c4f5;border-radius:14px;padding:18px 20px;">
+        <p style="margin:0 0 8px;color:var(--primary);font-size:1rem;font-weight:bold;">✍️ Written Response Required</p>
+        <p style="margin:0 0 14px;color:#555;font-size:0.88rem;line-height:1.6;">Your Comprehension test also includes a written response section. These questions are <strong>not scored</strong> — your teacher will read your answers and use them for feedback.</p>
+        <button class="action-btn" style="background:#8e44ad;box-shadow:0 4px 0 #6c3483;width:100%;font-size:1rem;padding:14px;" onclick="app.showWrittenScreen()">✍️ Continue to Written Response →</button>
+      </div>
+    </div>
+    <div id="written-submitted-notice" class="hidden" style="background:#d4edda;border:2px solid #28a745;border-radius:10px;padding:12px 16px;margin-top:14px;text-align:center;color:#155724;font-weight:bold;font-size:0.95rem;">
+      ✅ Written responses submitted successfully!
+    </div>
+    <div id="review-next-btn" class="hidden" style="text-align:center;margin-top:12px;">
+      <button class="start-btn" style="background:#8e44ad;box-shadow:0 5px 0 #6c3483;" onclick="app._showReviewPicker()">🔍 Review Another Section</button>
+      <button onclick="app.exitReviewMode()" style="display:block;margin:10px auto 0;background:none;border:none;color:#999;font-size:0.8rem;cursor:pointer;font-family:inherit;text-decoration:underline;">Exit Review Mode</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WRITTEN RESPONSE SCREEN
+  ══════════════════════════════════════════ -->
+  <div id="written-screen" class="hidden">
+    <h2 style="text-align:center;color:var(--primary);margin-top:0;margin-bottom:10px;">✍️ Written Response</h2>
+    <div style="text-align:center;margin-bottom:12px;">
+      <span style="display:inline-block;background:#2c3e50;color:#fff;font-family:monospace;font-size:1.1rem;font-weight:bold;padding:6px 18px;border-radius:8px;letter-spacing:2px;">⏱ <span id="written-timer-display">00:00</span></span>
+    </div>
+    <div style="background:#f0f4ff;border:2px solid #a9c4f5;border-radius:12px;padding:13px 16px;margin-bottom:14px;font-size:0.88rem;color:#2c3e50;line-height:1.65;">
+      📋 These questions are <strong>not scored</strong>. Your teacher will read your responses and use them to give you feedback. Answer in complete sentences. Use specific details from the story.
+    </div>
+    <div id="mc-score-reminder" style="background:#f9f9f9;border:2px solid #e0e0e0;border-radius:10px;padding:10px 16px;margin-bottom:18px;text-align:center;font-size:0.88rem;color:#555;"></div>
+    <div id="written-prompts-container"></div>
+    <button class="lgs-btn" id="submit-written-btn" onclick="app.submitWrittenResponses()" style="width:100%;margin-top:6px;font-size:1.05rem;padding:16px;">✅ Submit Written Responses</button>
+    <div id="written-submit-error" style="color:#c0392b;font-weight:bold;min-height:22px;margin-top:8px;text-align:center;font-size:0.9rem;"></div>
+
+    <!-- Success state shown after submission -->
+    <div id="written-success-panel" class="hidden" style="text-align:center;padding:24px 0 10px;">
+      <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+      <h3 style="color:var(--correct);margin:0 0 8px;">Responses Submitted!</h3>
+      <p style="color:#555;font-size:0.93rem;margin:0 0 24px;line-height:1.6;">Your written responses have been saved. Your teacher will read them and give you feedback.</p>
+      <button class="lgs-btn" onclick="app.continueToNextSection()" style="width:100%;max-width:380px;display:block;margin:0 auto;font-size:1.1rem;padding:16px;">Continue to Cloze ✏️ →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SCOREBOARD
+  ══════════════════════════════════════════ -->
+  <div id="scoreboard-screen" class="hidden">
+    <h2 style="color:var(--primary);text-align:center;">📊 My Test Scores</h2>
+    <div id="sb-lock-bar" class="hidden" style="background:#f3e8ff;border:2px solid #9b59b6;border-radius:10px;padding:8px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;font-size:0.88rem;font-weight:bold;color:#6c3483;">
+      <span>📖 Review your scores — buttons unlock in</span>
+      <div style="flex:1;height:8px;background:#e8d5f5;border-radius:4px;overflow:hidden;">
+        <div id="sb-lock-fill" style="height:100%;background:#9b59b6;width:100%;border-radius:4px;transition:width 1s linear;"></div>
+      </div>
+      <span id="sb-lock-count" style="min-width:28px;text-align:right;">30</span><span>s</span>
+    </div>
+    <p id="no-scores-msg" style="text-align:center;color:#999;display:none;">No scores yet — complete a section to see your score here!</p>
+    <div id="score-list"></div>
+    <div id="clear-confirm-panel" class="hidden"
+         style="background:#fff3cd;border:2px solid #ffc107;border-radius:12px;padding:16px 20px;margin:14px 0;">
+      <p style="margin:0 0 10px;font-weight:bold;color:#856404;">🔒 Enter Teacher PIN to clear all scores:</p>
+      <input type="password" id="clear-pin-input" placeholder="PIN…" maxlength="10" autocomplete="off"
+             onkeydown="if(event.key==='Enter') app.confirmClearScores()"
+             style="padding:9px 12px;border-radius:8px;border:2px solid #ccc;font-size:1rem;font-family:inherit;margin-bottom:8px;width:100%;"/>
+      <div id="clear-pin-error" style="color:#c0392b;font-weight:bold;min-height:18px;margin-bottom:8px;font-size:0.9rem;"></div>
+      <div style="display:flex;gap:10px;">
+        <button class="action-btn" style="background:#27ae60;box-shadow:0 4px 0 #1e8449;" onclick="app.confirmClearScores()">✅ Confirm</button>
+        <button class="action-btn" style="background:#7f8c8d;box-shadow:0 4px 0 #566573;" onclick="app.cancelClearScores()">✕ Cancel</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;">
+      <button class="action-btn" style="background:#7f8c8d;box-shadow:0 4px 0 #566573;" onclick="app.restart()">🏠 Home</button>
+    </div>
+    <div id="teacher-score-btns" style="display:none;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px;">
+      <button class="action-btn" style="background:#c0392b;box-shadow:0 4px 0 #922b21;" onclick="app.clearScores()">🗑️ Clear History</button>
+    </div>
+  </div>
+
+  <!-- GLOBAL PIN MODAL -->
+  <div id="pin-modal" class="hidden">
+    <div class="pin-modal-inner">
+      <h3 id="pin-modal-title" style="color:var(--primary);margin:0 0 10px;text-align:center;"></h3>
+      <p  id="pin-modal-msg"   style="text-align:center;color:#555;margin-bottom:14px;font-size:0.95rem;line-height:1.5;"></p>
+      <input type="password" id="pin-modal-input" placeholder="Teacher PIN…" maxlength="10" autocomplete="off"
+             onkeydown="if(event.key==='Enter') app.confirmPinModal()"
+             style="width:100%;padding:11px 14px;border-radius:10px;border:2px solid #ccc;
+                    font-size:1.05rem;font-family:inherit;margin-bottom:8px;" />
+      <div id="pin-modal-error"
+           style="color:#c0392b;font-weight:bold;min-height:20px;margin-bottom:10px;font-size:0.9rem;text-align:center;"></div>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button class="action-btn" style="background:#27ae60;box-shadow:0 4px 0 #1e8449;" onclick="app.confirmPinModal()">✅ Confirm</button>
+        <button class="action-btn" style="background:#7f8c8d;box-shadow:0 4px 0 #566573;" onclick="app.cancelPinModal()">✕ Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.container -->
+
+<script src="data/vocab_bank.js?v=1"></script>
+<script src="data/comp_bank.js?v=1"></script>
+<script src="data/cloze_bank.js?v=1"></script>
+<script src="script.js?v=1"></script>
+<script src="autopilot.js?v=1"></script>
+</body>
+</html>
