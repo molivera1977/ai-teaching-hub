@@ -214,6 +214,7 @@
           <span style="color:var(--muted);font-size:.9rem;">or</span>
           <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
         </span>
+        <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
       </div>
 
       <div class="lesson-section">
@@ -557,6 +558,9 @@ Put everything in one HTML file.</code>
           <div class="callout info" style="margin:.5rem 0;">
             <strong><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.35rem;">What is GitHub?</strong> GitHub is a free service (like Google Drive, but for websites and code) where you can store files and make them live on the internet. You don't need to understand how it works — you just need a free account. Think of it as the "publish" button for your site.
           </div>
+          <div class="callout warn" style="margin:0;">
+            <strong>⚠️ Public means anyone can see it</strong> Anyone can open the page and read every file in it, even parts the page hides (like an answer key). Never put student names, ID numbers, scores, or a PIN in the file.
+          </div>
           <ol class="steps" style="margin:0;">
             <li><strong><a href="https://github.com" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.3rem;">Go to github.com</a></strong> — open a browser tab, type <strong>github.com</strong> in the address bar, and hit Enter (or just click the link above). Left-click <strong>Sign up</strong> in the top-right corner. Use your personal email (not your school email — school emails sometimes block outside services). Follow the prompts to create a free account.</li>
             <li><strong>Create a new repository</strong> — a repository is just a folder on GitHub where your site will live. Once logged in, left-click the <strong>+</strong> icon in the top-right corner and choose <strong>New repository</strong>. Give it a name (no spaces — use dashes, like <em>my-quiz</em>). Make sure it is set to <strong>Public</strong>. Left-click <strong>Create repository</strong>.</li>
@@ -686,6 +690,7 @@ Put everything in one HTML file.</textarea>
         <div style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:#78350f;line-height:1.25;margin-bottom:.5rem;">⭐ This step is COMPLETELY optional. Like, extremely optional. Wildly optional.</div>
         <p style="margin:0 0 .65rem;font-size:.95rem;color:#7c2d12;line-height:1.6;">You could close this tab right now and everything would be fine — Steps 1–7 are everything you need. This step exists purely for the teachers who read "optional" and immediately thought <em style="color:#92400e;font-weight:700;">"okay but tell me more."</em></p>
         <p style="margin:0;font-size:.92rem;color:#7c2d12;line-height:1.6;"><strong>📌 One note:</strong> Everything in Steps 1–7 required no downloads. This bonus step is the single exception — it involves installing an app.</p>
+        <p style="margin:.65rem 0 0;font-size:.92rem;color:#7c2d12;line-height:1.6;"><strong>💻 Use your own computer</strong> — or ask your school's technology person first. School computers may not allow you to install apps.</p>
       </div>
 
       <div style="text-align:center;font-size:2.5rem;line-height:1;margin:.25rem 0 .75rem;animation:bounce 1.2s infinite;">👇</div>
@@ -723,7 +728,7 @@ Put everything in one HTML file.</textarea>
 
       <div class="lesson-section">
         <h2>🔐 Step 2 — Grant the Permissions It Needs</h2>
-        <p>Because Claude Code actually does things on your computer (creating files, opening folders), your Mac or Windows machine will ask you to approve a few permissions. This is normal and safe — it's the same kind of pop-up you see when any new app wants access.</p>
+        <p>Because Claude Code actually does things on your computer (creating files, opening folders), your Mac or Windows machine will ask you to approve a few permissions. These are the same kind of pop-ups you see when any new app wants access. <strong>Only allow what you understand</strong> — you can always say No. This bonus step is optional.</p>
         <ul>
           <li><strong>Allow access to your folders</strong> — so it can create and save your website files.</li>
           <li><strong>Allow it to take actions on your screen</strong> — a permission pop-up will appear (like the kind you see when any new app needs access to something). Left-click <strong>Allow</strong>. This is what lets it create and save your files for you instead of just giving you instructions to do it yourself.</li>
@@ -735,7 +740,7 @@ Put everything in one HTML file.</textarea>
 
         <div class="callout tip" style="margin-top:.75rem;">
           <strong>💡 Why approve these at all?</strong>
-          <p style="margin:0 0 .6rem;">You normally wouldn't grant this kind of access — but Claude is a <b>trusted program from a major AI company</b>. By allowing it, you're letting Claude do a huge amount of work <em>on its own</em> instead of just telling you how to do it. It creates files for you, saves them where they belong, opens what needs opening, and pushes your site online — all while you watch.</p>
+          <p style="margin:0 0 .6rem;">You normally wouldn't grant this kind of access — so only allow it for the official Claude app, on a computer where you're allowed to install apps. By allowing it, you're letting Claude do a huge amount of work <em>on its own</em> instead of just telling you how to do it. It creates files for you, saves them where they belong, opens what needs opening, and pushes your site online — all while you watch.</p>
           <p style="margin:0;">And here's the best part: <b>you can keep pushing it.</b> If Claude says "okay, here's the file," you can come right back and say <em>"actually, also do X, Y, and Z."</em> It's like having an employee you can boss around all day without ever getting in trouble — no eye-rolls, no complaints, just <em>"sure, on it."</em></p>
         </div>
       </div>
@@ -953,7 +958,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116" defer></script>
+<script src="mr-ai.js?v=20261116b" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

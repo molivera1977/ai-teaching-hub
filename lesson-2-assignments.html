@@ -107,6 +107,7 @@
         <span style="color:var(--muted);font-size:.9rem;">or</span>
         <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
       </span>
+      <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
     </div>
 
     <div class="lesson-section">
@@ -543,7 +544,7 @@
       <ol style="font-size:.93rem;line-height:1.85;padding-left:1.4rem;margin:0 0 1rem;">
         <li>Pick a prompt below and left-click <strong>Copy</strong>.</li>
         <li>Open your AI tool in a new tab, right-click in the chat box, and choose <strong>Paste</strong>.</li>
-        <li>Replace anything in <strong>[brackets]</strong> with your details — student name, topic, grade, etc.</li>
+        <li>Replace anything in <strong>[brackets]</strong> with your details — topic, grade, dates, etc. <strong>Never type a child's real name.</strong> The AI will leave a blank line (____) where the name goes — add the name yourself after you copy the draft into your email.</li>
         <li>Hit Enter. Read the result, adjust the tone or details to match your voice, then copy it into your email or newsletter.</li>
       </ol>
 
@@ -554,17 +555,17 @@
 
       <div class="prompt-card pc-blue">
         <div class="pc-label">📋 Positive Progress Note &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-        <code>Write a short, warm email to the parent of [STUDENT NAME], a [GRADE] student. I want to share that [he/she/they] has been doing well — specifically [SPECIFIC STRENGTH OR IMPROVEMENT, e.g., "showing great effort in writing" or "helping classmates during group work"]. Keep it genuine and encouraging, about 3–4 sentences.</code>
+        <code>Write a short, warm email to the parent of one of my [GRADE] students. Leave a blank line (____) wherever the child's name goes — I'll add it myself. I want to share that [he/she/they] has been doing well — specifically [SPECIFIC STRENGTH OR IMPROVEMENT, e.g., "showing great effort in writing" or "helping classmates during group work"]. Keep it genuine and encouraging, about 3–4 sentences.</code>
       </div>
 
       <div class="prompt-card pc-pink">
         <div class="pc-label">📋 Academic Concern Email &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-        <code>Help me write a professional, caring email to the parent of [STUDENT NAME], a [GRADE] student. I want to share a concern about [ISSUE, e.g., "missing assignments" or "struggling with reading comprehension"]. I'd like to suggest [NEXT STEP, e.g., "a brief phone call" or "extra reading practice at home"]. Keep the tone supportive, not alarming — about 4–5 sentences.</code>
+        <code>Help me write a professional, caring email to the parent of one of my [GRADE] students. Leave a blank line (____) wherever the child's name goes — I'll add it myself. I want to share a concern about [ISSUE, e.g., "missing assignments" or "struggling with reading comprehension"]. I'd like to suggest [NEXT STEP, e.g., "a brief phone call" or "extra reading practice at home"]. Keep the tone supportive, not alarming — about 4–5 sentences.</code>
       </div>
 
       <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Behavior Concern Email &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-        <code>Write a professional, calm email to the parent of [STUDENT NAME] about a behavior concern. The issue is [DESCRIBE BEHAVIOR, e.g., "difficulty staying focused during instruction" or "a conflict with a classmate"]. I want to keep the parent informed and work together. Suggest we [NEXT STEP, e.g., "check in by phone this week"]. Tone: factual, not accusatory, about 4–5 sentences.</code>
+        <code>Write a professional, calm email to the parent of one of my [GRADE] students about a behavior concern. Leave a blank line (____) wherever the child's name goes — I'll add it myself. The issue is [DESCRIBE BEHAVIOR, e.g., "difficulty staying focused during instruction" or "a conflict with a classmate"]. I want to keep the parent informed and work together. Suggest we [NEXT STEP, e.g., "check in by phone this week"]. Tone: factual, not accusatory, about 4–5 sentences.</code>
       </div>
 
       <div class="prompt-card pc-orange">
@@ -645,7 +646,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116" defer></script>
+<script src="mr-ai.js?v=20261116b" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
