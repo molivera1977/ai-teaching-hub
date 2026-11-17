@@ -764,7 +764,7 @@ footer {
 /* ---- FOLDS: "Plans & prices" and other tap-to-open boxes ---- */
 .plan-fold { width: 100%; margin-top: .6rem; }
 .plan-fold > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: .4rem; min-height: 40px;
-  padding: .35rem .9rem; border: 2px solid var(--border); border-radius: 20px; background: #fff; color: #3451d1; font-weight: 700; font-size: .85rem; }
+  padding: .35rem .9rem; border: 2px solid var(--border); border-radius: 20px; background: #fff; color: var(--ink-a); font-weight: 700; font-size: .85rem; }
 .plan-fold > summary::-webkit-details-marker { display: none; }
 .plan-fold > summary::after { content: "▸"; transition: transform .15s; }
 .plan-fold[open] > summary::after { transform: rotate(90deg); }
