@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <link rel="stylesheet" href="style.css?v=20261117a" />
   <script src="font-scale.js?v=20261116a"></script>
   <style>
     :root { --grad-a: #1a9e55; --grad-b: #0d7a8a; --ink-a: #15803d; }
@@ -238,41 +238,15 @@
           <li>The file saves to your <strong>Downloads folder</strong>. Open it, review it, and print or share.</li>
         </ol>
 
-        <div class="method-card best">
-          <div class="who"><img src="images/logo-chatgpt.png" alt="ChatGPT" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ ChatGPT (free and paid plans can do Word docs, PDFs, and HTML files)</div>
-          <h3><img src="images/logo-chatgpt.png" alt="ChatGPT" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask ChatGPT for a Word doc, PDF, or HTML file</h3>
-          <p>ChatGPT can generate a real file and give you a download link to left-click. No copy-paste, no extra steps — it just hands you the finished file.</p>
-          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
-            <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-            <code>Please create a downloadable Word document of this quiz. Format it with a title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key on the last page.</code>
-          </div>
-          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
-            <div class="pc-label">Ask for a PDF <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-            <code>Please create a downloadable PDF of this rubric. Format it as a clean table with the assignment title at the top and a space for the student's name.</code>
-          </div>
-          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
-            <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-            <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
-          </div>
-          <p style="font-size:.85rem;color:#1a5a30;">ChatGPT will show a <strong>download link</strong> in the chat — it looks like a blue underlined filename (e.g., <em>quiz.docx</em> or <em>rubric.pdf</em>) or a button that says "Download." Left-click it and the file goes straight to your Downloads folder. Open and print.</p>
+        <div class="choice-picker" data-group="tool" role="group" aria-label="Pick the AI tool you use">
+          <span class="choice-label">Which AI tool do you use?</span>
+          <button type="button" class="choice-btn" data-show="tool-claude"><img src="images/logo-claude.png" alt="" style="height:18px;border-radius:4px;"> Claude</button>
+          <button type="button" class="choice-btn" data-show="tool-chatgpt"><img src="images/logo-chatgpt.png" alt="" style="height:18px;border-radius:4px;"> ChatGPT</button>
+          <button type="button" class="choice-btn" data-show="tool-gemini"><img src="images/logo-gemini.png" alt="" style="height:18px;border-radius:4px;"> Gemini</button>
+          <button type="button" class="choice-btn" data-show="tool-copilot"><img src="images/logo-copilot.png" alt="" style="height:18px;border-radius:4px;"> Copilot</button>
         </div>
 
-        <div class="method-card good">
-          <div class="who"><img src="images/logo-gemini.png" alt="Gemini" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Google Gemini (easiest option for Google Docs)</div>
-          <h3><img src="images/logo-gemini.png" alt="Gemini" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask Gemini to create a Google Doc or HTML file</h3>
-          <p>Gemini's superpower is Google Docs — it can push a document directly into your Google Drive with one left-click, already formatted and ready to print. If your school uses Google tools, this is the smoothest workflow you'll find.</p>
-          <div class="prompt-card" style="background:#fff;">
-            <div class="pc-label">Ask for a Google Doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-            <code>Please create this as a Google Doc I can open and print. Format it with a title, a Name and Date line, numbered questions with writing space, and an answer key at the bottom.</code>
-          </div>
-          <div class="prompt-card" style="background:#fff;">
-            <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-            <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
-          </div>
-          <p style="font-size:.85rem;color:#2c3780;">Gemini will create the Google Doc in your Drive — just open it and print. Gemini can also make Word docs and PDFs you download right from the chat — just ask.</p>
-        </div>
-
-        <div class="method-card good">
+        <div class="method-card best choice-panel" data-group="tool" id="tool-claude">
           <div class="who"><img src="images/logo-claude.png" alt="Claude" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Easy to download — Claude <span style="font-size:.8rem;font-weight:400;opacity:.8;">· All plans, including free (Word docs, PDFs, and HTML)</span></div>
           <h3><img src="images/logo-claude.png" alt="Claude" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask Claude for a Word doc, PDF, or HTML file</h3>
           <p>Claude gives you the file right in the chat — left-click it to download, and it's yours. <strong>Word docs, PDFs, and HTML files all work on the free plan</strong>, and HTML files print beautifully from any browser.</p>
@@ -291,7 +265,41 @@
           <p style="font-size:.85rem;color:#2c3780;">Claude will give you the file right in the chat. Left-click the link or attachment to download it, then open and print.</p>
         </div>
 
-        <div class="method-card good" style="border-color:#0078d4;background:#f0f6ff;">
+        <div class="method-card good choice-panel" data-group="tool" id="tool-chatgpt">
+          <div class="who"><img src="images/logo-chatgpt.png" alt="ChatGPT" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ ChatGPT (free and paid plans can do Word docs, PDFs, and HTML files)</div>
+          <h3><img src="images/logo-chatgpt.png" alt="ChatGPT" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask ChatGPT for a Word doc, PDF, or HTML file</h3>
+          <p>ChatGPT can generate a real file and give you a download link to left-click. No copy-paste, no extra steps — it just hands you the finished file.</p>
+          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+            <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+            <code>Please create a downloadable Word document of this quiz. Format it with a title at the top, a Name and Date line, numbered questions with space to write answers, and an answer key on the last page.</code>
+          </div>
+          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+            <div class="pc-label">Ask for a PDF <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+            <code>Please create a downloadable PDF of this rubric. Format it as a clean table with the assignment title at the top and a space for the student's name.</code>
+          </div>
+          <div class="prompt-card" style="background:#fff;border-color:#b8e8ca;">
+            <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+            <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
+          </div>
+          <p style="font-size:.85rem;color:#1a5a30;">ChatGPT will show a <strong>download link</strong> in the chat — it looks like a blue underlined filename (e.g., <em>quiz.docx</em> or <em>rubric.pdf</em>) or a button that says "Download." Left-click it and the file goes straight to your Downloads folder. Open and print.</p>
+        </div>
+
+        <div class="method-card good choice-panel" data-group="tool" id="tool-gemini">
+          <div class="who"><img src="images/logo-gemini.png" alt="Gemini" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Google Gemini (easiest option for Google Docs)</div>
+          <h3><img src="images/logo-gemini.png" alt="Gemini" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask Gemini to create a Google Doc or HTML file</h3>
+          <p>Gemini's superpower is Google Docs — it can push a document directly into your Google Drive with one left-click, already formatted and ready to print. If your school uses Google tools, this is the smoothest workflow you'll find.</p>
+          <div class="prompt-card" style="background:#fff;">
+            <div class="pc-label">Ask for a Google Doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+            <code>Please create this as a Google Doc I can open and print. Format it with a title, a Name and Date line, numbered questions with writing space, and an answer key at the bottom.</code>
+          </div>
+          <div class="prompt-card" style="background:#fff;">
+            <div class="pc-label">Ask for an HTML file <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
+            <code>Please create this as a printable HTML file — clean layout, title at the top, Name and Date line, numbered questions with writing space, and an answer key at the end.</code>
+          </div>
+          <p style="font-size:.85rem;color:#2c3780;">Gemini will create the Google Doc in your Drive — just open it and print. Gemini can also make Word docs and PDFs you download right from the chat — just ask.</p>
+        </div>
+
+        <div class="method-card good choice-panel" data-group="tool" id="tool-copilot" style="border-color:#0078d4;background:#f0f6ff;">
           <div class="who" style="color:#0078d4;"><img src="images/logo-copilot.png" alt="Copilot" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Microsoft Copilot — works right inside Word <span style="font-size:.8rem;font-weight:400;opacity:.8;">· Can also produce PDFs and HTML files</span></div>
           <h3><img src="images/logo-copilot.png" alt="Copilot" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask Copilot for a Word doc or PDF</h3>
           <p>If your school uses Microsoft 365, Copilot is your best friend for Word documents — it can create them right inside Microsoft Word. You can also use it at copilot.microsoft.com in any browser.</p>
@@ -307,7 +315,7 @@
         </div>
 
         <div class="callout warn">
-          <strong>🔍 What about Perplexity?</strong> Perplexity is a fantastic research and image generation tool (see Lesson 4!), and its paid plans (including the $10/month Education Pro) can now make Word docs, PDFs, and HTML files too. On Perplexity's free plan, stick with ChatGPT, Gemini, Claude, or Copilot for saving and printing.
+          <strong>🔍 What about Perplexity?</strong> Perplexity is a fantastic research and image generation tool (see Lesson 4!), and its paid plans (including the $10/month Education Pro) can now make Word docs, PDFs, and HTML files too. On Perplexity's free plan, stick with Claude, ChatGPT, Gemini, or Copilot for saving and printing.
         </div>
       </div>
 
@@ -650,6 +658,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
+<script src="picker.js?v=20261117a" defer></script>
 <script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

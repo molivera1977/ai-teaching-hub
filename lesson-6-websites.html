@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <link rel="stylesheet" href="style.css?v=20261117a" />
   <script src="font-scale.js?v=20261116a"></script>
   <style>
     /* Steps 8-9 are an optional bonus: hollow dots until visited. */
@@ -488,7 +488,16 @@ Put everything in one HTML file.</code>
         </ol>
 </details>
 
-        <div class="share-card sc-green" style="flex-direction:column;gap:.75rem;">
+        <div class="choice-picker" data-group="share" role="group" aria-label="How will you share it">
+          <span class="choice-label">How will you share it?</span>
+          <button type="button" class="choice-btn choice-btn-2line" data-show="share-1"><span><b>1. Project it on the board</b><small>simplest — no sharing</small></span></button>
+          <button type="button" class="choice-btn choice-btn-2line" data-show="share-2"><span><b>2. Google Drive</b><small>for Google schools</small></span></button>
+          <button type="button" class="choice-btn choice-btn-2line" data-show="share-3"><span><b>3. Microsoft Teams</b><small>for Microsoft schools</small></span></button>
+          <button type="button" class="choice-btn choice-btn-2line" data-show="share-4"><span><b>4. Gemini share link</b><small>if you build it in Gemini</small></span></button>
+          <button type="button" class="choice-btn choice-btn-2line" data-show="share-5"><span><b>5. Put it online</b><small>a link that lasts</small></span></button>
+        </div>
+
+        <div class="share-card sc-green choice-panel" data-group="share" id="share-1" style="flex-direction:column;gap:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
             <div class="s-icon">📺</div>
             <h3 style="margin:0;">Option 1 — Project it on the Board <span style="font-weight:400;color:#666;font-size:.82rem;">(simplest — no sharing, no accounts)</span></h3>
@@ -503,7 +512,7 @@ Put everything in one HTML file.</code>
           </div>
         </div>
 
-        <div class="share-card sc-blue" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
+        <div class="share-card sc-blue choice-panel" data-group="share" id="share-2" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
             <div class="s-icon">📁</div>
             <h3 style="margin:0;">Option 2 — Google Drive <span style="font-weight:400;color:#666;font-size:.82rem;">(great for Google schools)</span></h3>
@@ -518,11 +527,11 @@ Put everything in one HTML file.</code>
             <li><strong>Students download it, then open it.</strong> Google Drive shows an HTML file as code, not as the working page. Students left-click the link, left-click the <strong>Download</strong> button (⬇) at the top of the screen, then open the downloaded file — it opens in their browser as the working page.</li>
           </ol>
           <div class="callout warn" style="margin:0;">
-            <strong>⚠️ Heads up:</strong> Google Drive won't show the working page by itself — students have to download the file first. Want a link that opens the working page right away? Use Option 4 (Gemini) or Option 5 (Put it Online).
+            <strong>⚠️ Heads up:</strong> Google Drive won't show the working page by itself — students have to download the file first. Want a link that opens the working page right away? Use <button type="button" class="choice-link" onclick="showChoice('share', 'share-4')">Option 4 (Gemini)</button> or <button type="button" class="choice-link" onclick="showChoice('share', 'share-5')">Option 5 (Put it Online)</button>.
           </div>
         </div>
 
-        <div class="share-card sc-purple" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
+        <div class="share-card sc-purple choice-panel" data-group="share" id="share-3" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
             <div class="s-icon">💼</div>
             <h3 style="margin:0;">Option 3 — Microsoft Teams <span style="font-weight:400;color:#666;font-size:.82rem;">(great for Microsoft schools)</span></h3>
@@ -540,7 +549,7 @@ Put everything in one HTML file.</code>
           </div>
         </div>
 
-        <div class="share-card sc-teal" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
+        <div class="share-card sc-teal choice-panel" data-group="share" id="share-4" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
             <div class="s-icon">🔗</div>
             <h3 style="margin:0;">Option 4 — Share a Link from Gemini <span style="font-weight:400;color:#666;font-size:.82rem;">(opens the working page — nothing to download)</span></h3>
@@ -553,16 +562,16 @@ Put everything in one HTML file.</code>
             <li><strong>Next to the g.co/gemini/share link, left-click "Copy link."</strong> Paste it into Google Classroom (or anywhere you post things for students). Students left-click it and the working page opens.</li>
           </ol>
           <div class="callout warn" style="margin:0;">
-            <strong>⚠️ This is a public link.</strong> Anyone who has it can open the page. Never put student names or private information in it. Can't find "Share"? Use Option 5 instead.
+            <strong>⚠️ This is a public link.</strong> Anyone who has it can open the page. Never put student names or private information in it. Can't find "Share"? Use <button type="button" class="choice-link" onclick="showChoice('share', 'share-5')">Option 5</button> instead.
           </div>
         </div>
 
-        <div class="share-card sc-orange" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
+        <div class="share-card sc-orange choice-panel" data-group="share" id="share-5" style="flex-direction:column;gap:.75rem;margin-top:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
             <div class="s-icon">🌐</div>
             <h3 style="margin:0;">Option 5 — Put it Online <span style="font-weight:400;color:#666;font-size:.82rem;">(permanent link, free — takes ~10 minutes to set up the first time)</span></h3>
           </div>
-          <p style="margin:0;font-size:.9rem;color:#3b4160;"><strong>Skip this unless you want a link that lasts</strong> — Options 1–4 are easier. This gives your site a real web address — like a website anyone can visit anytime. It's the most powerful option but takes a few extra minutes to set up the first time.</p>
+          <p style="margin:0;font-size:.9rem;color:#3b4160;"><strong>Choose this only if you want a link that lasts</strong> — Options 1–4 are easier. This gives your site a real web address — like a website anyone can visit anytime. It's the most powerful option but takes a few extra minutes to set up the first time.</p>
           <div class="callout info" style="margin:.5rem 0;">
             <strong><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.35rem;">What is GitHub?</strong> GitHub is a free service (like Google Drive, but for websites and code) where you can store files and make them live on the internet. You don't need to understand how it works — you just need a free account. Think of it as the "publish" button for your site.
           </div>
@@ -973,6 +982,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
+<script src="picker.js?v=20261117a" defer></script>
 <script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

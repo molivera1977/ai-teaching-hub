@@ -745,6 +745,33 @@ footer {
   text-align: center; margin-bottom: .25rem;
 }
 
+/* ---- ONE PATH AT A TIME: choice picker (see picker.js) ---- */
+.choice-picker { display: flex; flex-wrap: wrap; gap: .5rem; align-items: stretch; margin: 1rem 0 1.1rem; }
+.choice-picker .choice-label { width: 100%; font-weight: 800; color: var(--text); font-size: .95rem; }
+.choice-btn { background: #fff; border: 2px solid var(--border); border-radius: 30px; padding: .5rem 1rem; min-height: 44px;
+  font-weight: 700; font-size: .9rem; color: #3b4160; cursor: pointer; display: inline-flex; align-items: center; gap: .45rem; text-align: left; }
+.choice-btn-2line { border-radius: 14px; }
+.choice-btn-2line b { display: block; }
+@media (max-width: 480px) { .choice-btn-2line { flex: 1 1 100%; } }
+.choice-btn small { display: block; font-weight: 500; font-size: .76rem; color: #4b5563; }
+.choice-btn:hover { border-color: var(--ink-a); color: var(--ink-a); }
+.choice-btn.active { background: var(--ink-a); border-color: var(--ink-a); color: #fff; }
+.choice-btn.active small { color: #fff; }
+.choice-btn:focus-visible, .choice-link:focus-visible { outline: 3px solid var(--ink-a); outline-offset: 2px; }
+.choice-panel[hidden] { display: none !important; }
+.choice-link { background: none; border: none; padding: 0; font: inherit; color: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; }
+
+/* ---- FOLDS: "Plans & prices" and other tap-to-open boxes ---- */
+.plan-fold { width: 100%; margin-top: .6rem; }
+.plan-fold > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: .4rem; min-height: 40px;
+  padding: .35rem .9rem; border: 2px solid var(--border); border-radius: 20px; background: #fff; color: #3451d1; font-weight: 700; font-size: .85rem; }
+.plan-fold > summary::-webkit-details-marker { display: none; }
+.plan-fold > summary::after { content: "▸"; transition: transform .15s; }
+.plan-fold[open] > summary::after { transform: rotate(90deg); }
+.plan-fold[open] > summary { margin-bottom: .6rem; }
+.plan-fold-big { margin-top: 2rem; }
+.plan-fold-big > summary { display: flex; width: 100%; padding: .85rem 1.1rem; border-radius: 12px; border-color: #f59e0b; background: #fffbeb; color: #78350f; font-size: .95rem; }
+
 /* ---- MR. AI WIDGET ---- */
 .mr-ai-widget { position: fixed; bottom: 22px; right: 22px; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 .mr-ai-toggle { background: linear-gradient(135deg, #4f6ef7, #5ea7e8); color: #fff; border: 1px solid transparent; border-radius: 30px; padding: .62rem 1.05rem; font-size: .82rem; font-weight: 700; box-shadow: 0 4px 16px rgba(79,110,247,.32); cursor: pointer; transition: transform .15s, box-shadow .15s; white-space: nowrap; }
