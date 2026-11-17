@@ -98,11 +98,21 @@
     if (last < txt.length) el.appendChild(document.createTextNode(txt.slice(last)));
   }
 
+  // Turn a Markdown heading line ("# Tips") into bold text and drop extra blank lines.
+  function mrTidy(txt) {
+    return String(txt)
+      .replace(/^[ \t]*#{1,6}[ \t]+(.+?)[ \t]*#*[ \t]*$/gm, function (m, h) { return '**' + h.replace(/\*\*/g, '') + '**'; })
+      .replace(/^([ \t]*)[*\-][ \t]+/gm, '$1• ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
   function mrAddBubble(txt, cls, rich) {
     var msgs = document.getElementById('mrAiMessages');
     var b = document.createElement('div');
     b.className = 'mr-ai-bubble ' + cls;
-    if (rich) { mrRenderRich(b, txt); } else { b.textContent = txt; }
+    b.style.whiteSpace = 'pre-line'; // keep the paragraph and list breaks in replies
+    if (rich) { mrRenderRich(b, mrTidy(txt)); } else { b.textContent = txt; }
     msgs.appendChild(b);
     msgs.scrollTop = msgs.scrollHeight;
     return b;

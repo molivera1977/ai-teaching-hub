@@ -8,10 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #f7924f; --grad-b: #e05a1a; }
+    /* Steps 8-9 are an optional bonus: hollow dots until visited. */
+    .progress-dots .dot:nth-child(n+8):not(.active):not(.done) { background:#fff; box-shadow: inset 0 0 0 2px #7c84a8; }
+    /* Lists inside a numbered step keep their own numbers (no extra step circles). */
+    .steps li li { counter-increment: none; padding-left: 0; margin-bottom: .3rem; font-size: inherit; color: inherit; }
+    .steps li li::before { content: none; display: none; }
+    :root { --grad-a: #f7924f; --grad-b: #e05a1a; --ink-a: #c2410c; }
     @keyframes pulse-cta {
       0%, 100% { transform: scale(1); }
       50%      { transform: scale(1.06); }
@@ -161,13 +166,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html" class="active">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html" class="active"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -180,7 +185,7 @@
 <div class="container">
 
   <div class="lesson-nav">
-    <a href="lesson-5-print-save.html">← Lesson 5</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -192,8 +197,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="index.html">🏠 Back to Home</a>
   </div>
 
   <div id="lesson-steps">
@@ -206,13 +209,13 @@
 
       <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;">
         <strong>🚀 Before you begin:</strong> Open one of these in a new tab — you'll use it to build your first website by the end of this lesson. No coding required.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
-          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
+          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
+          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
+          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
+          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
         </span>
         <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
       </div>
@@ -227,10 +230,10 @@
 
         <p>Think of it like being an architect. An architect doesn't swing a hammer or lay bricks — they describe what the building should look like, and a builder brings it to life. <strong>You are the architect. AI is the builder.</strong></p>
 
-        <p>The same AI tools you've been using throughout this course — ChatGPT, Claude, Gemini, Copilot — can build complete, working websites. All you have to do is describe what you want.</p>
+        <p>The AI tools in this course — ChatGPT, Claude, Gemini, Copilot — can build complete, working websites. All you have to do is describe what you want.</p>
 
         <div class="callout tip">
-          <strong>✅ You already know how to do this.</strong> Every skill from this course — writing clear prompts, being specific, asking for revisions — applies here. You're already prepared.
+          <strong>✅ You can do this — it works like any prompt.</strong> Write a clear request, be specific, and ask for changes until it's right.
         </div>
       </div>
 
@@ -303,7 +306,7 @@
           <strong>✅ One important phrase to always include:</strong> End your request with <em>"Put everything in one HTML file."</em> An HTML file is just a web page file — it opens in any browser (Chrome, Safari, Edge) with a double-click, and anyone can view it. This keeps things simple and easy to share.
         </div>
 
-        <h3>A simple formula that works every time:</h3>
+        <h3>A simple formula that works well:</h3>
         <div class="callout info">
           <strong>"Build me a [type of site] for [grade] students about [topic]. Include [list what you want]. Put everything in one HTML file."</strong>
         </div>
@@ -312,13 +315,14 @@
 
         <h3>After AI builds it:</h3>
         <ol class="steps">
-          <li><strong>Look at what AI gave you.</strong> If you used Claude, or Gemini with Canvas, a live preview appears beside the chat — you can scroll through it and try it right there. Other tools may show you the code in the chat instead. Either way, read through it and see if it looks right.</li>
+          <li><strong>Look at what AI gave you.</strong> If you used Claude, or Gemini's Canvas tool (a work space beside the chat — not your school's Canvas), a live preview appears beside the chat — you can scroll through it and try it right there. Other tools may show you the code in the chat instead. Either way, read through it and see if it looks right.</li>
           <li><strong>Get the file.</strong> In Claude, use the download or export button at the top of the preview — or just ask Claude, <em>"Give me this as a downloadable HTML file,"</em> and left-click the file it gives you. It saves to your Downloads folder automatically.
             <div style="background:#fef3c7;border:1.5px solid #f59e0b;border-radius:10px;padding:.85rem 1rem;margin-top:.6rem;">
               <div style="font-weight:800;font-size:.85rem;color:#7c2d12;margin-bottom:.4rem;">🛠️ When AI shows you code instead of a download button</div>
-              <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>You'll need to do this when an AI shows you the HTML code instead of giving you a file to download</strong> — this can happen with ChatGPT, Gemini, or Copilot. You can save it yourself in under 60 seconds:</div>
-              <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>💻 On a Chromebook?</strong> It doesn't have Notepad or TextEdit, so skip these steps. Instead, paste the code into Claude and ask: <em>"Give me this as a downloadable HTML file."</em> Then download the file Claude gives you.</div>
-              <ol style="font-size:.85rem;color:#7c2d12;line-height:1.65;padding-left:1.3rem;margin:0;">
+              <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>You'll need to do this when an AI shows you the HTML code instead of giving you a file to download</strong> — this can happen with ChatGPT, Gemini, or Copilot. It's easy to fix:</div>
+              <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>✅ Easiest way, on any computer:</strong> left-click <strong>Copy code</strong>, open Claude, paste it in, and type: <em>"Give me this as a downloadable HTML file."</em> Then left-click the file Claude gives you to download it.</div>
+              <details style="margin-top:.2rem;"><summary style="cursor:pointer;font-weight:700;font-size:.85rem;color:#7c2d12;">Prefer to save it yourself? Use Notepad or TextEdit (not on a Chromebook)</summary>
+<ol style="font-size:.85rem;color:#7c2d12;line-height:1.65;padding-left:1.3rem;margin:0;">
                 <li>At the top of the code block in the chat, left-click the <strong>Copy code</strong> button (sometimes labeled <strong>📋</strong>). This copies the entire HTML to your clipboard.</li>
                 <li>Open a <strong>plain-text editor</strong> <em style="color:#9a3412;">(a basic notepad-style app for plain typing — no fonts or formatting, which is what you need for HTML)</em>:
                   <ul style="margin:.2rem 0;padding-left:1.1rem;">
@@ -337,11 +341,12 @@
                 </li>
                 <li>Choose where to save it (Desktop or Downloads works great) and left-click <strong>Save</strong>. Your file is ready.</li>
               </ol>
+</details>
             </div>
           </li>
           <li><strong>Open it in your browser to check it.</strong> Find the file in your Downloads folder and double-click it. It should open in Chrome, Safari, or Edge and look like a real website. Scroll through the whole thing and read it carefully.</li>
           <li><strong>Make any changes by talking to AI.</strong> If something looks wrong, go back to the AI chat and describe what needs fixing in plain English — for example: "Change the background to white" or "Add two more review questions" or "Make the title bigger." AI will update the site and give you a new version.</li>
-          <li><strong>Repeat until it's ready.</strong> Download or copy the final version, then scroll down to the next section to share it with students.</li>
+          <li><strong>Repeat until it's ready.</strong> Download or copy the final version, then press <strong>Continue</strong> until you reach Step 5, Sharing With Students.</li>
         </ol>
 
         <div class="callout tip" style="margin-top:3rem;">
@@ -354,10 +359,10 @@
           <li>Pick one of the prompts below and left-click the <strong>Copy</strong> button on it.</li>
           <li>Open one of these AI tools in a new tab:
             <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin:.5rem 0 .25rem;">
-              <a href="https://chat.openai.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img src="images/logo-chatgpt.png" style="height:16px;">ChatGPT</a>
-              <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img src="images/logo-claude.png" style="height:16px;">Claude</a>
-              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img src="images/logo-gemini.png" style="height:16px;">Gemini</a>
-              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img src="images/logo-copilot.png" style="height:16px;">Copilot</a>
+              <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img alt="" src="images/logo-chatgpt.png" style="height:16px;">ChatGPT</a>
+              <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img alt="" src="images/logo-claude.png" style="height:16px;">Claude</a>
+              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img alt="" src="images/logo-gemini.png" style="height:16px;">Gemini</a>
+              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .75rem;background:#f8f9ff;border:1px solid #dde2ff;border-radius:8px;text-decoration:none;color:#1a2060;font-size:.83rem;font-weight:600;"><img alt="" src="images/logo-copilot.png" style="height:16px;">Copilot</a>
             </div>
           </li>
           <li>Left-click inside the chat box at the bottom of the screen.</li>
@@ -401,7 +406,7 @@
           <li>Right-click in the chat box and choose <strong>Paste</strong>.</li>
           <li>Replace anything in <strong>[brackets]</strong> with your own content.</li>
           <li>Hit Enter and wait for AI to build your site. It may take a few seconds.</li>
-          <li>When it's done, AI will give you an <strong>HTML file to download</strong> — or show you the code in the chat with a <strong>Copy code</strong> button. Either way, scroll down to the next section to save and share it with students.</li>
+          <li>When it's done, AI will give you an <strong>HTML file to download</strong> — or show you the code in the chat with a <strong>Copy code</strong> button. Either way, press <strong>Continue</strong> until you reach Step 5, Sharing With Students. (Got code instead of a file? Step 3 shows the easy fix.)</li>
         </ol>
 
         <div class="prompt-card pc-purple">
@@ -472,14 +477,16 @@ Put everything in one HTML file.</code>
         <p>Once AI builds your site and gives you the HTML file, here are five ways to get it in front of students. Pick the one that fits your situation.</p>
 
         <p style="font-size:.93rem;margin:.5rem 0 .75rem;"><strong>Did AI give you a downloadable HTML file?</strong> Just download it — skip to the sharing options below.<br>
-        <strong>Did AI show you code in the chat?</strong> Follow these steps first:</p>
-        <ol style="font-size:.93rem;line-height:1.85;padding-left:1.4rem;margin:0 0 1.25rem;">
+        <strong>Did AI show you code in the chat?</strong> Easiest fix: left-click <strong>Copy code</strong>, open Claude, paste it in, and type: <em>"Give me this as a downloadable HTML file."</em> Then left-click the file Claude gives you.</p>
+        <details style="margin:0 0 1.25rem;"><summary style="cursor:pointer;font-weight:700;font-size:.9rem;">Prefer to save it yourself? Use Notepad or TextEdit (not on a Chromebook)</summary>
+<ol style="font-size:.93rem;line-height:1.85;padding-left:1.4rem;margin:0 0 1.25rem;">
           <li>Look for a button that says <strong>Copy code</strong> at the top of the code block. Left-click it.</li>
           <li>Open a plain text editor — <svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.3rem;flex-shrink:0;display:inline-block;" aria-label="Windows"><path fill="#00a4ef" d="M2 4.5l8.5-1.2v8.4H2zM2 19.5l8.5 1.2v-8.3H2zM11.4 3.2L22 1.7v9.9H11.4zM11.4 12.4H22v9.9l-10.6-1.5z"/></svg><strong>Notepad</strong> on Windows or <svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.3rem;flex-shrink:0;display:inline-block;" aria-label="Apple"><path fill="#1a1a1a" d="M17.05 12.07c-.02-2.65 2.16-3.93 2.26-3.99-1.23-1.81-3.16-2.06-3.84-2.08-1.62-.16-3.16.96-3.99.96-.83 0-2.09-.94-3.45-.91-1.77.03-3.41 1.03-4.32 2.62-1.85 3.21-.47 7.94 1.32 10.53.88 1.27 1.93 2.7 3.3 2.65 1.33-.05 1.83-.86 3.43-.86 1.6 0 2.06.86 3.45.83 1.43-.02 2.33-1.29 3.2-2.57 1.01-1.48 1.43-2.91 1.46-2.99-.03-.01-2.8-1.07-2.82-4.25zm-2.62-7.81C15.18 3.42 15.71 2.26 15.57 1c-1.06.04-2.35.71-3.13 1.54-.69.74-1.3 1.93-1.14 3.16 1.19.09 2.4-.6 3.13-1.44z"/></svg><strong>TextEdit</strong> on Mac (set to plain text). <strong>On a Chromebook,</strong> skip this step and the next two: paste the code into Claude instead, ask for a downloadable HTML file, and download it.</li>
           <li>Right-click inside the editor and choose <strong>Paste</strong>.</li>
           <li>Save the file with a name ending in <strong>.html</strong> — for example, <em>quiz.html</em>.</li>
           <li>Now choose one of the options below to share it with students.</li>
         </ol>
+</details>
 
         <div class="share-card sc-green" style="flex-direction:column;gap:.75rem;">
           <div style="display:flex;align-items:center;gap:.75rem;">
@@ -506,7 +513,7 @@ Put everything in one HTML file.</code>
             <li><strong>Go to drive.google.com</strong> — type that address into your browser's address bar and press Enter. Sign in with your school Google account if it asks.</li>
             <li><strong>Find the blue "New" button on the left side of the page and left-click it.</strong> A small menu drops down. Left-click <strong>"File upload."</strong> A window opens showing your computer's files — find your HTML file (check your Downloads folder), and double-click it to upload it.</li>
             <li><strong>Once it uploads, find the file in the list. Right-click it</strong> (right mouse button, or a two-finger tap on a Mac or Chromebook) <strong>and choose "Share."</strong> A sharing window opens.</li>
-            <li><strong>Look for where it says "Restricted" and left-click the dropdown arrow next to it. Choose "Anyone with the link."</strong> Then check that the box to the right says <strong>"Viewer"</strong> — this means students can open and see it but can't accidentally change anything.</li>
+            <li><strong>Look for where it says "Restricted" and left-click the dropdown arrow next to it. Choose "Anyone with the link."</strong> Then check that the box to the right says <strong>"Viewer"</strong> — this means students can open and see it but can't accidentally change anything. 🔒 Anyone who has the link can open it, so keep student names and scores out of the file.</li>
             <li><strong>Left-click "Copy link."</strong> The link is now on your clipboard, ready to paste. Go to Google Classroom (your school's online classroom tool where you post assignments and materials for students), left-click where you want to add it, and press <strong>Ctrl+V</strong> (<svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.25rem;display:inline-block;" aria-label="Windows"><path fill="#00a4ef" d="M2 4.5l8.5-1.2v8.4H2zM2 19.5l8.5 1.2v-8.3H2zM11.4 3.2L22 1.7v9.9H11.4zM11.4 12.4H22v9.9l-10.6-1.5z"/></svg>Windows or Chromebook) or <strong>Cmd+V</strong> (<svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.25rem;display:inline-block;" aria-label="Apple"><path fill="#1a1a1a" d="M17.05 12.07c-.02-2.65 2.16-3.93 2.26-3.99-1.23-1.81-3.16-2.06-3.84-2.08-1.62-.16-3.16.96-3.99.96-.83 0-2.09-.94-3.45-.91-1.77.03-3.41 1.03-4.32 2.62-1.85 3.21-.47 7.94 1.32 10.53.88 1.27 1.93 2.7 3.3 2.65 1.33-.05 1.83-.86 3.43-.86 1.6 0 2.06.86 3.45.83 1.43-.02 2.33-1.29 3.2-2.57 1.01-1.48 1.43-2.91 1.46-2.99-.03-.01-2.8-1.07-2.82-4.25zm-2.62-7.81C15.18 3.42 15.71 2.26 15.57 1c-1.06.04-2.35.71-3.13 1.54-.69.74-1.3 1.93-1.14 3.16 1.19.09 2.4-.6 3.13-1.44z"/></svg>Mac) to paste.</li>
             <li><strong>Students download it, then open it.</strong> Google Drive shows an HTML file as code, not as the working page. Students left-click the link, left-click the <strong>Download</strong> button (⬇) at the top of the screen, then open the downloaded file — it opens in their browser as the working page.</li>
           </ol>
@@ -540,13 +547,13 @@ Put everything in one HTML file.</code>
           </div>
           <p style="font-size:.85rem;color:var(--muted);margin:0 0 .5rem;">If you build your page with Google Gemini, Gemini can give you a link that opens the working page right in the browser. Students just click it.</p>
           <ol class="steps" style="margin:0;">
-            <li><strong>Go to <a href="https://gemini.google.com" target="_blank" style="color:inherit;">gemini.google.com</a>.</strong> Below the text box, left-click the <strong>＋</strong> (Add files) or <strong>Tools</strong> button and choose <strong>Canvas</strong>.</li>
+            <li><strong>Go to <a href="https://gemini.google.com" target="_blank" style="color:inherit;">gemini.google.com</a>.</strong> Below the text box, left-click the <strong>＋</strong> (Add files) or <strong>Tools</strong> button and choose <strong>Canvas</strong> (Gemini's work space — not your school's Canvas).</li>
             <li><strong>Paste your prompt and press Enter.</strong> Your page appears in a panel beside the chat — and it works, so you can try it right there.</li>
             <li><strong>At the top right of that panel, left-click "Share &amp; export," then "Share."</strong></li>
             <li><strong>Next to the g.co/gemini/share link, left-click "Copy link."</strong> Paste it into Google Classroom (or anywhere you post things for students). Students left-click it and the working page opens.</li>
           </ol>
           <div class="callout warn" style="margin:0;">
-            <strong>⚠️ This is a public link</strong> — anyone who has it can open the page. Never put student names or private information in it. Can't find "Share"? Use Option 5 instead.
+            <strong>⚠️ This is a public link.</strong> Anyone who has it can open the page. Never put student names or private information in it. Can't find "Share"? Use Option 5 instead.
           </div>
         </div>
 
@@ -555,18 +562,18 @@ Put everything in one HTML file.</code>
             <div class="s-icon">🌐</div>
             <h3 style="margin:0;">Option 5 — Put it Online <span style="font-weight:400;color:#666;font-size:.82rem;">(permanent link, free — takes ~10 minutes to set up the first time)</span></h3>
           </div>
-          <p style="margin:0;font-size:.9rem;color:#3b4160;">This gives your site a real web address — like a website anyone can visit anytime. It's the most powerful option but takes a few extra minutes to set up the first time.</p>
+          <p style="margin:0;font-size:.9rem;color:#3b4160;"><strong>Skip this unless you want a link that lasts</strong> — Options 1–4 are easier. This gives your site a real web address — like a website anyone can visit anytime. It's the most powerful option but takes a few extra minutes to set up the first time.</p>
           <div class="callout info" style="margin:.5rem 0;">
             <strong><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.35rem;">What is GitHub?</strong> GitHub is a free service (like Google Drive, but for websites and code) where you can store files and make them live on the internet. You don't need to understand how it works — you just need a free account. Think of it as the "publish" button for your site.
           </div>
           <div class="callout warn" style="margin:0;">
-            <strong>⚠️ Public means anyone can see it</strong> Anyone can open the page and read every file in it, even parts the page hides (like an answer key). Never put student names, ID numbers, scores, or a PIN in the file.
+            <strong>⚠️ Public means anyone on the internet can open it.</strong> That includes parts the page hides, like an answer key. Treat it like a hallway bulletin board: no student names, ID numbers, scores, or passwords.
           </div>
           <ol class="steps" style="margin:0;">
-            <li><strong><a href="https://github.com" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.3rem;">Go to github.com</a></strong> — open a browser tab, type <strong>github.com</strong> in the address bar, and hit Enter (or just click the link above). Left-click <strong>Sign up</strong> in the top-right corner. Use your personal email (not your school email — school emails sometimes block outside services). Follow the prompts to create a free account.</li>
+            <li><strong><a href="https://github.com" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-github.png" alt="GitHub" style="height:16px;vertical-align:middle;margin-right:.3rem;">Go to github.com</a></strong> — open a browser tab, type <strong>github.com</strong> in the address bar, and hit Enter (or just click the link above). Left-click <strong>Sign up</strong> in the top-right corner. Use the email your school allows for outside sites — not sure? Ask your technology person. Follow the prompts to create a free account.</li>
             <li><strong>Create a new repository</strong> — a repository is just a folder on GitHub where your site will live. Once logged in, left-click the <strong>+</strong> icon in the top-right corner and choose <strong>New repository</strong>. Give it a name (no spaces — use dashes, like <em>my-quiz</em>). Make sure it is set to <strong>Public</strong>. Left-click <strong>Create repository</strong>.</li>
-            <li><strong>Upload your HTML file</strong> — on the next screen, left-click <strong>uploading an existing file</strong>. Drag your <em>.html</em> file into the box that appears, or left-click <strong>choose your files</strong> to find it on your computer. Once it appears in the list, scroll down and left-click the green <strong>Commit changes</strong> button.</li>
-            <li><strong>Turn on GitHub Pages</strong> — left-click the <strong>Settings</strong> tab at the top of your repository. Scroll down until you see a section called <strong>Pages</strong> in the left sidebar and left-click it. Under <strong>Branch</strong>, left-click the dropdown that says <em>None</em> and choose <strong>main</strong>. Left-click <strong>Save</strong>.</li>
+            <li><strong>Upload your HTML file</strong> — on the next screen, left-click <strong>uploading an existing file</strong>. Drag your <em>.html</em> file into the box that appears, or left-click <strong>choose your files</strong> to find it on your computer. Once it appears in the list, scroll down and left-click the green <strong>Commit changes</strong> button (GitHub's word for Save).</li>
+            <li><strong>Turn on GitHub Pages</strong> — left-click the <strong>Settings</strong> tab at the top of your repository. Scroll down until you see a section called <strong>Pages</strong> in the left sidebar and left-click it. Under <strong>Branch</strong> (GitHub's word for a version of your files), left-click the dropdown that says <em>None</em> and choose <strong>main</strong>. Left-click <strong>Save</strong>.</li>
             <li><strong>Get your link</strong> — wait about 1–2 minutes, then refresh the page. GitHub will show you a green box with your live link — it will look like <em>yourname.github.io/my-quiz</em>. Left-click it to make sure your site opens correctly.</li>
             <li><strong>Share that link with students</strong> — the easiest way is to simply <strong>write the link on your board</strong> and have students type it in. You can also turn it into a QR code (students point their phone camera at it and the site opens instantly — free tool at <strong>qr-code-generator.com</strong>), email it to students or parents, or post it in <strong>Google Classroom</strong> or <strong>Microsoft Teams</strong>. Your link never expires.</li>
           </ol>
@@ -586,14 +593,14 @@ Put everything in one HTML file.</code>
     <!-- STEP 6: Try It + Course Complete                            -->
     <!-- ============================================================ -->
     <div class="lesson-step" id="step-6">
-      <p class="step-label">Step 6 of 9 — Try It &nbsp;·&nbsp; <span style="font-weight:400;font-style:italic;">Step 7 is optional</span></p>
+      <p class="step-label">Step 6 of 9 — Try It</p>
 
       <div class="lesson-section">
         <h2>✏️ Try It Now</h2>
         <div class="try-it">
           <div class="try-label">🧪 Your First Website — In Under 5 Minutes</div>
           <p>Replace the [brackets] with your own content and paste this into ChatGPT, Claude, Copilot, or Gemini:</p>
-          <textarea id="website-prompt" rows="10" style="width:100%;font-family:inherit;font-size:.95rem;padding:.75rem;border-radius:8px;border:1px solid var(--border);resize:vertical;color:#1a2060;">Build a quiz website for [GRADE] students about [TOPIC].
+          <textarea id="website-prompt" aria-label="Your website request" rows="10" style="width:100%;font-family:inherit;font-size:16px;padding:.75rem;border-radius:8px;border:1px solid var(--border);resize:vertical;color:#1a2060;">Build a quiz website for [GRADE] students about [TOPIC].
 
 Include:
 - Title: "[YOUR TITLE]"
@@ -609,7 +616,7 @@ Put everything in one HTML file.</textarea>
         </div>
 
         <div class="callout tip" style="margin-top:1rem;">
-          <strong>✅ What to do with the result:</strong> What you see depends on which AI you used. <strong>Claude</strong> shows a live preview and can give you a downloadable HTML file. <strong>ChatGPT</strong> usually gives a downloadable file link in the chat. <strong>Gemini</strong> shows a live preview in Canvas and can share it with a link (Option 4). <strong>Copilot and Perplexity</strong> may show the code in the chat — copy it into Notepad (Windows) or TextEdit (Mac, set to plain text) and save it with a <em>.html</em> ending (see the detailed steps in Step 3). On a Chromebook, ask Claude for a downloadable HTML file instead. Once you have the file, double-click it to open in your browser, then share it via Project on Board, Google Drive, Microsoft Teams, a Gemini link, or Put it Online.
+          <strong>✅ What to do with the result:</strong> What you see depends on which AI you used. <strong>Claude</strong> shows a live preview and can give you a downloadable HTML file. <strong>ChatGPT</strong> usually gives a downloadable file link in the chat. <strong>Gemini</strong> shows a live preview in Canvas (Gemini's work space beside the chat) and can share it with a link (Option 4). <strong>Copilot and Perplexity</strong> may show the code in the chat — use the easy fix in Step 3: paste the code into Claude and ask for a downloadable HTML file. Once you have the file, double-click it to open in your browser, then share it via Project on Board, Google Drive, Microsoft Teams, a Gemini link, or Put it Online.
         </div>
       </div>
 
@@ -672,8 +679,9 @@ Put everything in one HTML file.</textarea>
       </div>
 
       <div style="text-align:center;margin-top:3rem;margin-bottom:1.25rem;">
-        <p style="font-size:.9rem;color:var(--muted);margin:0 0 .75rem;">Want to keep going? There's one more optional page — for teachers who want AI to do absolutely everything for them.</p>
-        <button onclick="goToStep(8)" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:10px;padding:.7rem 1.6rem;font-size:.95rem;font-weight:700;cursor:pointer;margin-right:.5rem;">⭐ Optional: I want more →</button>
+        <p style="font-size:.9rem;color:var(--muted);margin:0 0 .75rem;">You can finish the course right here. Want to keep going? The optional bonus is for teachers who want AI to do absolutely everything for them.</p>
+        <a href="course-complete.html" style="display:inline-block;background:#c2410c;color:#fff;border:2px solid #c2410c;border-radius:10px;padding:.7rem 1.6rem;font-size:.95rem;font-weight:700;text-decoration:none;margin:0 .5rem .5rem 0;">🎓 Finish the Course →</a>
+        <button onclick="goToStep(8)" style="background:#fff;color:#c2410c;border:2px solid #c2410c;border-radius:10px;padding:.65rem 1.4rem;font-size:.95rem;font-weight:700;cursor:pointer;margin:0 .5rem .5rem 0;">⭐ Optional bonus →</button>
         <a href="index.html" style="display:inline-block;background:#fff;color:#1a2060;border:2px solid #dde2ff;border-radius:10px;padding:.65rem 1.4rem;font-size:.95rem;font-weight:700;text-decoration:none;">🏠 Back to Home</a>
       </div>
 
@@ -685,7 +693,7 @@ Put everything in one HTML file.</textarea>
     <!-- STEP 8: If You Want to Be Daring                            -->
     <!-- ============================================================ -->
     <div class="lesson-step" id="step-8">
-      <p class="step-label">Step 8 of 9 — If You Want to Be Daring</p>
+      <p class="step-label">Bonus · Step 8 of 9 — If You Want to Be Daring</p>
 
       <div class="callout" style="background:#fefce8;border:3px solid #f59e0b;border-radius:14px;padding:1.25rem 1.4rem;margin-bottom:.5rem;box-shadow:0 4px 16px rgba(245,158,11,.15);">
         <div style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:#78350f;line-height:1.25;margin-bottom:.5rem;">⭐ This step is COMPLETELY optional. Like, extremely optional. Wildly optional.</div>
@@ -719,8 +727,7 @@ Put everything in one HTML file.</textarea>
         </div>
         <ol class="steps">
           <li><strong><a href="https://claude.ai/download" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-claude.png" alt="Claude" style="height:14px;vertical-align:middle;margin-right:.25rem;">Open claude.ai/download</a></strong> — go there in any browser on your Mac or Windows computer (or just click the link).</li>
-          <li><strong>Left-click "Download for Mac" (or Windows)</strong> — open the setup file when it finishes downloading. It walks you through a simple Next → Next → Install process, just like any other app.</li>
-          <li><strong>Drag Claude into your Applications folder</strong> — then double-click to open it.</li>
+          <li><strong>Left-click the download button for your computer</strong> — then open the file when it finishes downloading.<br><b>Windows:</b> follow the Next → Next → Install steps.<br><b>Mac:</b> drag Claude into your Applications folder, then double-click it to open.</li>
           <li><strong>Sign in with your existing claude.ai account</strong> — no new account needed. You're ready.</li>
         </ol>
         <div class="callout tip">
@@ -733,17 +740,16 @@ Put everything in one HTML file.</textarea>
         <p>Because Claude Code actually does things on your computer (creating files, opening folders), your Mac or Windows machine will ask you to approve a few permissions. These are the same kind of pop-ups you see when any new app wants access. <strong>Only allow what you understand</strong> — you can always say No. This bonus step is optional.</p>
         <ul>
           <li><strong>Allow access to your folders</strong> — so it can create and save your website files.</li>
-          <li><strong>Allow it to take actions on your screen</strong> — a permission pop-up will appear (like the kind you see when any new app needs access to something). Left-click <strong>Allow</strong>. This is what lets it create and save your files for you instead of just giving you instructions to do it yourself.</li>
           <li><strong>Allow it to open your browser</strong> — so it can show you the finished site when it's done.</li>
         </ul>
         <div class="callout warn">
-          <strong>⚠️ Only approve Claude Code</strong> — these permissions are for the official Claude app from Anthropic. Never grant "control your computer" access to a random website or unknown app.
+          <strong>⚠️ Only approve Claude Code.</strong> These permissions are for the official Claude app from Anthropic. Never grant "control your computer" access to a random website or unknown app.
         </div>
 
         <div class="callout tip" style="margin-top:.75rem;">
           <strong>💡 Why approve these at all?</strong>
           <p style="margin:0 0 .6rem;">You normally wouldn't grant this kind of access — so only allow it for the official Claude app, on a computer where you're allowed to install apps. By allowing it, you're letting Claude do a huge amount of work <em>on its own</em> instead of just telling you how to do it. It creates files for you, saves them where they belong, opens what needs opening, and pushes your site online — all while you watch.</p>
-          <p style="margin:0;">And here's the best part: <b>you can keep pushing it.</b> If Claude says "okay, here's the file," you can come right back and say <em>"actually, also do X, Y, and Z."</em> It's like having an employee you can boss around all day without ever getting in trouble — no eye-rolls, no complaints, just <em>"sure, on it."</em></p>
+          <p style="margin:0;">And here's the best part: <b>you can keep pushing it.</b> If Claude says "okay, here's the file," you can come right back and say <em>"actually, also do X, Y, and Z."</em></p>
         </div>
       </div>
 
@@ -754,7 +760,7 @@ Put everything in one HTML file.</textarea>
           <li><strong>Open Claude Code and type your request</strong> — it looks like a chat window. Type in plain English: <em>"Build me a 10-question quiz site about the water cycle for 4th graders."</em></li>
           <li><strong>Watch it work</strong> — you'll see it creating files and writing code automatically. You don't touch anything. It's like watching a fast-forward video of someone building your site.</li>
           <li><strong>It publishes the site for you</strong> — Claude Code connects to GitHub (a free hosting service) and puts your site online with a real web address you can share.</li>
-          <li><strong>You get a live link</strong> — copy it, paste it into Google Classroom, and your students can open it immediately. Done.</li>
+          <li><strong>You get a live link</strong> — open it and check every question and answer yourself. It's public, so keep student names and scores out. Then paste the link into Google Classroom for your students.</li>
         </ol>
         <div class="callout tip">
           <strong>✅ You've already seen the result.</strong> This entire teaching hub was built exactly this way — described in plain English, built by Claude Code, published automatically. Not a single line of code was written by hand.
@@ -778,7 +784,7 @@ Put everything in one HTML file.</textarea>
           <tr style="background:#eef1ff;font-weight:700;">
             <td style="padding:.5rem .8rem;">Claude Code <span style="font-weight:400;font-size:.8rem;color:#4f6ef7;">(with permission)</span></td>
             <td style="padding:.5rem .8rem;text-align:center;">✅ Yes</td>
-            <td style="padding:.5rem .8rem;text-align:center;color:#1a7a47;">✅ No — it handles that too</td>
+            <td style="padding:.5rem .8rem;text-align:center;color:#1a7a47;">No — it handles that too</td>
           </tr>
         </table>
         <p style="font-size:.9rem;color:#3b4160;">That's the whole idea. You describe what you want, and Claude Code takes care of everything else — including getting it in front of your students.</p>
@@ -803,13 +809,13 @@ Put everything in one HTML file.</textarea>
 
       <div class="step-nav">
         <button class="btn-back" onclick="goToStep(7)">← Back</button>
-        <button class="btn-next" onclick="goToStep(9)" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;font-weight:800;animation:pulse-cta 1.8s ease-in-out infinite;box-shadow:0 4px 16px rgba(245,158,11,.4);">🎁 One More Surprise →</button>
+        <button class="btn-next" onclick="goToStep(9)" style="background:#c2410c;color:#fff;border:none;font-weight:800;animation:pulse-cta 1.8s ease-in-out infinite;box-shadow:0 4px 16px rgba(245,158,11,.4);">🎁 One More Surprise →</button>
       </div>
     </div><!-- /step-8 -->
 
     <!-- STEP 9: FINAL CELEBRATION — for teachers who finished even the optional bonus -->
     <div class="lesson-step" id="step-9">
-      <p class="step-label" style="text-align:center;">Step 9 of 9 — The Real Finish Line</p>
+      <p class="step-label" style="text-align:center;">Bonus · Step 9 of 9 — The Real Finish Line</p>
 
       <div style="text-align:center;padding:3.5rem 1.5rem 3rem;background:linear-gradient(135deg,#fef3c7,#fde68a,#fbbf24,#fed7aa);border:3px solid #f59e0b;border-radius:22px;margin:1.25rem 0 1.5rem;box-shadow:0 10px 40px rgba(245,158,11,.3);position:relative;overflow:hidden;">
         <div style="position:absolute;top:1rem;left:1rem;font-size:2rem;opacity:.5;">✨</div>
@@ -819,7 +825,7 @@ Put everything in one HTML file.</textarea>
         <div style="font-size:5rem;line-height:1;margin-bottom:.3rem;">🏁</div>
         <div style="font-size:2rem;line-height:1;margin-bottom:.5rem;">🎉 🏆 🎊 🥇 🎯 🚀</div>
         <h2 style="margin:0 0 .5rem;font-size:2.6rem;color:#78350f;font-family:'Nunito',sans-serif;font-weight:900;line-height:1.1;">Now you've truly seen it all!</h2>
-        <p style="margin:.5rem auto 0;max-width:600px;color:#7c2d12;font-size:1.1rem;font-weight:700;line-height:1.55;">You explored every lesson <em>and</em> the optional bonus. You're not just ready to use AI in your classroom — you understand the full picture, from quick wins to the cutting edge.</p>
+        <p style="margin:.5rem auto 0;max-width:600px;color:#7c2d12;font-size:1.1rem;font-weight:700;line-height:1.55;">You made it through Lesson 6 <em>and</em> the optional bonus. You're not just ready to use AI in your classroom — you understand the full picture, from quick wins to the cutting edge.</p>
 
         <div style="background:rgba(255,255,255,.7);border:2px solid #f59e0b;border-radius:14px;padding:1.1rem 1.3rem;margin:1.5rem auto 0;max-width:560px;">
           <p style="margin:0 0 .5rem;font-size:1rem;color:#78350f;font-weight:800;">🌟 You're now part of a special group of teachers who:</p>
@@ -835,7 +841,8 @@ Put everything in one HTML file.</textarea>
       </div>
 
       <div style="text-align:center;margin:1.5rem 0 1rem;">
-        <a href="index.html" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:12px;padding:.85rem 2rem;font-size:1rem;font-weight:800;text-decoration:none;margin:.25rem;box-shadow:0 4px 16px rgba(245,158,11,.4);">🏠 Back to Home</a>
+        <a href="course-complete.html" style="display:inline-block;background:#c2410c;color:#fff;border:none;border-radius:12px;padding:.85rem 2rem;font-size:1rem;font-weight:800;text-decoration:none;margin:.25rem;box-shadow:0 4px 16px rgba(245,158,11,.4);">🎓 Finish the Course →</a>
+        <a href="index.html" style="display:inline-block;background:#fff;color:#78350f;border:2px solid #f59e0b;border-radius:12px;padding:.7rem 1.5rem;font-size:.95rem;font-weight:700;text-decoration:none;margin:.25rem;">🏠 Back to Home</a>
         <a href="lesson-1-prompting.html" style="display:inline-block;background:#fff;color:#78350f;border:2px solid #f59e0b;border-radius:12px;padding:.7rem 1.5rem;font-size:.95rem;font-weight:700;text-decoration:none;margin:.25rem;">🔄 Start Again with Lesson 1</a>
       </div>
 
@@ -856,6 +863,8 @@ Put everything in one HTML file.</textarea>
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -878,6 +887,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -960,7 +973,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

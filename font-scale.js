@@ -10,6 +10,7 @@
 
   function applySize(idx) {
     document.documentElement.style.fontSize = SIZES[idx] + 'px';
+    document.documentElement.setAttribute('data-fs', String(idx)); // lets the menu shorten its labels at big text sizes
   }
 
   // Apply immediately (before DOM ready) so text doesn't flash

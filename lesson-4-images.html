@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #9b59b6; --grad-b: #e056a0; }
+    :root { --grad-a: #9b59b6; --grad-b: #e056a0; --ink-a: #9b59b6; }
     .tool-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -101,13 +101,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html" class="active">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html" class="active"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -120,7 +120,7 @@
 <div class="container">
 
   <div class="lesson-nav">
-    <a href="lesson-3-screenshots.html">← Lesson 3</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -129,8 +129,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="lesson-5-print-save.html">Lesson 5 →</a>
   </div>
 
   <div id="lesson-steps">
@@ -143,11 +141,11 @@
 
       <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;">
         <strong>🚀 Before you begin:</strong> Open one of these in a new tab — all are free to start and can generate images directly in the chat.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
-          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><a href="https://chatgpt.com" target="_blank" title="Open ChatGPT"><img src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"></a> ChatGPT</a>
+          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><a href="https://gemini.google.com" target="_blank" title="Open Gemini"><img src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"></a> Gemini</a>
+          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><a href="https://copilot.microsoft.com" target="_blank" title="Open Copilot"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"></a> Copilot</a>
+          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
         </span>
         <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
       </div>
@@ -207,7 +205,7 @@
           </div>
           <div>
             <h3>Google Gemini (gemini.google.com) <span class="tool-tag freemium">Free tier available</span></h3>
-            <p>Gemini can generate images right inside the chat. If you use Google Workspace at school, Gemini is already part of your ecosystem and easy to access.</p>
+            <p>Gemini can generate images right inside the chat. If your school uses Gmail, Google Docs, and Google Classroom, Gemini is easy to get to with the same school account.</p>
             <p><strong>Best for:</strong> Educational maps, illustrated scenes, colorful classroom visuals.</p>
           </div>
         </div>
@@ -289,10 +287,10 @@
         <ol style="font-size:.93rem;line-height:1.85;padding-left:1.4rem;margin:1rem 0 0;list-style:none;">
           <li style="margin-bottom:.6rem;padding-left:.3rem;border-left:4px solid #9333ea;padding:.5rem .8rem;background:#faf5ff;border-radius:6px;"><strong style="color:#6b21a8;">🚀 1.</strong> Open your AI image tool and left-click inside the prompt box:
             <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem;">
-              <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img src="images/logo-chatgpt.png" style="height:15px;">ChatGPT</a>
-              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img src="images/logo-gemini.png" style="height:15px;">Gemini</a>
-              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img src="images/logo-copilot.png" style="height:15px;">Copilot</a>
-              <a href="https://canva.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img src="images/logo-canva.png" style="height:15px;">Canva AI</a>
+              <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img alt="" src="images/logo-chatgpt.png" style="height:15px;">ChatGPT</a>
+              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img alt="" src="images/logo-gemini.png" style="height:15px;">Gemini</a>
+              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img alt="" src="images/logo-copilot.png" style="height:15px;">Copilot</a>
+              <a href="https://canva.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.25rem .6rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.82rem;"><img alt="" src="images/logo-canva.png" style="height:15px;">Canva AI</a>
             </div>
           </li>
           <li style="margin-bottom:.6rem;padding:.25rem .8rem;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px;"><strong style="color:#92400e;">👤 2.</strong> Start with your <strong>subject</strong> — who or what is in the image.</li>
@@ -319,8 +317,8 @@
           <li><strong>Generate multiple versions.</strong> Ask the AI to "generate 4 different versions" so you have options to choose from.</li>
         </ul>
 
-        <div class="callout warn">
-          <strong>⚠️ Important — Copyright &amp; Accuracy:</strong>
+        <div class="callout tip">
+          <strong>💡 Two quick checks:</strong>
           AI images are generally safe to use for educational purposes, but always check your school district's policy. Also — AI pictures can get labels, spelling, numbers, and positions wrong (look at the moon and Egypt examples in Step 1). Check every label against your textbook before students see it.
         </div>
       </div>
@@ -345,9 +343,9 @@
           <li>Pick a prompt below and left-click <strong>Copy</strong>.</li>
           <li>Open one of these AI tools in a new tab:
             <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 .25rem;">
-              <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img src="images/logo-chatgpt.png" style="height:16px;">ChatGPT</a>
-              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img src="images/logo-gemini.png" style="height:16px;">Gemini</a>
-              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img src="images/logo-copilot.png" style="height:16px;">Copilot</a>
+              <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img alt="" src="images/logo-chatgpt.png" style="height:16px;">ChatGPT</a>
+              <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img alt="" src="images/logo-gemini.png" style="height:16px;">Gemini</a>
+              <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid #c084fc;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#6b21a8;font-size:.83rem;"><img alt="" src="images/logo-copilot.png" style="height:16px;">Copilot</a>
             </div>
           </li>
           <li>Left-click inside the chat box, right-click and choose <strong>Paste</strong>.</li>
@@ -423,11 +421,11 @@
           <ol style="font-size:.92rem;color:#5a3000;padding-left:1.3rem;margin-top:.5rem;">
             <li style="margin-bottom:.5rem;">Open one of these AI image tools in a new tab — all free to start:
               <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem;">
-                <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img src="images/logo-chatgpt.png" style="height:15px;">ChatGPT</a>
-                <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img src="images/logo-gemini.png" style="height:15px;">Gemini</a>
-                <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img src="images/logo-copilot.png" style="height:15px;">Copilot</a>
-                <a href="https://canva.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img src="images/logo-canva.png" style="height:15px;">Canva AI</a>
-                <a href="https://perplexity.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img src="images/logo-perplexity.png" style="height:15px;">Perplexity</a>
+                <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-chatgpt.png" style="height:15px;">ChatGPT</a>
+                <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-gemini.png" style="height:15px;">Gemini</a>
+                <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-copilot.png" style="height:15px;">Copilot</a>
+                <a href="https://canva.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-canva.png" style="height:15px;">Canva AI</a>
+                <a href="https://perplexity.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-perplexity.png" style="height:15px;">Perplexity</a>
               </div>
             </li>
             <li style="margin-bottom:.5rem;">Think of one image that would be useful in your classroom right now — a diagram, a character, a scene, a poster.</li>
@@ -600,7 +598,7 @@
 
       <div class="step-nav">
         <button class="btn-back" onclick="goToStep(5)">← Back</button>
-        <a href="lesson-5-print-save.html" class="btn-next" style="text-decoration:none;">Next Lesson →</a>
+        <a href="lesson-5-print-save.html" class="btn-next" style="text-decoration:none;">Next: Lesson 5 — Save & Print →</a>
       </div>
     </div><!-- /step-6 -->
 
@@ -616,6 +614,8 @@
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -637,6 +637,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -667,7 +671,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

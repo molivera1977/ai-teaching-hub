@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #1a9e55; --grad-b: #0d7a8a; }
+    :root { --grad-a: #1a9e55; --grad-b: #0d7a8a; --ink-a: #15803d; }
     .prompt-card {
       background: #f8f9ff;
       border: 1px solid #dde2ff;
@@ -64,13 +64,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html" class="active">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html" class="active"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -83,7 +83,7 @@
 <div class="container">
 
   <div class="lesson-nav">
-    <a href="lesson-4-images.html">← Lesson 4</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -91,8 +91,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="lesson-6-websites.html">Lesson 6 →</a>
   </div>
 
   <div id="lesson-steps">
@@ -105,13 +103,13 @@
 
       <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;">
         <strong>🚀 Before you begin:</strong> Open one of these in a new tab — you'll use it to practice saving and printing by the end of this lesson.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
-          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
+          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
+          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
+          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
+          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
         </span>
         <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
       </div>
@@ -294,9 +292,9 @@
         </div>
 
         <div class="method-card good" style="border-color:#0078d4;background:#f0f6ff;">
-          <div class="who" style="color:#0078d4;"><img src="images/logo-copilot.png" alt="Copilot" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Microsoft Copilot — home to Word docs with seamless integration <span style="font-size:.8rem;font-weight:400;opacity:.8;">· Can also produce PDFs and HTML files</span></div>
+          <div class="who" style="color:#0078d4;"><img src="images/logo-copilot.png" alt="Copilot" style="height:18px;vertical-align:middle;margin-right:.35rem;">✅ Microsoft Copilot — works right inside Word <span style="font-size:.8rem;font-weight:400;opacity:.8;">· Can also produce PDFs and HTML files</span></div>
           <h3><img src="images/logo-copilot.png" alt="Copilot" style="height:18px;vertical-align:middle;margin-right:.35rem;">Ask Copilot for a Word doc or PDF</h3>
-          <p>If your school uses Microsoft 365, Copilot is your best friend for Word documents — it can create them natively right inside Microsoft Word. You can also use it at copilot.microsoft.com in any browser.</p>
+          <p>If your school uses Microsoft 365, Copilot is your best friend for Word documents — it can create them right inside Microsoft Word. You can also use it at copilot.microsoft.com in any browser.</p>
           <div class="prompt-card" style="background:#fff;">
             <div class="pc-label">Ask for a Word doc <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
             <code>Please create this as a Word document — clean and print-ready, with a title at the top, a Name/Date line, numbered questions with writing space, and an answer key at the end.</code>
@@ -471,9 +469,10 @@
 
           <div style="margin-left:2.3rem;background:#fef3c7;border:1.5px solid #f59e0b;border-radius:10px;padding:.85rem 1rem;margin-bottom:.5rem;">
             <div style="font-weight:800;font-size:.85rem;color:#7c2d12;margin-bottom:.4rem;">🛠️ When AI shows you code instead of a download link</div>
-            <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>You'll need to do this when an AI shows you the HTML code instead of a downloadable file</strong> — this can happen with Gemini, Copilot, or Perplexity. You can save it yourself in under 60 seconds:</div>
-            <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>💻 On a Chromebook?</strong> It doesn't have Notepad or TextEdit, so skip these steps. Instead, paste the code into Claude and ask: <em>"Give me this as a downloadable HTML file."</em> Then download the file Claude gives you.</div>
-            <ol style="font-size:.85rem;color:#7c2d12;line-height:1.65;padding-left:1.3rem;margin:0;">
+            <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>You'll need to do this when an AI shows you the HTML code instead of a downloadable file</strong> — this can happen with Gemini, Copilot, or Perplexity. It's easy to fix:</div>
+            <div style="font-size:.82rem;color:#7c2d12;line-height:1.55;margin-bottom:.6rem;"><strong>✅ Easiest way, on any computer:</strong> left-click <strong>Copy code</strong>, open Claude, paste it in, and type: <em>"Give me this as a downloadable HTML file."</em> Then left-click the file Claude gives you to download it.</div>
+            <details style="margin-top:.2rem;"><summary style="cursor:pointer;font-weight:700;font-size:.85rem;color:#7c2d12;">Prefer to save it yourself? Use Notepad or TextEdit (not on a Chromebook)</summary>
+<ol style="font-size:.85rem;color:#7c2d12;line-height:1.65;padding-left:1.3rem;margin:0;">
               <li>At the top of the code block in the chat, left-click the <strong>Copy code</strong> button (sometimes labeled <strong>📋</strong>). This copies the entire HTML to your clipboard.</li>
               <li>Open a <strong>plain-text editor</strong> <em style="color:#9a3412;">(a basic notepad-style app for plain typing — no fonts or formatting, which is what you need for HTML)</em>:
                 <ul style="margin:.2rem 0;padding-left:1.1rem;">
@@ -492,6 +491,7 @@
               </li>
               <li>Choose where to save it (Desktop or Downloads works great) and left-click <strong>Save</strong>. Your file is ready — continue to Step 3 below.</li>
             </ol>
+</details>
           </div>
           <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">3</span>Double-click the file — it opens automatically in your browser (Chrome, Safari, or Edge).</p>
           <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">4</span>Press <kbd>Ctrl</kbd>+<kbd>P</kbd> (Windows or Chromebook) or <kbd>Cmd</kbd>+<kbd>P</kbd> (Mac) to open the print dialog.</p>
@@ -521,7 +521,7 @@
         <h2>🖼️ Method 3 — Saving AI-Generated Images</h2>
         <p>When AI creates an image (from Lesson 4!), saving it is simple:</p>
         <div style="display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem;">
-          <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">1</span>Hover over the image in the chat — a download icon ⬇️ usually appears. Left-click it.</p>
+          <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">1</span>Rest your mouse pointer on the image in the chat (don't click yet) — a download icon ⬇️ usually appears. Left-click it.</p>
           <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">2</span>If no icon appears, right-click the image — on a Mac, tap with two fingers on your trackpad, or hold the Control key and left-click; on a Chromebook, press or tap the touchpad with two fingers, or hold Alt and click — then choose "Save image as…"</p>
           <p style="margin:0;font-size:.92rem;line-height:1.7;color:#3b4160;"><span style="display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;background:var(--brand);border-radius:50%;color:white;font-weight:700;font-size:.82rem;margin-right:.6rem;vertical-align:middle;flex-shrink:0;">3</span>Save it to your Desktop so it's easy to find (on a Chromebook, it saves to Downloads).</p>
         </div>
@@ -577,7 +577,7 @@
 
       <div class="step-nav">
         <button class="btn-back" onclick="goToStep(4)">← Back</button>
-        <a href="lesson-6-websites.html" class="btn-next" style="text-decoration:none;">Next Lesson →</a>
+        <a href="lesson-6-websites.html" class="btn-next" style="text-decoration:none;">Next: Lesson 6 — Websites →</a>
       </div>
     </div><!-- /step-5 -->
 
@@ -593,6 +593,8 @@
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -614,6 +616,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -644,7 +650,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

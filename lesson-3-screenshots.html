@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #e056a0; --grad-b: #c0392b; }
+    :root { --grad-a: #e056a0; --grad-b: #c0392b; --ink-a: #be185d; }
     .prompt-card {
       background: #f8f9ff;
       border: 1px solid #dde2ff;
@@ -102,8 +102,8 @@
       padding:.5rem 1.3rem; font-size:.92rem; font-weight:700; color:var(--muted);
       cursor:pointer; transition:all .15s; font-family:inherit;
     }
-    .os-tab.active { background:var(--grad-a, var(--brand)); color:#fff; border-color:var(--grad-a, var(--brand)); }
-    .os-tab:hover:not(.active) { border-color:var(--grad-a, var(--brand)); color:var(--grad-a, var(--brand)); }
+    .os-tab.active { background:var(--ink-a); color:#fff; border-color:var(--ink-a); }
+    .os-tab:hover:not(.active) { border-color:var(--ink-a); color:var(--ink-a); }
 
     /* ---- STEP VISUAL ---- */
     .step-visual {
@@ -112,12 +112,12 @@
       background:#f8f9ff; border-radius:12px; border:1px solid #e0e4ff;
     }
     .sv-num {
-      background:var(--grad-a, var(--brand)); color:#fff; font-weight:800; font-size:1rem;
+      background:var(--ink-a); color:#fff; font-weight:800; font-size:1rem;
       min-width:32px; height:32px; border-radius:50%;
       display:flex; align-items:center; justify-content:center; flex-shrink:0;
     }
     .sv-body { flex:1; }
-    .sv-body strong { font-size:.95rem; display:block; margin-bottom:.4rem; color:var(--text); }
+    .sv-body > strong:first-child { font-size:.95rem; display:block; margin-bottom:.4rem; color:var(--text); }
     .sv-note { font-size:.83rem; color:var(--muted); margin-top:.4rem; line-height:1.6; }
 
     /* ---- KEYBOARD KEY GRAPHICS ---- */
@@ -156,13 +156,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html" class="active">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html" class="active"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -175,7 +175,7 @@
 <div class="container">
 
   <div class="lesson-nav">
-    <a href="lesson-2-assignments.html">← Lesson 2</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -185,8 +185,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="lesson-4-images.html">Lesson 4 →</a>
   </div>
 
   <div id="lesson-steps">
@@ -199,20 +197,20 @@
 
       <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;">
         <strong>🚀 Before you begin:</strong> Open one of these in a new tab — all are free to start. You'll use it to practice taking screenshots and uploading them as you go.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
-          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
+          <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
+          <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
+          <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
           <span style="color:var(--muted);font-size:.9rem;">or</span>
-          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
+          <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
         </span>
         <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
       </div>
 
       <div class="lesson-section">
         <h2>🤯 The Secret Superpower: Showing Instead of Telling</h2>
-        <p>You already know how to <em>describe</em> what you want in a prompt. But there's an even faster, more accurate method: <strong>show the AI a picture of it.</strong></p>
+        <p>You can <em>describe</em> what you want in words (Lesson 1 shows how). But there's an even faster, more accurate method: <strong>show the AI a picture of it.</strong></p>
         <p>Claude, ChatGPT, Copilot, and Gemini can all read and understand images — including screenshots, photos of worksheets, and even pictures of handwritten notes.</p>
 
         <h3 style="font-size:1.35rem;margin-top:2rem;margin-bottom:.75rem;">📸 What is a screenshot?</h3>
@@ -532,10 +530,10 @@
           <div class="step-visual">
             <div class="sv-num">4</div>
             <div class="sv-body">
-              <strong>Let go — you'll hear a camera left-click and it's on your clipboard!</strong>
-              <p class="sv-note">The moment you release the mouse button, you'll hear a camera shutter sound (if your volume is on) and a thumbnail preview will appear in the bottom-right corner of your screen for a few seconds. The snip is automatically copied to your clipboard — you can paste it into AI right away. (Mac also saves a file to your Desktop, but you don't need to touch it for this step — that's covered in the next step.)</p>
+              <strong>Let go — you'll hear a camera click and it's on your clipboard!</strong>
+              <p class="sv-note">The moment you release the mouse button, you'll hear a camera shutter sound (if your volume is on) and a thumbnail preview will appear in the bottom-right corner of your screen for a few seconds. The snip is automatically copied to your clipboard — you can paste it into AI right away. (Because you added Ctrl, no file is saved — the next step shows how to save one.)</p>
               <div class="callout tip" style="margin-top:.6rem;margin-bottom:0;">
-                <strong>✅ Ready to paste immediately</strong> — just switch to Claude, ChatGPT, Gemini, or Copilot and paste.
+                <strong>✅ Ready to paste immediately.</strong> Just switch to Claude, ChatGPT, Gemini, or Copilot and paste.
               </div>
             </div>
           </div>
@@ -631,15 +629,15 @@
 
         <!-- ===== WINDOWS ===== -->
         <div id="os3-windows" class="os-content">
-          <div class="callout warn" style="margin-bottom:.85rem;">
-            <strong>⚠️ On Windows, Win+Shift+S does NOT save a file automatically</strong> — it only copies to your clipboard. To get a saved file, you need one extra step after snipping.
+          <div class="callout info" style="margin-bottom:.85rem;">
+            <strong>✅ Your snip may already be saved.</strong> Many Windows computers put every snip in a folder called <b>Screenshots</b>, inside <b>Pictures</b>. Skip numbers 1 and 2 — start at number 3. In number 4, look in Pictures › Screenshots. Not there? Come back up to number 1.
           </div>
 
           <div class="step-visual">
             <div class="sv-num">1</div>
             <div class="sv-body">
               <strong>Take your snip as usual (Win + Shift + S), then look for a small notification in the bottom-right corner of your screen.</strong>
-              <p class="sv-note">As soon as you finish your snip, a small preview thumbnail pops up in the bottom-right corner. Left-click on it before it disappears — this opens your snip in the Snipping Tool app. If you missed it, search "Snipping Tool" in your Start menu to open it.</p>
+              <p class="sv-note">As soon as you finish your snip, a small preview thumbnail pops up in the bottom-right corner. Left-click on it before it disappears — this opens your snip in the Snipping Tool app. If you missed it, search "Snipping Tool" in your Start menu (the Windows logo button at the bottom of your screen) to open it.</p>
             </div>
           </div>
 
@@ -662,7 +660,7 @@
           <div class="step-visual">
             <div class="sv-num">4</div>
             <div class="sv-body">
-              <strong>In the file browser, left-click "Desktop" on the left, then double-click your saved snip.</strong>
+              <strong>In the file browser, left-click "Desktop" on the left (or left-click <b>Pictures</b> on the left, then double-click the <b>Screenshots</b> folder), then double-click your snip.</strong>
               <p class="sv-note">Your screenshot file will appear in the files list. Double-click it — a thumbnail will appear in the chat box, showing the image is attached and ready. Now type your prompt and press Enter.</p>
             </div>
           </div>
@@ -671,7 +669,7 @@
         <!-- ===== MAC ===== -->
         <div id="os3-mac" class="os-content" style="display:none;">
           <div class="callout tip" style="margin-bottom:.85rem;">
-            <strong>✅ On Mac, your snip is already saved automatically.</strong> Every time you take a snip with Cmd+Shift+4, Mac saves it as a file on your Desktop instantly — no extra steps needed.
+            <strong>✅ On Mac, leave out Ctrl and your snip is saved automatically.</strong> Press Cmd + Shift + 4 (no Ctrl this time), then drag a box like in Step 3. Mac saves it as a file on your Desktop — no extra steps needed.
           </div>
 
           <div class="step-visual">
@@ -1092,7 +1090,7 @@ Keep the feedback kind, specific, and actionable.</code>
 
       <div class="lesson-section">
         <h2>🎯 Differentiating Assignments</h2>
-        <p>Now that you know how to copy-paste text and share images with AI, you can use all three skills to take any assignment and create easier or harder versions — or adapt it for English learners. Choose the option that fits what you have:</p>
+        <p>There are three ways to show AI an assignment — paste the text, share a snip, or upload the file. Use any of them to take any assignment and create easier or harder versions — or adapt it for English learners. Choose the option that fits what you have:</p>
 
         <div class="grid-3col" style="margin:1rem 0;">
           <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:1rem 1.1rem;">
@@ -1186,7 +1184,7 @@ Keep the feedback kind, specific, and actionable.</code>
 
       <div class="step-nav">
         <button class="btn-back" onclick="goToStep(6)">← Back</button>
-        <a href="lesson-4-images.html" class="btn-next" style="text-decoration:none;">Next Lesson →</a>
+        <a href="lesson-4-images.html" class="btn-next" style="text-decoration:none;">Next: Lesson 4 — Images →</a>
       </div>
     </div><!-- /step-7 -->
 
@@ -1203,6 +1201,8 @@ Keep the feedback kind, specific, and actionable.</code>
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -1224,6 +1224,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -1262,7 +1266,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

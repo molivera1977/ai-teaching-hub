@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #4f6ef7; --grad-b: #5ea7e8; }
+    :root { --grad-a: #4f6ef7; --grad-b: #5ea7e8; --ink-a: #3451d1; }
 
 
     /* ---- COMPARISON TABLE ---- */
@@ -30,13 +30,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html" class="active">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html" class="active"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -50,7 +50,7 @@
 
   <!-- Top lesson nav -->
   <div class="lesson-nav">
-    <a href="index.html">← Back to Home</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -59,8 +59,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="lesson-2-assignments.html">Lesson 2 →</a>
   </div>
 
   <!-- ===== STEP 1 ===== -->
@@ -68,14 +66,14 @@
     <div class="step-label">Step 1 of 6 — What Is a Prompt?</div>
 
     <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-bottom:1rem;">
-      <strong>🚀 Before you begin:</strong> Open one of these in a new tab — all are free to start. You'll use it to try the examples as you go through this lesson.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
-        <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
+      <strong>🚀 Before you begin:</strong> Open <b>Claude</b> in a new tab — it's free, and this course uses it most (or use one of the others below). No account yet? Left-click the Claude logo below and choose Sign up (Home, Step 5 walks you through it); U.S. K-12 teachers can get the free teacher plan at claude.ai/teachers. You'll use it to try the examples in this lesson.<br><span style="display:inline-flex;gap:1.2rem;flex-wrap:wrap;margin-top:.5rem;align-items:center;">
+        <a href="https://claude.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-claude.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Claude</a>
         <span style="color:var(--muted);font-size:.9rem;">or</span>
-        <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
+        <a href="https://chatgpt.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-chatgpt.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> ChatGPT</a>
         <span style="color:var(--muted);font-size:.9rem;">or</span>
-        <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
+        <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-gemini.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Gemini</a>
         <span style="color:var(--muted);font-size:.9rem;">or</span>
-        <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
+        <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:700;color:var(--brand);"><img alt="" src="images/logo-copilot.png" width="22" height="22" style="border-radius:5px;object-fit:contain;vertical-align:middle;"> Copilot</a>
       </span>
       <div style="margin-top:.55rem;font-size:.88rem;color:#14532d;">🔒 <b>Keep students private:</b> never type a student's name, ID number, grades, or IEP details into AI.</div>
     </div>
@@ -100,7 +98,7 @@
 
     <div class="lesson-section">
       <h2>⚡ The Parts of a Good Prompt</h2>
-      <p>A strong prompt usually has some or all of these parts. You don't need all of them every time, but the more context you give, the better the result.</p>
+      <p>A strong prompt usually has some or all of these parts. You don't need all of them every time, but the more you tell it, the better the result.</p>
 
       <div style="display:flex;flex-direction:column;gap:.75rem;margin:1.25rem 0;">
 
@@ -129,7 +127,7 @@
           <div style="background:#22c55e;color:#fff;font-weight:900;font-size:1rem;border-radius:50%;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;">3</div>
           <div style="flex:1;">
             <div style="font-weight:800;color:#14532d;font-size:.95rem;margin-bottom:.2rem;">The Details <span style="font-weight:500;color:#22c55e;font-size:.82rem;">(specifics that matter)</span></div>
-            <div style="font-size:.85rem;color:#166534;margin-bottom:.6rem;">Grade level, subject, length, format, tone — anything that shapes the output.</div>
+            <div style="font-size:.85rem;color:#166534;margin-bottom:.6rem;">Grade level, subject, length, format, tone — anything that shapes what AI writes back.</div>
             <div style="background:#fff;border-radius:10px;padding:.55rem .85rem;font-size:.85rem;color:#14532d;font-style:italic;border:1.5px solid #bbf7d0;">"…about the water cycle, written at a 4th grade reading level, about 150 words long."</div>
           </div>
         </div>
@@ -314,7 +312,7 @@
     <div class="lesson-section">
       <h2>✏️ Try It Yourself</h2>
       <ol style="font-size:.93rem;line-height:1.85;padding-left:1.4rem;margin:0 0 1rem;">
-        <li>Fill in the boxes below — one line each is fine.</li>
+        <li>Fill in each box with a whole sentence. The gray words are just an example — they disappear when you start typing.</li>
         <li>Left-click <strong>Build &amp; Copy My Prompt</strong> — your finished prompt appears in the box and is copied automatically.</li>
         <li>Open <a href="https://claude.ai" target="_blank" style="color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-claude.png" alt="Claude" style="height:14px;vertical-align:middle;margin-right:.2rem;">Claude</a>, <a href="https://chatgpt.com" target="_blank" style="color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-chatgpt.png" alt="ChatGPT" style="height:14px;vertical-align:middle;margin-right:.2rem;">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank" style="color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-gemini.png" alt="Gemini" style="height:14px;vertical-align:middle;margin-right:.2rem;">Gemini</a>, or <a href="https://copilot.microsoft.com" target="_blank" style="color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1.5px dotted currentColor;"><img src="images/logo-copilot.png" alt="Copilot" style="height:14px;vertical-align:middle;margin-right:.2rem;">Copilot</a> in a new tab.</li>
         <li>Left-click inside the chat box and paste: <strong>Ctrl+V</strong> on <svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.25rem;display:inline-block;" aria-label="Windows"><path fill="#00a4ef" d="M2 4.5l8.5-1.2v8.4H2zM2 19.5l8.5 1.2v-8.3H2zM11.4 3.2L22 1.7v9.9H11.4zM11.4 12.4H22v9.9l-10.6-1.5z"/></svg>Windows or a Chromebook, or <strong>Cmd+V</strong> on <svg width="14" height="14" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:.25rem;display:inline-block;" aria-label="Apple"><path fill="#1a1a1a" d="M17.05 12.07c-.02-2.65 2.16-3.93 2.26-3.99-1.23-1.81-3.16-2.06-3.84-2.08-1.62-.16-3.16.96-3.99.96-.83 0-2.09-.94-3.45-.91-1.77.03-3.41 1.03-4.32 2.62-1.85 3.21-.47 7.94 1.32 10.53.88 1.27 1.93 2.7 3.3 2.65 1.33-.05 1.83-.86 3.43-.86 1.6 0 2.06.86 3.45.83 1.43-.02 2.33-1.29 3.2-2.57 1.01-1.48 1.43-2.91 1.46-2.99-.03-.01-2.8-1.07-2.82-4.25zm-2.62-7.81C15.18 3.42 15.71 2.26 15.57 1c-1.06.04-2.35.71-3.13 1.54-.69.74-1.3 1.93-1.14 3.16 1.19.09 2.4-.6 3.13-1.44z"/></svg>Mac.</li>
@@ -325,9 +323,13 @@
       <div class="try-it">
         <div class="try-label">🧪 Prompt Builder</div>
         <p>Fill in the boxes below to build your first prompt:</p>
+        <label for="role" style="display:block;font-weight:700;font-size:.88rem;color:#1a2060;margin:.7rem 0 .25rem;">1. Who you are</label>
         <textarea id="role" placeholder="I am a ___ grade teacher teaching ___." rows="2"></textarea>
+        <label for="task" style="display:block;font-weight:700;font-size:.88rem;color:#1a2060;margin:.7rem 0 .25rem;">2. What you want</label>
         <textarea id="task" placeholder="Please create / write / generate a ___." rows="2"></textarea>
+        <label for="details" style="display:block;font-weight:700;font-size:.88rem;color:#1a2060;margin:.7rem 0 .25rem;">3. The details</label>
         <textarea id="details" placeholder="It should be ___ words long, at a ___ reading level, about ___." rows="2"></textarea>
+        <label for="audience" style="display:block;font-weight:700;font-size:.88rem;color:#1a2060;margin:.7rem 0 .25rem;">4. Who it's for</label>
         <textarea id="audience" placeholder="My students are ___ years old and ___." rows="2"></textarea>
         <br>
         <button class="copy-btn" onclick="buildAndCopy()">📋 Build &amp; Copy My Prompt</button>
@@ -337,7 +339,7 @@
 
     <div class="step-nav">
       <button class="btn-back" onclick="goToStep(5)">← Back</button>
-      <a href="lesson-2-assignments.html" class="btn-next" style="text-decoration:none;">Next: Lesson 2 →</a>
+      <a href="lesson-2-assignments.html" class="btn-next" style="text-decoration:none;">Next: Lesson 2 — Assignments →</a>
     </div>
   </div>
 
@@ -356,6 +358,8 @@ document.querySelectorAll('.example-box code').forEach(el => {
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -377,6 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -414,7 +422,7 @@ function buildAndCopy() {
   });
 }
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

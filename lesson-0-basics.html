@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css" />
-  <script src="font-scale.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261116a" />
+  <script src="font-scale.js?v=20261116a"></script>
   <style>
-    :root { --grad-a: #0d7a8a; --grad-b: #1a9e55; }
+    :root { --grad-a: #0d7a8a; --grad-b: #1a9e55; --ink-a: #0d7a8a; }
 
 
     /* ---- KEY VISUALS ---- */
@@ -119,12 +119,12 @@
       background: #f8f9ff; border-radius: 12px; border: 1px solid #e0e4ff;
     }
     .sv-num {
-      background: var(--brand); color: #fff; font-weight: 800;
+      background: var(--ink-a); color: #fff; font-weight: 800;
       font-size: 1rem; min-width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .sv-body { flex: 1; font-size: .88rem; color: #3b4160; }
-    .sv-body strong { display: block; margin-bottom: .3rem; font-size: .92rem; }
+    .sv-body > strong:first-child { display: block; margin-bottom: .3rem; font-size: .92rem; }
   </style>
 </head>
 <body>
@@ -134,13 +134,13 @@
   <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.classList.toggle('nav-open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="lesson-0-basics.html" class="active">Lesson 0</a></li>
-    <li><a href="lesson-1-prompting.html">Lesson 1</a></li>
-    <li><a href="lesson-2-assignments.html">Lesson 2</a></li>
-    <li><a href="lesson-3-screenshots.html">Lesson 3</a></li>
-    <li><a href="lesson-4-images.html">Lesson 4</a></li>
-    <li><a href="lesson-5-print-save.html">Lesson 5</a></li>
-    <li><a href="lesson-6-websites.html">Lesson 6</a></li>
+    <li><a href="lesson-0-basics.html" class="active"><span class="nl-word">Lesson </span>0<span class="nl-name"> · Basics</span></a></li>
+    <li><a href="lesson-1-prompting.html"><span class="nl-word">Lesson </span>1<span class="nl-name"> · Prompts</span></a></li>
+    <li><a href="lesson-2-assignments.html"><span class="nl-word">Lesson </span>2<span class="nl-name"> · Assignments</span></a></li>
+    <li><a href="lesson-3-screenshots.html"><span class="nl-word">Lesson </span>3<span class="nl-name"> · Screenshots</span></a></li>
+    <li><a href="lesson-4-images.html"><span class="nl-word">Lesson </span>4<span class="nl-name"> · Images</span></a></li>
+    <li><a href="lesson-5-print-save.html"><span class="nl-word">Lesson </span>5<span class="nl-name"> · Save &amp; Print</span></a></li>
+    <li><a href="lesson-6-websites.html"><span class="nl-word">Lesson </span>6<span class="nl-name"> · Websites</span></a></li>
   </ul>
 </nav>
 
@@ -153,7 +153,7 @@
 <div class="container" id="lesson-steps">
 
   <div class="lesson-nav">
-    <a href="index.html">← Home</a>
+    <a href="index.html#lessons">🏠 All lessons</a>
     <div class="progress-dots">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -161,8 +161,6 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-    <a href="lesson-1-prompting.html">Lesson 1 →</a>
   </div>
 
   <!-- ===== STEP 1: Browser & Tabs ===== -->
@@ -270,7 +268,7 @@
 
       <div class="callout info">
         <strong>📌 On a Mac trackpad:</strong> Right-click = tap with two fingers at the same time, or hold Ctrl and tap. On a Mac mouse with only one button: hold the Control key and left-click.
-        <strong style="margin-top:.6rem;">📌 On a Chromebook touchpad:</strong> Right-click = press or tap the touchpad with two fingers, or hold the Alt key and click.
+        <strong style="display:block;margin-top:.6rem;">📌 On a Chromebook touchpad:</strong> Right-click = press or tap the touchpad with two fingers, or hold the Alt key and click.
       </div>
     </div>
 
@@ -291,7 +289,7 @@
       <p>When you left-click inside a text box, you'll see a thin blinking line appear. That line is your cursor — it shows where your typing will appear. If you don't see the blinking line, left-click once more inside the box.</p>
       <div class="callout tip">
         <strong>✅ Try it:</strong> Left-click inside the box below. See the blinking line appear?
-        <input type="text" placeholder="Click here — your cursor will appear inside this box" style="width:100%;margin-top:.5rem;padding:.55rem .75rem;border-radius:8px;border:2px solid var(--brand);font-family:inherit;font-size:.9rem;box-sizing:border-box;">
+        <input type="text" aria-label="Practice box" placeholder="Click here — your cursor will appear inside this box" style="width:100%;margin-top:.5rem;padding:.55rem .75rem;border-radius:8px;border:2px solid var(--brand);font-family:inherit;font-size:16px;box-sizing:border-box;">
       </div>
     </div>
 
@@ -395,7 +393,7 @@
         <p style="font-size:.88rem;color:#7a4f00;margin-bottom:.5rem;">1. Highlight the sentence below and copy it (use either method above).</p>
         <div class="practice-text" id="practice-source">AI is a powerful tool that can save teachers hours of work every week.</div>
         <p style="font-size:.88rem;color:#7a4f00;margin-bottom:.4rem;">2. Left-click inside the box below and paste it.</p>
-        <textarea class="practice-input" id="practice-target" placeholder="Click here, then paste (Ctrl+V or right-click → Paste)"></textarea>
+        <textarea class="practice-input" id="practice-target" aria-label="Paste your copied sentence here" placeholder="Click here, then paste (Ctrl+V or right-click → Paste)"></textarea>
         <br>
         <button class="practice-check" onclick="checkPractice()">✅ Check My Answer</button>
         <p class="practice-result success" id="result-success">🎉 Perfect! You just copied and pasted. You're ready for the course.</p>
@@ -418,7 +416,7 @@
       <p>When you left-click a download button or link on a website, your computer saves that file for you automatically. Many teachers don't realize the file is just sitting quietly in a folder called <strong>Downloads</strong> — waiting to be found.</p>
 
       <div class="callout info">
-        <strong>📌 Nothing got lost.</strong> If you've ever downloaded something and then couldn't find it — it's almost certainly in your Downloads folder. Here's how to find it.
+        <strong>📌 Nothing got lost.</strong> If you've ever downloaded something and then couldn't find it — it's almost certainly in your Downloads folder. Here's how to find it — read only the part for your computer (Windows, Mac, or Chromebook).
       </div>
     </div>
 
@@ -506,8 +504,8 @@
         </div>
       </div>
 
-      <div class="callout warn">
-        <strong>⚠️ Heads up:</strong> Your Chromebook sometimes deletes downloaded files to free up space. Move anything you want to keep into Google Drive.
+      <div class="callout tip">
+        <strong>💡 Good to know:</strong> Chromebooks sometimes clear out old downloads. To keep a file, move it into Google Drive.
       </div>
     </div>
 
@@ -651,12 +649,12 @@
     </div>
 
     <div class="callout" style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:.85rem 1.1rem;margin-top:1rem;">
-      <strong>✅ You're ready!</strong> You now have the foundation for everything in this course. Bookmark this page — you can come back anytime a word or skill feels unfamiliar. Now head to Lesson 1 to start working with AI.
+      <strong>✅ You're ready!</strong> You now have the foundation for everything in this course. Bookmark this page (save it in your browser so it's easy to find again — press Ctrl+D, or ⌘ Cmd+D on a Mac) — you can come back anytime a word or skill feels unfamiliar. Now head to Lesson 1 to start working with AI.
     </div>
 
     <div class="step-nav">
       <button class="btn-back" onclick="goToStep(4)">← Back</button>
-      <a href="lesson-1-prompting.html" class="btn-next" style="text-decoration:none;">Start Lesson 1 →</a>
+      <a href="lesson-1-prompting.html" class="btn-next" style="text-decoration:none;">Next: Lesson 1 — Prompts →</a>
     </div>
   </div>
 
@@ -670,6 +668,8 @@
 function goToStep(n) {
   document.querySelectorAll('.lesson-step').forEach(s => s.classList.remove('active'));
   document.getElementById('step-' + n).classList.add('active');
+  const stepLabel = document.querySelector('#step-' + n + ' .step-label');
+  if (stepLabel) { stepLabel.setAttribute('tabindex', '-1'); stepLabel.focus({ preventScroll: true }); } // screen readers hear the new step
   document.querySelectorAll('.step-pip').forEach((p, i) => {
     p.classList.remove('active', 'done');
     if (i + 1 < n) p.classList.add('done');
@@ -691,6 +691,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (i < stepCount) {
       d.title = 'Jump to Step ' + (i + 1);
       d.addEventListener('click', () => goToStep(i + 1));
+      d.setAttribute('role', 'button');
+      d.tabIndex = 0;
+      d.setAttribute('aria-label', d.title);
+      d.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToStep(i + 1); } });
     } else {
       d.style.opacity = '0.35';
     }
@@ -729,7 +733,7 @@ function checkPractice() {
   }
 }
 </script>
-<script src="mr-ai.js?v=20261116c" defer></script>
+<script src="mr-ai.js?v=20261116d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
