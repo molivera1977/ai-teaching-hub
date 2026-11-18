@@ -41,6 +41,7 @@
     .free  { background: #eefbf4; color: #1a7a47; }
     .paid  { background: #fff7ed; color: #7a3d00; }
     .freemium { background: #eef1ff; color: #2c3780; }
+    .paid-tag { background: #fff7ed; color: #9a3412; }
     .img-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -221,7 +222,7 @@
           </div>
           <div>
             <h3>Canva AI (canva.com) <span class="tool-tag free">Free for teachers</span></h3>
-            <p>Canva is a free, popular design website that many teachers already use to make posters, newsletters, and worksheets — you may have heard of it. It also has built-in AI image generation. The big advantage: create an image AND drop it straight into your design — all in one place, without switching between apps. Canva's full paid version is free for teachers.</p>
+            <p>Canva is a free, popular design website that many teachers already use to make posters, newsletters, and worksheets — you may have heard of it. It also has built-in AI image generation. The big advantage: create an image AND drop it straight into your design — all in one place, without switching between apps. Most of Canva's paid features are free for teachers.</p>
             <p><strong>Best for:</strong> Worksheets, posters, newsletters, and slide decks — when you need the image AND the design in one place.</p>
           </div>
         </div>
@@ -231,8 +232,8 @@
             <a href="https://perplexity.ai" target="_blank" title="Open Perplexity"><img src="images/logo-perplexity.png" width="44" height="44" style="border-radius:10px;object-fit:contain;background:#1c1c1e;" alt="Perplexity logo"></a>
           </div>
           <div>
-            <h3>Perplexity (perplexity.ai) <span class="tool-tag freemium">Free tier available</span></h3>
-            <p>Perplexity lets you generate images using several different AI tools — all from one place. Great for quickly comparing styles or finding the look you want without switching between apps.</p>
+            <h3>Perplexity (perplexity.ai) <span class="tool-tag paid-tag">Pictures mostly need a paid plan</span></h3>
+            <p>Perplexity's paid plans (including the $10/month Education Pro for teachers) let you generate images using several different AI tools — all from one place. Great for quickly comparing styles or finding the look you want without switching between apps.</p>
             <p><strong>Best for:</strong> Quickly comparing image styles across different AI models without switching between apps.</p>
           </div>
         </div>
@@ -249,7 +250,7 @@
         </div>
 
         <div class="callout warn">
-          <strong>🤔 What about Claude?</strong> Claude is great for writing, lesson planning, and text tasks — but it does <em>not</em> generate images. If you ask Claude to "draw" something, it will describe the image in words rather than create a picture. For actual AI image creation, use one of the tools above.
+          <strong>🤔 What about Claude?</strong> Claude is great for writing, lesson planning, and text tasks — but it does <em>not</em> make pictures like photos or drawings. It can build simple diagrams and charts, but for real pictures, use one of the tools above.
         </div>
 
         <div class="callout tip">
@@ -357,7 +358,7 @@
           <li>Replace anything in <strong>[brackets]</strong> with your specifics (topic, grade, character, etc.).</li>
           <li>Hit <strong>Enter</strong>. AI will generate your image in seconds.</li>
         </ol>
-        <p style="font-size:.85rem;color:var(--muted);font-style:italic;margin:0 0 .5rem;">💡 <strong>Note:</strong> Claude describes images in words rather than creating them — use one of the tools above for this step.</p>
+        <p style="font-size:.85rem;color:var(--muted);font-style:italic;margin:0 0 .5rem;">💡 <strong>Note:</strong> Claude can't make pictures (only simple diagrams and charts) — use one of the tools above for this step.</p>
 
         <div class="prompt-card pc-green">
           <div class="pc-label">Science Diagram <button class="copy-small" onclick="copyCard(this)">Copy</button></div>
@@ -430,7 +431,6 @@
                 <a href="https://gemini.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-gemini.png" style="height:15px;">Gemini</a>
                 <a href="https://copilot.microsoft.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-copilot.png" style="height:15px;">Copilot</a>
                 <a href="https://canva.com" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-canva.png" style="height:15px;">Canva AI</a>
-                <a href="https://perplexity.ai" target="_blank" style="display:inline-flex;align-items:center;gap:.3rem;background:#fff;border:1.5px solid #fdba74;border-radius:8px;padding:.3rem .65rem;text-decoration:none;font-weight:700;color:#5a3000;font-size:.82rem;"><img alt="" src="images/logo-perplexity.png" style="height:15px;">Perplexity</a>
               </div>
             </li>
             <li style="margin-bottom:.5rem;">Think of one image that would be useful in your classroom right now — a diagram, a character, a scene, a poster.</li>
@@ -471,7 +471,7 @@
             <li>You pick a template (a poster, worksheet, slideshow, anything)</li>
             <li>Replace the example text with your own</li>
             <li>Swap out images, colors, and fonts in two clicks</li>
-            <li>Download as PDF, PNG, or PowerPoint — ready to share or print</li>
+            <li>Download as PDF or PNG — ready to share or print</li>
           </ul>
         </div>
       </div>
@@ -483,16 +483,16 @@
             <span style="font-size:1.5rem;">⭐</span>
             <strong style="font-size:1.05rem;color:#14532d;">Canva for Education — 100% free for verified K-12 teachers</strong>
           </div>
-          <p style="margin:0 0 .6rem;font-size:.9rem;color:#166534;">This isn't a trial or a stripped-down version. Teachers get all of Canva's premium features — everything in <strong>Canva Pro</strong>, a $144/year value — completely free, as long as you teach K-12.</p>
+          <p style="margin:0 0 .6rem;font-size:.9rem;color:#166534;">This isn't a trial. Teachers get most of Canva's premium features (the paid <strong>Canva Pro</strong> plan costs $144 a year) completely free, as long as you teach K-12.</p>
           <ul style="font-size:.86rem;color:#166534;margin:0;padding-left:1.2rem;line-height:1.7;">
-            <li>Every premium template (over 1 million of them)</li>
-            <li>Every premium photo, video, and graphic in the library</li>
-            <li>Unlimited storage for your designs</li>
+            <li>Thousands of premium templates</li>
+            <li>Premium photos, videos, and graphics from the library</li>
+            <li>100 GB of storage for your designs</li>
             <li>Background remover, magic eraser, magic edit (these are the AI features)</li>
             <li>Brand kits to keep all your classroom materials consistent</li>
-            <li>Easy student sharing through Canva for Classrooms</li>
+            <li>Easy student sharing — share designs and assignments with your students</li>
           </ul>
-          <p style="margin:.75rem 0 0;font-size:.85rem;color:#14532d;"><strong>How to get it:</strong> Go to <a href="https://www.canva.com/education/" target="_blank" style="color:#15803d;font-weight:700;">canva.com/education</a> and verify with your school email. It takes about 2 minutes.</p>
+          <p style="margin:.75rem 0 0;font-size:.85rem;color:#14532d;"><strong>How to get it:</strong> Go to <a href="https://www.canva.com/education/" target="_blank" style="color:#15803d;font-weight:700;">canva.com/education</a> and verify with your school email. If Canva knows your school's email, you're in right away; if not, you upload proof and Canva checks it, usually within 2 days.</p>
         </div>
       </div>
 
@@ -545,7 +545,7 @@
           <li><strong>Change the colors:</strong> left-click any colored shape, then left-click the colored square in the top toolbar to pick a new color. Try matching your school colors.</li>
           <li><strong>Change the images:</strong> right-click an image and choose <strong>Replace</strong>, or drag a new photo from the left sidebar onto it. The new image snaps right into place.</li>
           <li><strong>Add new elements:</strong> the left sidebar has tabs for <em>Elements</em> (shapes, lines, stickers), <em>Text</em>, <em>Uploads</em> (your own images), and <em>Photos</em>. Left-click any one to drag it onto your design.</li>
-          <li><strong>Download when you're done:</strong> top-right corner, left-click <strong>Share</strong> → <strong>Download</strong>. Pick PDF for printing, PNG for sharing online, or PowerPoint if you need to edit it elsewhere.</li>
+          <li><strong>Download when you're done:</strong> top-right corner, left-click <strong>Share</strong> → <strong>Download</strong>. Pick PDF for printing or PNG for sharing online.</li>
         </ol>
         <div class="callout tip">
           <strong>💡 The big secret:</strong> You almost never start from scratch in Canva. You search for what you need, find a template that's 80% done, and just swap in your content. A polished poster takes 3 minutes instead of 30.
@@ -559,7 +559,7 @@
           <li><strong>Magic Write</strong> — generates text for your designs (lesson titles, classroom rules, prompts). Like a mini ChatGPT inside Canva.</li>
           <li><strong>Magic Edit</strong> — left-click any part of an image and describe what to change (e.g., "make the sky purple" or "add a chalkboard").</li>
           <li><strong>Background Remover</strong> — one click to cut out the background from any photo. Perfect for making sticker-style images of objects or student work.</li>
-          <li><strong>Text to Image</strong> — generate brand-new images from a description, just like you learned in Steps 1–5. Use this for custom worksheet illustrations.</li>
+          <li><strong>Create an image with Canva AI</strong> — generate brand-new images from a description, just like you learned in Steps 1–5. Use this for custom worksheet illustrations.</li>
           <li><strong>Magic Resize</strong> — turn a poster into a social media post, or a slideshow into a worksheet, with one click.</li>
         </ul>
       </div>
@@ -676,7 +676,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261117a" defer></script>
+<script src="mr-ai.js?v=20261118c" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
