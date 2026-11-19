@@ -206,7 +206,7 @@
         <li>Pick a prompt below and left-click <strong>Copy</strong>.</li>
         <li>Open your AI tool in a new tab, right-click inside the chat box, and choose <strong>Paste</strong>. (You can also press Ctrl+V on Windows or a Chromebook, or Cmd+V on Mac.)</li>
         <li>Replace anything in <strong>[brackets]</strong> with your own subject, grade, or topic.</li>
-        <li>Hit Enter — your quiz is ready in seconds.</li>
+        <li>Hit Enter — your quiz appears in seconds. Read every question and check the answer key before students see it.</li>
       </ol>
 
       <div class="prompt-card pc-green">
@@ -397,7 +397,7 @@
     <div class="step-label">Step 6 of 9 — Math Assignments</div>
 
     <div class="lesson-section">
-      <h2>➗ Math Assignments — What AI Can and Can't Do</h2>
+      <h2>➗ Math Assignments — What AI Does Well (and What to Check)</h2>
       <p>AI is genuinely useful for math — though it does have some limitations when it comes to formatting certain math problems. Worth knowing before you invest time in it.</p>
 
       <h3>✅ Where AI does well:</h3>
@@ -406,7 +406,7 @@
         <li><strong>Multiple choice math quizzes</strong> — works great for concepts, vocabulary, and application questions.</li>
         <li><strong>Review packets</strong> — AI can write sets of practice problems for operations, fractions, place value, geometry vocabulary, and more.</li>
         <li><strong>Answer keys</strong> — ask AI to solve the problems it creates and show its work.</li>
-        <li><strong>Follows specific formatting requests</strong> — if you want vertical fractions (with the numerator stacked over the denominator), long division written out the traditional way, problems in a column format, or any other specific layout, AI will do exactly what you ask. <strong>If you're particular about how your math looks, just tell AI exactly what you want.</strong></li>
+        <li><strong>Follows specific formatting requests</strong> — if you want vertical fractions (with the numerator stacked over the denominator), long division written out the traditional way, problems in a column format, or any other specific layout, AI will usually follow it — check the layout before you print. <strong>If you're particular about how your math looks, just tell AI exactly what you want.</strong></li>
       </ul>
 
       <div class="prompt-card pc-green">
@@ -569,7 +569,7 @@
 
       <div class="prompt-card pc-purple">
         <div class="pc-label">📋 Behavior Concern Email &nbsp;<button class="copy-small" onclick="copyCard(this)">Copy</button></div>
-        <code>Write a professional, calm email to the parent of one of my [GRADE] students about a behavior concern. Leave a blank line (____) wherever the child's name goes — I'll add it myself. The issue is [DESCRIBE BEHAVIOR, e.g., "difficulty staying focused during instruction" or "a conflict with a classmate"]. I want to keep the parent informed and work together. Suggest we [NEXT STEP, e.g., "check in by phone this week"]. Tone: factual, not accusatory, about 4–5 sentences.</code>
+        <code>Write a professional, calm email to the parent of one of my [GRADE] students about a behavior concern. Leave a blank line (____) wherever the child's name goes — I'll add it myself. The issue is [DESCRIBE THE BEHAVIOR IN GENERAL WORDS, e.g., "difficulty staying focused during instruction" or "a conflict with a classmate"]. I want to keep the parent informed and work together. Suggest we [NEXT STEP, e.g., "check in by phone this week"]. Tone: factual, not accusatory, about 4–5 sentences.</code>
       </div>
 
       <div class="prompt-card pc-orange">
@@ -656,7 +656,7 @@ document.querySelectorAll('.prompt-card code').forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 });
 </script>
-<script src="mr-ai.js?v=20261118c" defer></script>
+<script src="mr-ai.js?v=20261118d" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "71e3a25ba6124ad0adf9d5f30065ad7b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
