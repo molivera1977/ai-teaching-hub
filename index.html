@@ -256,7 +256,7 @@
       <div style="background:#fefce8;border:2px solid #f59e0b;border-radius:14px;padding:1.4rem 1.2rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem;">
         <div style="font-size:2rem;">🖥️</div>
         <div style="font-weight:800;font-size:1rem;color:#78350f;line-height:1.3;">Technology is not my thing and I can use a refresher on the basics.</div>
-        <p style="font-size:.82rem;color:#92400e;margin:0;line-height:1.45;">No problem at all. Take 10 minutes with Lesson 0 (Computer Basics) — it covers the basics so everything else clicks.</p>
+        <p style="font-size:.82rem;color:#92400e;margin:0;line-height:1.45;">No problem at all. Take 10 minutes with Lesson 0 (Computer Basics) — it covers the basics so everything else clicks. You'll come right back here to meet the tools.</p>
         <a href="lesson-0-basics.html" style="display:inline-block;background:#b45309;color:#fff;font-weight:800;font-size:.88rem;border-radius:30px;padding:.55rem 1.2rem;text-decoration:none;margin-top:auto;">Take me to the basics →</a>
       </div>
 
@@ -725,7 +725,7 @@
 
 <script>
 // Coming back from a lesson's "All lessons" link opens the lesson list (Step 6) directly.
-document.addEventListener('DOMContentLoaded', function () { if (location.hash === '#lessons') goToStep(6); });
+document.addEventListener('DOMContentLoaded', function () { if (location.hash === '#lessons') goToStep(6); else if (location.hash === '#tools') goToStep(4); });
 
 function goToStep(n) {
   const stepsEl = document.getElementById('home-steps');
